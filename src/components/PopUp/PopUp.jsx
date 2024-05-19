@@ -24,10 +24,11 @@ const PopUp = () => {
                 alt="Мед акацієвий натуральний"
               />
             </div>
-            <div className={css.productDetails}>
-              <button className={css.closeButton} onClick={closePopup}>
+            <button className={css.closeButton} onClick={closePopup}>
                 &times;
               </button>
+            <div className={css.productDetails}>
+    
 
               <h1 className={css.productTitle}>Мед акацієвий натуральний</h1>
 
