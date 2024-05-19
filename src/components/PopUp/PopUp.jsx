@@ -27,11 +27,12 @@ const PopUp = () => {
             <button className={css.closeButton} onClick={closePopup}>
                 &times;
               </button>
+           
             <div className={css.productDetails}>
     
-
-              <h1 className={css.productTitle}>Мед акацієвий натуральний</h1>
-
+            <h1 className={css.productTitle}>Мед акацієвий натуральний</h1>
+            
+              <div className={css.qualityDetails}>
               <div className={css.productWeight}>
                 <span>Вага</span>
                 <div className={css.weightOptions}>
@@ -43,15 +44,18 @@ const PopUp = () => {
                 </div>
               </div>
               <div className={css.productQuantity}>
-                <span>Кількість</span>
+                <span className={css.quantity}>Кількість</span>
                 <div className={css.quantityControls}>
                   <button className={css.quantityDecrease}>-</button>
                   <span className={css.quantityNumber}>1</span>
                   <button className={css.quantityIncrease}>+</button>
                 </div>
               </div>
-              <div className={css.productPrice}>100 грн</div>
-              <button className={css.addToCart}>Додати в кошик</button>
+              <div className={css.productPriceContainer}>
+                <span className={css.productPrice}>100 грн</span>
+                <button className={css.addToCart}>Додати в кошик</button>
+              </div>
+              </div>
             </div>
           </div>
         </div>
