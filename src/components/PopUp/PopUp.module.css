@@ -34,7 +34,30 @@
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
-  position: relative;
+
+ 
+}
+
+.containerScrollBar {
+  max-height: 268px; 
+  overflow-y: auto;
+  width: 480px;
+height: 212px;
+position: relative;
+    direction: ltr ;
+    padding: 0 ;
+    border: none ;
+
+    
+}
+
+.scrollBar {
+  border-radius: var(--os-track-border-radius);
+  background: var(--os-track-bg);
+  transition: opacity .15s, background-color .15s, border-color .15s;
+  pointer-events: none;
+  background: var(--os-handle-bg);
+  
 }
 
 .productTitle {
@@ -47,7 +70,7 @@
 }
 
 .qualityDetails {
-  margin-top: 238px;
+  margin-top: 28px;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -159,7 +182,7 @@ background-color: #ffc107;
 
 .productPriceContainer {
   display: flex;
-  gap: 186px;
+ 
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
