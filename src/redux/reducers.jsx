@@ -5,38 +5,40 @@ const initialProductState = {
     weight: '0,25 л',
     quantity: 1,
     pricePerUnit: 100,
+};
 
-}
-
-const productReducer = (state = initialProductState , action) => {
+const productReducer = (state = initialProductState, action) => {
     switch(action.type) {
         case SET_WEIGHT:
-        return {
-            ...state,
-            weight: action.payload,
-        }
-
+            return {
+                ...state,
+                weight: action.payload,
+            };
         case SET_QUANTITY:
             return {
                 ...state,
                 quantity: action.payload,
-            }
-
-            case ADD_TO_CART:
-                return {
-                    ...state,
-                    pricePerUnit: action.payload.pricePerUnit,
-                }
+            };
+        case ADD_TO_CART:
+            return {
+                ...state,
+                pricePerUnit: action.payload.pricePerUnit,
+            };
+        default:
+            return state;
     }
-}
+};
 
-const cartReducer = ( state = [], action) => {
-    switch(action.type) {
+
+const cartReducer = (state = [], action) => {
+    switch (action.type) {
         case ADD_TO_CART:
             return [
                 ...state,
                 action.payload,
             ]
+        default:
+            return state; // Добавляем default случай, который возвращает текущее состояние
     }
 }
 
