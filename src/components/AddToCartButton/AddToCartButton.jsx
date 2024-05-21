@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const AddToCartButton = ({onAddToCart}) => {
   return (
-    <div> <button className={css.addToCart} onClick={onAddToCart}>Додати в кошик</button></div>
+    <div className={css.productPriceContainer}> <button className={css.addToCart} onClick={onAddToCart}>Додати в кошик</button></div>
   )
 }
 
