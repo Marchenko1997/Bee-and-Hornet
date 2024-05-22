@@ -1,10 +1,11 @@
-// ProductDetails.jsx
 import css from './ProductDetails.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setWeight, setQuantity, addToCart } from '../../redux/actions';
 import WeightOptions from '../WeightOptions/WeightOptions';
 import QuantitySelector from '../QuantitySelector/QuantitySelector';
 import AddToCartButton from '../AddToCartButton/AddToCartButton';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import 'overlayscrollbars/styles/overlayscrollbars.css';
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const ProductDetails = () => {
   return (
       <div className={css.productDetails}>
           <h1 className={css.productTitle}>Мед акацієвий натуральний</h1>
-          <div className={css.containerScrollBar}>
+          <OverlayScrollbarsComponent className={css.containerScrollBar}>
               <div className={css.scrollBar}>
                   <p className={css.productDescription}>
                       Кришталево прозорий рідкий світло-золотявого кольору мед з
@@ -48,7 +49,7 @@ const ProductDetails = () => {
                       гіпоалергенні властивості.
                   </p>
               </div>
-          </div>
+          </OverlayScrollbarsComponent>
           <WeightOptions selectedWeight={product.weight} onWeightChange={handleWeightChange} />
           {product.quantity !== undefined && (
               <QuantitySelector quantity={product.quantity} onQuantityChange={handleQuantityChange} />
