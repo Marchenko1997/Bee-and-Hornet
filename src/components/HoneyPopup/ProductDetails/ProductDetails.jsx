@@ -1,6 +1,6 @@
 import css from './ProductDetails.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setWeight, setQuantity, addToCart } from '../../redux/actions';
+import { setWeight, setQuantity, addToCart } from '../../../redux/actions';
 import WeightOptions from '../WeightOptions/WeightOptions';
 import QuantitySelector from '../QuantitySelector/QuantitySelector';
 import AddToCartButton from '../AddToCartButton/AddToCartButton';
@@ -10,7 +10,7 @@ import 'overlayscrollbars/styles/overlayscrollbars.css';
 const ProductDetails = () => {
   const dispatch = useDispatch();
   const product = useSelector(state => state.product);
-  const cart = useSelector(state => state.cart);
+//   const cart = useSelector(state => state.cart);
 
   const handleWeightChange = (weight) => {
       dispatch(setWeight(weight));
@@ -56,11 +56,7 @@ const ProductDetails = () => {
           )}
           <div className={css.productPurchase}>
               <span className={css.productPrice}>{totalPrice} грн</span>
-              {cart.length > 0 && (
-                  <div className={css.cartIcon}>
-                      <span>{cart.length}</span>
-                  </div>
-              )}
+          
               <AddToCartButton onAddToCart={handleAddToCart} />
           </div>
       </div>

@@ -2,7 +2,7 @@
 import "./App.css";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import Product from "./components/Product/Product";
+import Product from "./components/HoneyPopup/Product/Product";
 
 function App() {
   return (
