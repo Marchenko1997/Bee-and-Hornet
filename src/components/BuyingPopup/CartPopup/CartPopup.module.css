@@ -67,6 +67,7 @@
 }
 
 .honeyItem {
+  position: relative; 
   width: 1088px;
   margin-bottom: 24px;
   border-radius: 24px;
@@ -155,10 +156,34 @@
     justify-content: center;
 }
 
-.deleteButton {
-  background: none;
+.itemPrice {
+  font-size: 18px;
+  line-height: 1.5555555556;
+  font-family: Raleway, sans-serif;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: #1f1b1a;
+
+}
+
+.deleteButton { 
+   background: none;
   border: none;
   cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;  /* Абсолютное позиционирование */
+  bottom: 16px;        /* Отступ от нижнего края */
+  right: 16px;         /* Отступ от правого края */
+}
+
+.bucketIcon {
+  width: 28px;
+  height: 28px;
+  stroke: #858585;
 }
 
 .modalButtonWrapper {
