@@ -35,10 +35,11 @@ const CartPopup = ({ onClose }) => {
                         <button className={css.decreaseBtn}> - </button>
                         <p className={css.itemQuantity}>{item.quantity} шт </p>
                         <button className={css.increaseBtn}> + </button>
+                        </div>
+
                         <p className={css.itemPrice}>
                           {item.pricePerUnit * item.quantity} грн
                         </p>{" "}
-                      </div>
                     </div>
                     <button className={css.deleteButton} type="button">
                       <svg className={css.bucketIcon}>
