@@ -1,0 +1,46 @@
+
+.itemQuantityWrapper {
+    display: flex;
+    align-items: center;
+    max-width: 280px;
+    flex-wrap: wrap;
+  
+  }
+  
+  .itemQuantityText {
+      display: block;
+      font-family: Raleway, sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 1.5555555556;
+      letter-spacing: .04em;
+      color: #1f1b1a;
+      margin-right: 32px;
+  
+  }
+  
+  .itemQuantity {
+      font-size: 18px;
+      line-height: 1.5555555556;
+      margin-left: 16px;
+      margin-right: 16px;
+      font-family: Raleway, sans-serif;
+      font-weight: 400;
+      letter-spacing: .04em;
+      text-align: center;
+      color: #1f1b1a;
+  
+  }
+  
+  
+  .decreaseBtn,
+  .increaseBtn {
+      width: 32px;
+      height: 32px;
+      background-color: transparent;
+      border-radius: 50%;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }

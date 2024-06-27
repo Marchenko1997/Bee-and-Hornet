@@ -2,7 +2,7 @@ import css from './AddToCartButton.module.css';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import CartPopup from '../../BuyingPopup/CartPopup/CartPopup';
+import CartPopup from '../../BuyingPopup/CartPopup/CartPopup/CartPopup';
 
 const AddToCartButton = ({ onAddToCart }) => {
   const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);

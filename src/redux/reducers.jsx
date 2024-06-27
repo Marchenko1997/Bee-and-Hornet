@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { ADD_TO_CART, SET_QUANTITY, SET_WEIGHT } from "./actions";
+import { ADD_TO_CART, SET_QUANTITY, SET_WEIGHT, REMOVE_FROM_CART, UPDATE_CART } from "./actions";
 
 const initialProductState = {
     weight: '0,25 л',
@@ -36,7 +36,11 @@ const cartReducer = (state = [], action) => {
             return [
                 ...state,
                 action.payload,
-            ]
+            ];
+            case REMOVE_FROM_CART:
+                return state.filter((_, index) => index !== action.payload);
+        case UPDATE_CART:
+            return action.payload;
         default:
             return state; // Добавляем default случай, который возвращает текущее состояние
     }

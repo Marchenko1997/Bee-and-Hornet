@@ -1,9 +1,31 @@
-import css from "./CartPopup.module.css";
-import { useSelector } from "react-redux";
-import PropTypes from "prop-types";
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import 'overlayscrollbars/overlayscrollbars.css';
+import css from './CartPopup.module.css';
+import { removeFromCart, updateCart } from '../../../../redux/actions';
+import  QuantityOfItem  from '../QuantityOfItem/QuantityOfItem'
 
 const CartPopup = ({ onClose }) => {
   const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const scrollRef = useRef(null);
+
+  const setCart = (newCart) => {
+    dispatch(updateCart(newCart));
+  };
+
+  useEffect(() => {
+    const osInstance = scrollRef.current.osInstance();
+    return () => {
+      if (osInstance) osInstance.destroy();
+    };
+  }, []);
+
+  const handleRemoveFromCart = (index) => {
+  dispatch(removeFromCart(index));
+  };
 
   return (
     <div className={css.cartPopup}>
@@ -17,7 +39,7 @@ const CartPopup = ({ onClose }) => {
         ) : (
           <>
             <div className={css.honeySection}>
-              <ul className={css.honeyList}>
+              <OverlayScrollbarsComponent ref={scrollRef} className={css.honeyList}>
                 {cart.map((item, index) => (
                   <li key={index} className={css.honeyItem}>
                     <div className={css.imgWrapper}>
@@ -30,25 +52,19 @@ const CartPopup = ({ onClose }) => {
                     <div className={css.descriptionWrapper}>
                       <h3 className={css.itemTitle}>Мед акацієвий</h3>
                       <p className={css.itemWeight}>{item.weight}</p>
-                      <div className={css.itemQuantityWrapper}>
-                        <p className={css.itemQuantityText}>Кількість </p>
-                        <button className={css.decreaseBtn}> - </button>
-                        <p className={css.itemQuantity}>{item.quantity} шт </p>
-                        <button className={css.increaseBtn}> + </button>
-                        </div>
-
-                        <p className={css.itemPrice}>
-                          {item.pricePerUnit * item.quantity} грн
-                        </p>{" "}
+                      <QuantityOfItem index={index} cart={cart} setCart={setCart}/>
+                      <p className={css.itemPrice}>
+                        {item.pricePerUnit * item.quantity} грн
+                      </p>
                     </div>
-                    <button className={css.deleteButton} type="button">
+                    <button className={css.deleteButton} type="button" onClick={() => handleRemoveFromCart(index)}>
                       <svg className={css.bucketIcon}>
                         <use xlinkHref="../../../../public/icons/sprite.svg#removal-bucket"></use>
                       </svg>
                     </button>
                   </li>
                 ))}
-              </ul>
+              </OverlayScrollbarsComponent>
             </div>
             <div className={css.modalButtonWrapper}>
               <div className={css.buttonBackWrapper}>
@@ -64,8 +80,7 @@ const CartPopup = ({ onClose }) => {
                   {cart.reduce(
                     (total, item) => total + item.pricePerUnit * item.quantity,
                     0
-                  )}{" "}
-                  грн{" "}
+                  )} грн
                 </p>
                 <button className={css.modalSubmitBtn} type="button">
                   Оформити замовлення

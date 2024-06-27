@@ -58,12 +58,29 @@
 .honeySection {
   display: flex;
   flex-direction: column;
+  max-height: 500px; 
+  overflow: hidden;
 }
 
 .honeyList {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.os-theme-dark {
+  --os-size: 12px; 
+  
+}
+
+
+.os-theme-dark > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle {
+  background-color: #f1c40f; /* Цвет полосы прокрутки */
+  border-radius: 10px;
+}
+
+.os-theme-dark > .os-scrollbar:hover > .os-scrollbar-track > .os-scrollbar-handle {
+  background-color: #e2b607; /* Цвет полосы прокрутки при наведении */
 }
 
 .honeyItem {
