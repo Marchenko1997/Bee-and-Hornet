@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
@@ -6,11 +6,15 @@ import 'overlayscrollbars/overlayscrollbars.css';
 import css from './CartPopup.module.css';
 import { removeFromCart, updateCart } from '../../../../redux/actions';
 import  QuantityOfItem  from '../QuantityOfItem/QuantityOfItem'
+import OrderForm from '../../../OrderForm/OrderForm';
+import OrderConfirmationPopup from '../../../OrderForm/OrderConfirmationPopup/OrderConfirmationPopup';
 
 const CartPopup = ({ onClose }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
+  const [ isOrdering, setIsOrdering ] = useState(false);
+  const [ order, setOrder] = useState(null);
 
   const setCart = (newCart) => {
     dispatch(updateCart(newCart));
@@ -27,12 +31,22 @@ const CartPopup = ({ onClose }) => {
   dispatch(removeFromCart(index));
   };
 
+  const handleOrder = (formData) => {
+    setOrder(formData);
+  }
+
   return (
     <div className={css.cartPopup}>
       <div className={css.cartPopupContent}>
         <button className={css.closeButton} onClick={onClose}>
           ×
         </button>
+        {order ? (
+          <OrderConfirmationPopup order={order} onClose={onClose} />
+        ) : isOrdering ? (
+          <OrderForm cart={cart} onBackToCart={() => setIsOrdering(false)} onSubmitOrder={handleOrder} />
+        ) : (
+          <>
         <h2 className={css.myBasket}>Ваш кошик</h2>
         {cart.length === 0 ? (
           <p className={css.emptyTitle}>Ваша корзина пуста</p>
@@ -82,12 +96,14 @@ const CartPopup = ({ onClose }) => {
                     0
                   )} грн
                 </p>
-                <button className={css.modalSubmitBtn} type="button">
+                <button className={css.modalSubmitBtn} type="button" onClick ={() => setIsOrdering(true)}>
                   Оформити замовлення
                 </button>
               </div>
             </div>
           </>
+        )}
+        </>
         )}
       </div>
     </div>
