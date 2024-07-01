@@ -1,78 +1,133 @@
-.orderForm {
+.container {
     width: 100%;
-    max-width: 800px;
+    max-width: 1440px;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 32px;
+    background-color: #fff;
+}
+
+.orderForm {
+    width: 592px;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .orderForm h2 {
+}
+
+.orderForm h2 {
     margin-bottom: 20px;
     text-align: center;
-  }
-  
-  .contactInfo, .deliveryInfo {
+    font-size: 32px;
+}
+
+.contactInfo, .deliveryInfo {
     margin-bottom: 20px;
-  }
-  
-  .contactInfo label, .deliveryInfo label {
+}
+
+.contactInfo label, .deliveryInfo label {
     display: block;
     margin-bottom: 10px;
-  }
-  
-  .contactInfo input, .deliveryInfo input, .deliveryInfo select, .deliveryInfo textarea {
+    font-size: 14px;
+}
+
+.contactInfo input, .deliveryInfo input, .deliveryInfo select, .deliveryInfo textarea {
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
+    padding: 12px 16px;
+    margin-top: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
-  }
-  
-  .orderSummary {
-    margin-bottom: 20px;
-  }
-  
-  .orderSummary h3 {
-    margin-bottom: 10px;
-  }
-  
-  .orderSummary ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 10px;
-  }
-  
-  .orderSummary ul li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .orderSummary p {
-    font-weight: bold;
-  }
-  
-  button {
-    padding: 10px 20px;
-    margin-right: 10px;
-    background-color: #f0c040;
+    font-size: 16px;
+    background-color: #f6f6f6;
+}
+
+.submitButton {
+    width: 100%;
+    padding: 15px;
+    background-color: #ffa500;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #e0a030;
-  }
-  
-  button[type="submit"] {
-    background-color: #ffa500;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #e69500;
-  }
-  
+    font-size: 16px;
+    color: #fff;
+    margin-top: 20px;
+}
 
- 
+.submitButton:hover {
+    background-color: #e69500;
+}
+
+.orderSummary {
+    width: 595px;
+    padding: 32px;
+    background-color: #fff;
+    border-radius: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.orderSummary h3 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.scrollWrapper {
+    max-height: 400px; /* Adjust this value as needed */
+}
+
+.orderSummary ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.orderSummary ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.orderSummary ul li img {
+    width: 132px;
+    height: 132px;
+    margin-right: 15px;
+    border-radius: 12px;
+}
+
+.orderSummary ul li span {
+    flex-grow: 1;
+    font-size: 16px;
+}
+
+.totalPrice {
+    font-weight: bold;
+    text-align: right;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.backButtonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.backButton {
+    width: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+}
+
+.backButton:hover {
+    text-decoration: underline;
+}

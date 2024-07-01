@@ -1,20 +1,19 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import 'overlayscrollbars/overlayscrollbars.css';
+import { useNavigate } from 'react-router-dom'; 
 import css from './CartPopup.module.css';
 import { removeFromCart, updateCart } from '../../../../redux/actions';
-import  QuantityOfItem  from '../QuantityOfItem/QuantityOfItem'
-import OrderForm from '../../../OrderForm/OrderForm';
-import OrderConfirmationPopup from '../../../OrderForm/OrderConfirmationPopup/OrderConfirmationPopup';
+import QuantityOfItem from '../QuantityOfItem/QuantityOfItem';
 
 const CartPopup = ({ onClose }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
-  const [ isOrdering, setIsOrdering ] = useState(false);
-  const [ order, setOrder] = useState(null);
+  const navigate = useNavigate(); // Инициализируем useNavigate
+  // const [order, setOrder] = useState(null);
 
   const setCart = (newCart) => {
     dispatch(updateCart(newCart));
@@ -28,12 +27,8 @@ const CartPopup = ({ onClose }) => {
   }, []);
 
   const handleRemoveFromCart = (index) => {
-  dispatch(removeFromCart(index));
+    dispatch(removeFromCart(index));
   };
-
-  const handleOrder = (formData) => {
-    setOrder(formData);
-  }
 
   return (
     <div className={css.cartPopup}>
@@ -41,12 +36,6 @@ const CartPopup = ({ onClose }) => {
         <button className={css.closeButton} onClick={onClose}>
           ×
         </button>
-        {order ? (
-          <OrderConfirmationPopup order={order} onClose={onClose} />
-        ) : isOrdering ? (
-          <OrderForm cart={cart} onBackToCart={() => setIsOrdering(false)} onSubmitOrder={handleOrder} />
-        ) : (
-          <>
         <h2 className={css.myBasket}>Ваш кошик</h2>
         {cart.length === 0 ? (
           <p className={css.emptyTitle}>Ваша корзина пуста</p>
@@ -66,7 +55,7 @@ const CartPopup = ({ onClose }) => {
                     <div className={css.descriptionWrapper}>
                       <h3 className={css.itemTitle}>Мед акацієвий</h3>
                       <p className={css.itemWeight}>{item.weight}</p>
-                      <QuantityOfItem index={index} cart={cart} setCart={setCart}/>
+                      <QuantityOfItem index={index} cart={cart} setCart={setCart} />
                       <p className={css.itemPrice}>
                         {item.pricePerUnit * item.quantity} грн
                       </p>
@@ -96,14 +85,16 @@ const CartPopup = ({ onClose }) => {
                     0
                   )} грн
                 </p>
-                <button className={css.modalSubmitBtn} type="button" onClick ={() => setIsOrdering(true)}>
+                <button
+                  className={css.modalSubmitBtn}
+                  type="button"
+                  onClick={() => navigate('/order')}
+                >
                   Оформити замовлення
                 </button>
               </div>
             </div>
           </>
-        )}
-        </>
         )}
       </div>
     </div>
