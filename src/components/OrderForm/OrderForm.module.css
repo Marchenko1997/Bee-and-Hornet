@@ -1,133 +1,154 @@
 .container {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 32px;
-    background-color: #fff;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 32px;
+  background-color: #fff;
+}
+
+.content{
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
 }
 
 .orderForm {
-    width: 592px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* width: 592px; */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+ 
 }
 
 .orderForm h2 {
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 32px;
+  margin-bottom: 20px;
+  font-size: 32px;
 }
 
-.contactInfo, .deliveryInfo {
-    margin-bottom: 20px;
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 592px;
+height: 848px;
 }
 
-.contactInfo label, .deliveryInfo label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 14px;
+.contactInfo,
+.deliveryInfo {
+  margin-bottom: 20px;
 }
 
-.contactInfo input, .deliveryInfo input, .deliveryInfo select, .deliveryInfo textarea {
-    width: 100%;
-    padding: 12px 16px;
-    margin-top: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: #f6f6f6;
+.contactInfo label,
+.deliveryInfo label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.contactInfo input,
+.deliveryInfo input,
+.deliveryInfo select,
+.deliveryInfo textarea {
+  width: 100%;
+  padding: 12px 16px;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f6f6f6;
 }
 
 .submitButton {
-    width: 100%;
-    padding: 15px;
-    background-color: #ffa500;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    color: #fff;
-    margin-top: 20px;
+  width: 279px;
+  height: 52px;
+  background: rgb(250, 207, 90);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 32px 12px 32px;
 }
 
 .submitButton:hover {
-    background-color: #e69500;
+  background-color: #e69500;
 }
 
 .orderSummary {
     width: 595px;
-    padding: 32px;
-    background-color: #fff;
-    border-radius: 24px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 716px;
+  padding: 32px;
+  background-color:  rgb(246, 246, 246);
+   
+  border-radius: 24px;
+
 }
 
 .orderSummary h3 {
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
 }
 
 .scrollWrapper {
-    max-height: 400px; /* Adjust this value as needed */
+  max-height: 400px; /* Adjust this value as needed */
 }
 
 .orderSummary ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
 }
 
 .orderSummary ul li {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
 }
 
 .orderSummary ul li img {
-    width: 132px;
-    height: 132px;
-    margin-right: 15px;
-    border-radius: 12px;
+  width: 132px;
+  height: 132px;
+  margin-right: 15px;
+  border-radius: 12px;
 }
 
 .orderSummary ul li span {
-    flex-grow: 1;
-    font-size: 16px;
+  flex-grow: 1;
+  font-size: 16px;
 }
 
 .totalPrice {
-    font-weight: bold;
-    text-align: right;
-    font-size: 18px;
-    margin-top: 20px;
+  font-weight: bold;
+  text-align: right;
+  font-size: 18px;
+  margin-top: 20px;
 }
 
 .backButtonContainer {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
 }
 
 .backButton {
-    width: auto;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 0;
+  width: auto;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
 }
 
 .backButton:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
