@@ -32,12 +32,14 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
 
   return (
     <div className={css.pageContainer}>
-      <header className={css.header}>
-        <div className={css.logo}>
-          <img src="/path-to-logo.png" alt="Logo" />
-          <span>Бджола та Шершень</span>
+      <div className={css.orderHeader}>
+        <div className={css.containerHeader}>
+          <a href="" className={css.orderLogo}>
+            <svg className={css.svgLogo}><use xlinkHref="/assets/sprite-BCsPqWkB.svg#logo"></use></svg>
+            <p>Бджола та Шершень</p>
+          </a>
         </div>
-      </header>
+      </div>
       {/* <section className={css.orderSection}> */}
       <div className={css.container}>
         <h2 className={css.mainTitle}>Оформлення замовлення</h2>
@@ -162,10 +164,12 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
                   </label>
                 </div>
               </div>
-            </form>
+              <p className={css.useAgreement}>Підтверджуючи замовлення, ви даєте згоду на обробку своїх персональних даних відповідно до Закону України «Про захист персональних даних»</p>
             <button type="submit" className={css.submitButton}>
               Оформити замовлення
             </button>
+            </form>
+          
           </div>
           <div className={css.orderSummary}>
             <div className={css.backButtonContainer}>
@@ -177,7 +181,7 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
                 Повернутися до покупок
               </button>
             </div>
-            <h3>Ваше замовлення</h3>
+            <h3 >Ваше замовлення:</h3>
             <OverlayScrollbarsComponent
               className={css.scrollWrapper}
               options={{ scrollbars: { autoHide: "scroll" } }}
