@@ -3,40 +3,106 @@
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   padding: 20px 32px;
   background-color: #fff;
 }
 
-.content{
+.content {
   display: flex;
   flex-direction: row;
   gap: 32px;
 }
 
-.orderForm {
-  /* width: 592px; */
+/* .orderForm {
+  
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
- 
+} */
+
+.mainTitle {
+  margin-bottom: 64px;
+  max-width: 579px;
+  font-size: 56px;
+  line-height: 64px;
+  /* font-weight: 900; */
 }
 
-.orderForm h2 {
-  margin-bottom: 20px;
-  font-size: 32px;
+.contactInfoTitle {
+    font-size: 24px;
+        line-height: 1.3333333333;
+        max-width: 100%;
+        font-weight: 600;
+        letter-spacing: .02em;
+    
 }
 
 .form {
   display: flex;
   flex-direction: column;
   width: 592px;
-height: 848px;
+  height: 848px;
 }
 
-.contactInfo,
+.contactInfo {
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputLabel {
+  font-size: 18px;
+  line-height: 1.5555555556;
+  margin-bottom: 8px;
+  font-style: normal;
+  letter-spacing: 0.04em;
+}
+
+.inputContactInfo {
+  height: 52px;
+  font-size: 18px;
+  line-height: 1.5555555556;
+  padding-left: 16px;
+  border-radius: 12px;
+  border: none;
+  background: #f6f6f6;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  outline: none;
+}
+
+.errorMessage {
+  font-size: 14px;
+  line-height: 1.4285714286;
+  color: #dc3353;
+  letter-spacing: 0.01em;
+}
+
 .deliveryInfo {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 16px;
+}
+
+.deliveryTitle {
+  font-size: 24px;
+  line-height: 1.3333333333;
+  width: 100%;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.deliverySelection {
+  height: 52px;
 }
 
 .contactInfo label,
@@ -46,17 +112,49 @@ height: 848px;
   font-size: 14px;
 }
 
-.contactInfo input,
+.contactInfo input {
+  width: 592px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  background-color: rgb(246, 246, 246);
+}
+
 .deliveryInfo input,
-.deliveryInfo select,
-.deliveryInfo textarea {
-  width: 100%;
+.deliveryInfo select {
+  width: 592px;
   padding: 12px 16px;
   margin-top: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: none;
+  border-radius: 12px;
   font-size: 16px;
-  background-color: #f6f6f6;
+  background-color: rgb(246, 246, 246);
+  height: 52px;
+}
+
+.deliveryInfo textarea {
+  padding: 12px 16px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  background-color: rgb(246, 246, 246);
+  height: 108px;
+  font-size: 18px;
+  line-height: 1.5555555556;
+  outline: none;
+  width: 100%;
+  resize: none;
+  font-style: normal;
+  letter-spacing: 0.04em;
+}
+
+.contactInfo input:focus,
+.deliveryInfo input:focus,
+.deliveryInfo select:focus,
+.deliveryInfo textarea:focus {
+  border: none;
 }
 
 .submitButton {
@@ -71,6 +169,8 @@ height: 848px;
   justify-content: center;
   align-items: center;
   padding: 12px 32px 12px 32px;
+  margin-left: auto;
+  margin-top: 230px;
 }
 
 .submitButton:hover {
@@ -78,13 +178,12 @@ height: 848px;
 }
 
 .orderSummary {
-    width: 595px;
-    height: 716px;
-  padding: 32px;
-  background-color:  rgb(246, 246, 246);
-   
-  border-radius: 24px;
+  width: 595px;
+  height: 716px;
+  padding: 64px 16px 64px 32px;
+  background-color: rgb(246, 246, 246);
 
+  border-radius: 24px;
 }
 
 .orderSummary h3 {
