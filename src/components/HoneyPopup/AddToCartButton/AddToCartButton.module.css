@@ -1,60 +1,77 @@
+
+.basementContainer {
+  padding-top: 20px;
+    border-top: 1px solid rgba(133, 133, 133, .25);
+}
+
+
+
+.productPriceContainer {
+  display: flex;
+  flex-direction: row;
+ 
+  align-items: center;
+}
+
+.productPrice {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.productPurchase {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+}
+
+.buttonAndIconContainer {
+  display: flex;
+  margin-left: auto;
+  gap: 24px;
+}
+
+.shopCard {
+  width: 52px;
+  height: 52px;
+}
+
+.basketContainer {
+  position: relative;
+}
+
+.basketIcon {
+  width: 52px;
+  height: 52px;
+}
+
+.basketCardSircle {
+  top: 28px;
+  left: 28px;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #facf5a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.basketQuantity {
+  cursor: pointer;
+}
+
 .addToCart {
-    background-color: #ffc107;
-    padding: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    width: 214px;
+  background-color: #ffc107;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  width: 214px;
   height: 52px;
   justify-content: center;
   align-items: center;
   padding: 12px 32px 12px 32px;
-  /* margin-left: 346px; */
-  }
   
-
-   .productPriceContainer {
-    display: flex;
-   gap: 24px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  
-  
-  
-  } 
-
-  .shopCard {
-    width: 52px;
-    height: 52px;
-  }
-
-
-  .basketContainer {
-    position: relative;
-  }
-
-
-  .basketIcon {
-    width: 52px;
-        height: 52px;
-  }
-
-
-  .basketCardSircle {
-    top: 28px;
-    left: 28px;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: #facf5a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-  }
-
-
-  .basketQuantity {
-    cursor: pointer;
-  }
+}

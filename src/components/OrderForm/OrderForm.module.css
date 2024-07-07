@@ -1,3 +1,5 @@
+
+
 .orderHeader {
     height: 76px;
     position: fixed;
@@ -5,30 +7,41 @@
     left: 0;
     z-index: 100;
     width: 100%;
-    height: 56px;
     background-color: #fff;
     box-shadow: 0 4px 4px #1f1b1a0d;
-}
-.containerHeader {
-    width: 1440px;
-    padding: 0 112px;
-
-}
-
-.orderLogo {
-    height: 100%;
-    justify-content: flex-start;
-    gap: 12px;
     display: flex;
-    /* align-items: center; */
+    align-items: center;
+  }
+  
+  .containerHeader {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px; /* Adjust padding as needed */
+    display: flex;
+    align-items: center;
+  }
+  
+  .orderLogo {
+    display: flex;
+    align-items: center;
     text-decoration: none;
-};
-
-.svgLogo {
+  }
+  
+  .svgLogo {
     width: 36px;
     height: 36px;
-
-}
+    margin-right: 12px; /* Space between logo and text */
+  }
+  
+  .beeAndHorn {
+    font-size: 20px;
+    line-height: 1.6;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: #1f1b1a;
+  }
 
 .container {
   width: 100%;
@@ -81,14 +94,15 @@
 .inputWrapper {
   display: flex;
   flex-direction: column;
+  gap: 32px;
 }
 
-.inputLabel {
+.inputlabel {
   font-size: 18px;
   line-height: 1.5555555556;
-  margin-bottom: 8px;
   font-style: normal;
   letter-spacing: 0.04em;
+
 }
 
 .inputContactInfo,
@@ -156,12 +170,12 @@
 }
 
 .useAgreement {
-    font-size: 12px;
-    line-height: 1.3333333333;
-    font-family: Raleway, sans-serif;
-    font-style: normal;
-    letter-spacing: .04em;
-    margin-bottom: 32px;
+  font-size: 12px;
+  line-height: 1.3333333333;
+  font-family: Raleway, sans-serif;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  margin-bottom: 32px;
 }
 
 .submitButton {
@@ -177,17 +191,15 @@
   align-items: center;
   padding: 12px 32px 12px 32px;
   margin-left: auto;
- 
 }
 
 .submitButton:hover {
   background-color: #e69500;
 }
-
 .orderSummary {
   width: 595px;
-  height: 716px;
-  padding: 64px 16px 64px 32px;
+  height: 100%;
+  padding: 64px 32px 64px 32px;
   background-color: rgb(246, 246, 246);
   border-radius: 24px;
   position: relative;
@@ -199,11 +211,11 @@
   line-height: 1.3333333333;
   width: 100%;
   font-weight: 600;
-    letter-spacing: .02em;
+  letter-spacing: 0.02em;
 }
 
 .scrollWrapper {
-  max-height: 400px; /* Adjust this value as needed */
+  max-height: 400px;
 }
 
 .orderSummary ul {
@@ -235,7 +247,10 @@
   font-weight: bold;
   text-align: right;
   font-size: 18px;
-  margin-top: 20px;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .backButton {
@@ -255,7 +270,12 @@
   line-height: 1.5555555556;
 }
 
+.arrowLink {
+  width: 28px;
+  height: 28px;
+  margin-right: 4px;
+}
+
 .backButton:hover {
   text-decoration: underline;
 }
-

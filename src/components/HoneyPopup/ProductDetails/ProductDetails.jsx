@@ -76,10 +76,9 @@ const ProductDetails = () => {
           onQuantityChange={handleQuantityChange}
         />
       )}
-      <div className={css.productPurchase}>
-        <span className={css.productPrice}>{totalPrice} грн</span>
-        <AddToCartButton onAddToCart={handleAddToCart} />
-      </div>
+      
+        <AddToCartButton onAddToCart={handleAddToCart} totalPrice={totalPrice} />
+     
     </div>
   );
 };

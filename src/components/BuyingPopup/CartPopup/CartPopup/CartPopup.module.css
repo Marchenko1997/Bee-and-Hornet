@@ -58,7 +58,7 @@
 .honeySection {
   display: flex;
   flex-direction: column;
-  max-height: 500px; 
+  max-height: 500px;
   overflow: hidden;
 }
 
@@ -69,22 +69,23 @@
 }
 
 .os-theme-dark {
-  --os-size: 12px; 
-  
+  --os-size: 12px;
 }
-
 
 .os-theme-dark > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle {
   background-color: #f1c40f; /* Цвет полосы прокрутки */
   border-radius: 10px;
 }
 
-.os-theme-dark > .os-scrollbar:hover > .os-scrollbar-track > .os-scrollbar-handle {
+.os-theme-dark
+  > .os-scrollbar:hover
+  > .os-scrollbar-track
+  > .os-scrollbar-handle {
   background-color: #e2b607; /* Цвет полосы прокрутки при наведении */
 }
 
 .honeyItem {
-  position: relative; 
+  position: relative;
   width: 1088px;
   margin-bottom: 24px;
   border-radius: 24px;
@@ -95,100 +96,94 @@
 }
 
 .imgWrapper {
-    border-radius: 24px;
-    overflow: hidden;
+  border-radius: 24px;
+  overflow: hidden;
 }
 
 .itemImg {
- width: 216px;
- border-radius: 24px;
-    overflow: hidden;
+  width: 216px;
+  border-radius: 24px;
+  overflow: hidden;
 }
 
 .descriptionWrapper {
-    padding: 24px 24px 24px 32px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  padding: 24px 24px 24px 32px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .itemTitle {
-    width: 524px;
-    height: 32px;
-    font-size: 24px;
-    line-height: 1.3333333333;
+  width: 524px;
+  height: 32px;
+  font-size: 24px;
+  line-height: 1.3333333333;
 }
 
 .itemWeight {
-    font-size: 18px;
-    line-height: 1.5555555556;
-    font-family: Raleway, sans-serif;
-    font-weight: 400;
-    text-align-last: left;
-    letter-spacing: .04em;
-    color: #1f1b1a;
+  font-size: 18px;
+  line-height: 1.5555555556;
+  font-family: Raleway, sans-serif;
+  font-weight: 400;
+  text-align-last: left;
+  letter-spacing: 0.04em;
+  color: #1f1b1a;
 }
-
 
 .itemQuantityWrapper {
   display: flex;
   align-items: center;
   max-width: 280px;
   flex-wrap: wrap;
-
 }
 
 .itemQuantityText {
-    display: block;
-    font-family: Raleway, sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 1.5555555556;
-    letter-spacing: .04em;
-    color: #1f1b1a;
-    margin-right: 32px;
-
+  display: block;
+  font-family: Raleway, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.5555555556;
+  letter-spacing: 0.04em;
+  color: #1f1b1a;
+  margin-right: 32px;
 }
 
 .itemQuantity {
-    font-size: 18px;
-    line-height: 1.5555555556;
-    margin-left: 16px;
-    margin-right: 16px;
-    font-family: Raleway, sans-serif;
-    font-weight: 400;
-    letter-spacing: .04em;
-    text-align: center;
-    color: #1f1b1a;
-
+  font-size: 18px;
+  line-height: 1.5555555556;
+  margin-left: 16px;
+  margin-right: 16px;
+  font-family: Raleway, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: #1f1b1a;
 }
-
 
 .decreaseBtn,
 .increaseBtn {
-    width: 32px;
-    height: 32px;
-    background-color: transparent;
-    border-radius: 50%;
-    outline: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border-radius: 50%;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .itemPrice {
   font-size: 18px;
   line-height: 1.5555555556;
   font-family: Raleway, sans-serif;
-    font-weight: 600;
-    letter-spacing: .04em;
-    color: #1f1b1a;
-
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #1f1b1a;
 }
 
-.deleteButton { 
-   background: none;
+.deleteButton {
+  background: none;
   border: none;
   cursor: pointer;
   background-color: transparent;
@@ -196,9 +191,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;  /* Абсолютное позиционирование */
-  bottom: 16px;        /* Отступ от нижнего края */
-  right: 16px;         /* Отступ от правого края */
+  position: absolute; /* Абсолютное позиционирование */
+  bottom: 16px; /* Отступ от нижнего края */
+  right: 16px; /* Отступ от правого края */
 }
 
 .bucketIcon {
@@ -211,10 +206,13 @@
   display: flex;
   justify-content: space-between;
   padding-right: 16px;
+  margin-top: 42px;
+  height: 84px;
+  align-items: center;
 }
 
 .buttonBackWrapper {
- margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .buttonBack {
@@ -227,16 +225,18 @@
   line-height: 1.5555555556;
 }
 
-.buttonBack svg {
-  margin-right: 5px;
+.arrowLink {
+  width: 28px;
+  height: 28px;
+  margin-right: 4px;
 }
 
 .modalSubmitWrapper {
   display: flex;
-gap: 32px;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
+  gap: 32px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .totalPrice {
@@ -245,22 +245,21 @@ align-items: center;
 }
 
 .modalSubmitBtn {
-    /* font-size: 18px; */
-    line-height: 1.5555555556;
-    width: 282px;
-    height: 52px;
-    font-family: Raleway, sans-serif;
-    font-weight: 600;
-    letter-spacing: .04em;
-    color: #1f1b1a;
-    background: #facf5a;
-    border-radius: 12px;
-    padding: 12px 32px;
-    outline: none;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color .2s linear;
+  /* font-size: 18px; */
+  line-height: 1.5555555556;
+  width: 282px;
+  height: 52px;
+  font-family: Raleway, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #1f1b1a;
+  background: #facf5a;
+  border-radius: 12px;
+  padding: 12px 32px;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s linear;
 }
-

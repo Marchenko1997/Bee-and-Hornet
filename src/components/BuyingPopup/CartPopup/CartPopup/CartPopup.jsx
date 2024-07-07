@@ -73,9 +73,9 @@ const CartPopup = ({ onClose }) => {
             <div className={css.modalButtonWrapper}>
               <div className={css.buttonBackWrapper}>
                 <button className={css.buttonBack} type="button">
-                  <svg>
-                    <use xlinkHref="#back-icon"></use>
-                  </svg>
+                  
+                  <svg className={css.arrowLink}> <use  xlinkHref="../../../../../public/icons/sprite.svg#arrow-link"></use></svg>
+                  
                   Повернутися до покупок
                 </button>
               </div>
