@@ -1,6 +1,8 @@
+// ProductDetails.js
+
 import css from "./ProductDetails.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setWeight, setQuantity, addToCart } from "../../../redux/actions";
+import { setWeight, setQuantity, addToCart, updateCart } from "../../../redux/actions";
 import WeightOptions from "../WeightOptions/WeightOptions";
 import QuantitySelector from "../QuantitySelector/QuantitySelector";
 import AddToCartButton from "../AddToCartButton/AddToCartButton";
@@ -21,18 +23,27 @@ const ProductDetails = () => {
   };
 
   const handleAddToCart = () => {
-    const itemExists = cart.some (item  => item.weight === product.weight);
-    if (cart.lenght >= 5 || itemExists) { return; 
-
+    const existingItem = cart.find(item => item.weight === product.weight);
+    
+    if (existingItem) {
+      const updatedCart = cart.map(item =>
+        item.weight === product.weight ? { ...item, quantity: item.quantity + product.quantity } : item
+      );
+      dispatch(updateCart(updatedCart));
+    } else {
+      if (cart.length >= 5) {
+        return;
+      }
+      const item = {
+        weight: product.weight,
+        quantity: product.quantity,
+        pricePerUnit: product.pricePerUnit,
+      };
+      dispatch(addToCart(item));
     }
-
-    const item = {
-      weight: product.weight,
-      quantity: product.quantity,
-      pricePerUnit: product.pricePerUnit,
-    };
-    dispatch(addToCart(item));
   };
+
+  const disabledWeights = cart.map(item => item.weight);
 
   const totalPrice = product.pricePerUnit * product.quantity;
 
@@ -57,6 +68,7 @@ const ProductDetails = () => {
       <WeightOptions
         selectedWeight={product.weight}
         onWeightChange={handleWeightChange}
+        disabledWeights={disabledWeights}
       />
       {product.quantity !== undefined && (
         <QuantitySelector

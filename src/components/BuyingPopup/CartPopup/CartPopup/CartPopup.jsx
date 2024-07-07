@@ -1,3 +1,5 @@
+// CartPopup.js
+
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -12,10 +14,10 @@ const CartPopup = ({ onClose }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
-  const navigate = useNavigate(); // Инициализируем useNavigate
+  const navigate = useNavigate(); // Инициализация useNavigate
 
   const setCart = (newCart) => {
-    dispatch(updateCart(newCart));
+    dispatch(updateCart(newCart)); // Обновление корзины в Redux
   };
 
   useEffect(() => {
@@ -26,7 +28,7 @@ const CartPopup = ({ onClose }) => {
   }, []);
 
   const handleRemoveFromCart = (index) => {
-    dispatch(removeFromCart(index));
+    dispatch(removeFromCart(index)); // Удаление элемента из корзины
   };
 
   return (
@@ -42,7 +44,7 @@ const CartPopup = ({ onClose }) => {
           <>
             <div className={css.honeySection}>
               <OverlayScrollbarsComponent ref={scrollRef} className={css.honeyList}>
-                {cart.slice(0, 5).map((item, index) => (
+                {cart.slice(0, 5).map((item, index) => ( // Ограничение на показ до 5 элементов
                   <li key={index} className={css.honeyItem}>
                     <div className={css.imgWrapper}>
                       <img
@@ -54,7 +56,7 @@ const CartPopup = ({ onClose }) => {
                     <div className={css.descriptionWrapper}>
                       <h3 className={css.itemTitle}>Мед акацієвий</h3>
                       <p className={css.itemWeight}>{item.weight}</p>
-                      <QuantityOfItem index={index} cart={cart} setCart={setCart} />
+                      <QuantityOfItem index={index} cart={cart} setCart={setCart} /> {/* Управление количеством */}
                       <p className={css.itemPrice}>
                         {item.pricePerUnit * item.quantity} грн
                       </p>

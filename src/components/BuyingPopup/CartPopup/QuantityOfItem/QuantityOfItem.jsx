@@ -1,25 +1,32 @@
+// QuantityOfItem.js
+
 import PropTypes from 'prop-types';
 import css from './QuantityOfItem.module.css';
+import { useDispatch } from 'react-redux';
+import { updateCart } from '../../../../redux/actions';
 
 const QuantityOfItem = ({ index, cart, setCart }) => {
   const item = cart[index];
+  const dispatch = useDispatch();
 
   const handleIncreaseQuantity = () => {
     const newCart = cart.map((item, i) =>
       i === index ? { ...item, quantity: item.quantity + 1 } : item
     );
-    setCart(newCart);
+    dispatch(updateCart(newCart)); // Обновление корзины в Redux
+    setCart(newCart); // Обновление локального состояния
   };
 
   const handleDecreaseQuantity = () => {
     const newCart = cart.map((item, i) =>
       i === index && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
     );
-    setCart(newCart);
+    dispatch(updateCart(newCart)); // Обновление корзины в Redux
+    setCart(newCart); // Обновление локального состояния
   };
 
   if (!item) {
-    return null; // Додайте обробку, якщо item не визначено
+    return null; // Обработка, если item не определен
   }
 
   return (
