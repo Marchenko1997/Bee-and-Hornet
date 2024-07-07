@@ -15,7 +15,7 @@ const Product = () => {
     
   return (
     <>
-    <button onClick={openPopup}>Открыть окно</button>
+    { !isOpen && (<button onClick={openPopup}>Открыть окно</button>)}
     {isOpen && (
     <div className={css.productContainer}>
     <div className={css.productImage}>

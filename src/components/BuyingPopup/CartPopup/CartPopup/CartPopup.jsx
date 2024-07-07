@@ -13,7 +13,6 @@ const CartPopup = ({ onClose }) => {
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
   const navigate = useNavigate(); // Инициализируем useNavigate
-  // const [order, setOrder] = useState(null);
 
   const setCart = (newCart) => {
     dispatch(updateCart(newCart));
@@ -43,7 +42,7 @@ const CartPopup = ({ onClose }) => {
           <>
             <div className={css.honeySection}>
               <OverlayScrollbarsComponent ref={scrollRef} className={css.honeyList}>
-                {cart.map((item, index) => (
+                {cart.slice(0, 5).map((item, index) => (
                   <li key={index} className={css.honeyItem}>
                     <div className={css.imgWrapper}>
                       <img

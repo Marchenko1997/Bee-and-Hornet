@@ -25,12 +25,12 @@ const AddToCartButton = ({ onAddToCart }) => {
               <use xlinkHref="../../../public/icons/sprite.svg#basket"></use>
             </svg>
             <span className={css.basketCardSircle} onClick={handleCartClick}>
-              <span className={css.basketQuantity}>{cart.length}</span>
+              <span className={css.basketQuantity}>{Math.min(cart.length, 5)}</span>
             </span>
           </div>
         )}
       </div>
-      <button className={css.addToCart} onClick={onAddToCart}>Додати в кошик</button>
+      <button className={css.addToCart} onClick={onAddToCart}  >Додати в кошик</button>
       {isCartPopupOpen && <CartPopup onClose={handleClosePopup} />}
     </div>
   );

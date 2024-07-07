@@ -1,12 +1,13 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
-import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import "overlayscrollbars/overlayscrollbars.css";
 import css from "./OrderForm.module.css";
 
 const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
-  const [formData, setFormData] = useState({
+  const initialValues = {
     firstName: "",
     lastName: "",
     phone: "",
@@ -14,47 +15,22 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
     city: "",
     branch: "",
     comment: "",
-  });
-
-  const [errors, setErrors] = useState({});
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-
-    // Убираем ошибку при изменении поля
-    if(errors[name]){
-        setErrors((prevErrors) => {
-            const newErrors = {...prevErrors};
-            delete newErrors[name];
-            return newErrors;
-        }
-        )
-    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newErrors = {};
+  const validationSchema = Yup.object().shape({
+    firstName: Yup.string().required(
+      "Будь ласка, введіть коректне ім’я кирилицею"
+    ),
+    lastName: Yup.string().required(
+      "Будь ласка, введіть коректне прізвище кирилицею"
+    ),
+    phone: Yup.string().required("Введіть коректний номер мобільного телефону"),
+    city: Yup.string().required("Оберіть населений пункт"),
+    branch: Yup.string().required("Обрати відділення"),
+  });
 
-    if (!formData.firstName) {
-      newErrors.firstName = "Будь ласка, введіть коректне ім’я кирилицею";
-    }
-
-    if (!formData.lastName) {
-      newErrors.lastName = "Будь ласка, введіть коректне прізвище кирилицею";
-    }
-
-    if (!formData.phone) {
-      newErrors.phone = "Введіть коректний номер мобільного телефону";
-    }
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-
-    onSubmitOrder(formData);
+  const handleSubmit = (values) => {
+    onSubmitOrder(values);
   };
 
   const totalPrice = cart.reduce(
@@ -67,7 +43,9 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
       <div className={css.orderHeader}>
         <div className={css.containerHeader}>
           <a href="" className={css.orderLogo}>
-            <svg className={css.svgLogo}><use xlinkHref="/assets/sprite-BCsPqWkB.svg#logo"></use></svg>
+            <svg className={css.svgLogo}>
+              <use xlinkHref="/assets/sprite-BCsPqWkB.svg#logo"></use>
+            </svg>
             <p>Бджола та Шершень</p>
           </a>
         </div>
@@ -76,144 +54,152 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
         <h2 className={css.mainTitle}>Оформлення замовлення</h2>
         <div className={css.content}>
           <div className={css.orderForm}>
-            <form onSubmit={handleSubmit} className={css.form}>
-              <div className={css.contactInfo}>
-                <h3 className={css.contactInfoTitle}>Контактні дані:</h3>
-                <div className={css.inputWrapper}>
-                  <label className={css.inputlabel}>
-                    Ім'я
-                    <input
-                      className={css.inputContactInfo}
-                      type="text"
-                      name="firstName"
-                      placeholder="Ім'я"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                    />
-                   {errors.firstName && (
-                      <span className={css.errorMessage}>
-                        {errors.firstName}
-                      </span>
-                    )}
-                  </label>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {() => (
+                <Form className={css.form}>
+                  <div className={css.contactInfo}>
+                    <h3 className={css.contactInfoTitle}>Контактні дані:</h3>
+                    <div className={css.inputWrapper}>
+                      <label className={css.inputlabel}>
+                        Ім'я
+                        <Field
+                          className={css.inputContactInfo}
+                          type="text"
+                          name="firstName"
+                          placeholder="Ім'я"
+                        />
+                        <ErrorMessage
+                          name="firstName"
+                          component="span"
+                          className={css.errorMessage}
+                        />
+                      </label>
 
-                  <label className={css.inputlabel}>
-                    Прізвище
-                    <input
-                      className={css.inputContactInfo}
-                      type="text"
-                      name="lastName"
-                      placeholder="Прізвище"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                    />
-                    {errors.lastName && (
-                      <span className={css.errorMessage}>
-                        {errors.lastName}
-                      </span>
-                    )}
-                  </label>
-                  <label className={css.inputlabel}>
-                    Телефон
-                    <input
-                      className={css.inputContactInfo}
-                      type="text"
-                      name="phone"
-                      placeholder="+380"
-                      value={formData.phone}
-                      onChange={handleChange}
-                    />
-                    {errors.phone && (
-                      <span className={css.errorMessage}>
-                        {errors.phone}
-                      </span>
-                    )}
-                  </label>
-                </div>
-              </div>
-              <div className={css.deliveryInfo}>
-                <h3 className={css.deliveryTitle}>
-                  Вкажіть адресу доставки (Нова пошта):
-                </h3>
-                <div className={css.deliverySelection}>
-                  <label>
-                    <select
-                      name="deliveryMethod"
-                      value={formData.deliveryMethod}
-                      onChange={handleChange}
-                    >
-                      <option value="Відділення">Доставка до відділення</option>
-                      <option value="Двері">Доставка до дверей</option>
-                    </select>
-                  </label>
-                  <label>
-                    <select
-                      name="city"
-                      value={formData.city}
-                      onChange={handleChange}
-                    >
-                      <option value="">Оберіть населений пункт</option>
-                      <option value="Київ, Київська обл.">
-                        м. Київ, Київська обл.
-                      </option>
-                      <option value="Дніпро, Дніпропетровська обл.">
-                        м. Дніпро, Дніпропетровська обл.
-                      </option>
-                      <option value="Харків, Харківська обл.">
-                        м. Харків, Харківська обл.
-                      </option>
-                      <option value="Запоріжжя, Запорізька обл.">
-                        м. Запоріжжя, Запорізька обл.
-                      </option>
-                      <option value="Одеса, Одеська обл.">
-                        м. Одеса, Одеська обл.
-                      </option>
-                      <option value="Кривий Ріг, Дніпропетровська обл.">
-                        м. Кривий Ріг, Дніпропетровська обл.
-                      </option>
-                      <option value="Львів, Львівська обл.">
-                        м. Львів, Львівська обл.
-                      </option>
-                      <option value="Вінниця, Вінницька обл.">
-                        м. Вінниця, Вінницька обл.
-                      </option>
-                    </select>
-                    {errors.city && (
-                      <span className={css.errorMessage}>{errors.city}</span>
-                    )}
-                  </label>
-                  <label>
-                    <select
-                      name="branch"
-                      value={formData.branch}
-                      onChange={handleChange}
-                    >
-                      <option value="">Обрати відділення</option>
-                      {/* Добавьте варианты для отделений здесь */}
-                    </select>
-                    {errors.branch && (
-                      <span className={css.errorMessage}>{errors.branch}</span>
-                    )}
-                  </label>
-                  <label>
-                    <textarea
-                      name="comment"
-                      placeholder="Додати коментар до замовлення"
-                      value={formData.comment}
-                      onChange={handleChange}
-                    ></textarea>
-                  </label>
-                </div>
-              </div>
-              <p className={css.useAgreement}>
-                Підтверджуючи замовлення, ви даєте згоду на обробку своїх
-                персональних даних відповідно до Закону України «Про захист
-                персональних даних»
-              </p>
-              <button type="submit" className={css.submitButton}>
-                Оформити замовлення
-              </button>
-            </form>
+                      <label className={css.inputlabel}>
+                        Прізвище
+                        <Field
+                          className={css.inputContactInfo}
+                          type="text"
+                          name="lastName"
+                          placeholder="Прізвище"
+                        />
+                        <ErrorMessage
+                          name="lastName"
+                          component="span"
+                          className={css.errorMessage}
+                        />
+                      </label>
+                      <label className={css.inputlabel}>
+                        Телефон
+                        <Field
+                          className={css.inputContactInfo}
+                          type="text"
+                          name="phone"
+                          placeholder="+380"
+                        />
+                        <ErrorMessage
+                          name="phone"
+                          component="span"
+                          className={css.errorMessage}
+                        />
+                      </label>
+                    </div>
+                  </div>
+                  <div className={css.deliveryInfo}>
+                    <h3 className={css.deliveryTitle}>
+                      Вкажіть адресу доставки (Нова пошта):
+                    </h3>
+                    <div className={css.deliverySelection}>
+                      <label>
+                        <Field
+                          as="select"
+                          name="deliveryMethod"
+                          className={css.inputContactInfo}
+                        >
+                          <option value="Відділення">
+                            Доставка до відділення
+                          </option>
+                          <option value="Двері">Доставка до дверей</option>
+                        </Field>
+                      </label>
+                      <label>
+                        <Field
+                          as="select"
+                          name="city"
+                          className={css.inputContactInfo}
+                        >
+                          <option value="">Оберіть населений пункт</option>
+                          <option value="Київ, Київська обл.">
+                            м. Київ, Київська обл.
+                          </option>
+                          <option value="Дніпро, Дніпропетровська обл.">
+                            м. Дніпро, Дніпропетровська обл.
+                          </option>
+                          <option value="Харків, Харківська обл.">
+                            м. Харків, Харківська обл.
+                          </option>
+                          <option value="Запоріжжя, Запорізька обл.">
+                            м. Запоріжжя, Запорізька обл.
+                          </option>
+                          <option value="Одеса, Одеська обл.">
+                            м. Одеса, Одеська обл.
+                          </option>
+                          <option value="Кривий Ріг, Дніпропетровська обл.">
+                            м. Кривий Ріг, Дніпропетровська обл.
+                          </option>
+                          <option value="Львів, Львівська обл.">
+                            м. Львів, Львівська обл.
+                          </option>
+                          <option value="Вінниця, Вінницька обл.">
+                            м. Вінниця, Вінницька обл.
+                          </option>
+                        </Field>
+                        <ErrorMessage
+                          name="city"
+                          component="span"
+                          className={css.errorMessage}
+                        />
+                      </label>
+                      <label>
+                        <Field
+                          as="select"
+                          name="branch"
+                          className={css.inputContactInfo}
+                        >
+                          <option value="">Обрати відділення</option>
+                          {/* Добавьте варианты для отделений здесь */}
+                        </Field>
+                        <ErrorMessage
+                          name="branch"
+                          component="span"
+                          className={css.errorMessage}
+                        />
+                      </label>
+                      <label>
+                        <Field
+                          as="textarea"
+                          name="comment"
+                          placeholder="Додати коментар до замовлення"
+                          className={css.inputContactInfo}
+                        />
+                      </label>
+                    </div>
+                  </div>
+                  <p className={css.useAgreement}>
+                    Підтверджуючи замовлення, ви даєте згоду на обробку своїх
+                    персональних даних відповідно до Закону України «Про захист
+                    персональних даних»
+                  </p>
+                  <button type="submit" className={css.submitButton}>
+                    Оформити замовлення
+                  </button>
+                </Form>
+              )}
+            </Formik>
           </div>
           <div className={css.orderSummary}>
             <div className={css.backButtonContainer}>
@@ -250,7 +236,6 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
           </div>
         </div>
       </div>
-      {/* </section> */}
     </div>
   );
 };
