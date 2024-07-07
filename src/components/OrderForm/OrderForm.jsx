@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+
 import "overlayscrollbars/overlayscrollbars.css";
 import css from "./OrderForm.module.css";
 
@@ -15,13 +16,44 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
     comment: "",
   });
 
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    // Убираем ошибку при изменении поля
+    if(errors[name]){
+        setErrors((prevErrors) => {
+            const newErrors = {...prevErrors};
+            delete newErrors[name];
+            return newErrors;
+        }
+        )
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const newErrors = {};
+
+    if (!formData.firstName) {
+      newErrors.firstName = "Будь ласка, введіть коректне ім’я кирилицею";
+    }
+
+    if (!formData.lastName) {
+      newErrors.lastName = "Будь ласка, введіть коректне прізвище кирилицею";
+    }
+
+    if (!formData.phone) {
+      newErrors.phone = "Введіть коректний номер мобільного телефону";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     onSubmitOrder(formData);
   };
 
@@ -40,7 +72,6 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
           </a>
         </div>
       </div>
-      {/* <section className={css.orderSection}> */}
       <div className={css.container}>
         <h2 className={css.mainTitle}>Оформлення замовлення</h2>
         <div className={css.content}>
@@ -58,11 +89,12 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
                       placeholder="Ім'я"
                       value={formData.firstName}
                       onChange={handleChange}
-                      required
                     />
-                    <span className={css.errorMessage}>
-                      Будь ласка, введіть коректне ім’я кирилицею
-                    </span>
+                   {errors.firstName && (
+                      <span className={css.errorMessage}>
+                        {errors.firstName}
+                      </span>
+                    )}
                   </label>
 
                   <label className={css.inputlabel}>
@@ -74,11 +106,12 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
                       placeholder="Прізвище"
                       value={formData.lastName}
                       onChange={handleChange}
-                      required
                     />
-                    <span className={css.errorMessage}>
-                      Будь ласка, введіть коректне прізвище кирилицею
-                    </span>
+                    {errors.lastName && (
+                      <span className={css.errorMessage}>
+                        {errors.lastName}
+                      </span>
+                    )}
                   </label>
                   <label className={css.inputlabel}>
                     Телефон
@@ -89,8 +122,12 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
                       placeholder="+380"
                       value={formData.phone}
                       onChange={handleChange}
-                      required
                     />
+                    {errors.phone && (
+                      <span className={css.errorMessage}>
+                        {errors.phone}
+                      </span>
+                    )}
                   </label>
                 </div>
               </div>
@@ -114,7 +151,6 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
                       name="city"
                       value={formData.city}
                       onChange={handleChange}
-                      required
                     >
                       <option value="">Оберіть населений пункт</option>
                       <option value="Київ, Київська обл.">
@@ -142,17 +178,22 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
                         м. Вінниця, Вінницька обл.
                       </option>
                     </select>
+                    {errors.city && (
+                      <span className={css.errorMessage}>{errors.city}</span>
+                    )}
                   </label>
                   <label>
                     <select
                       name="branch"
                       value={formData.branch}
                       onChange={handleChange}
-                      required
                     >
                       <option value="">Обрати відділення</option>
                       {/* Добавьте варианты для отделений здесь */}
                     </select>
+                    {errors.branch && (
+                      <span className={css.errorMessage}>{errors.branch}</span>
+                    )}
                   </label>
                   <label>
                     <textarea
@@ -164,12 +205,15 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
                   </label>
                 </div>
               </div>
-              <p className={css.useAgreement}>Підтверджуючи замовлення, ви даєте згоду на обробку своїх персональних даних відповідно до Закону України «Про захист персональних даних»</p>
-            <button type="submit" className={css.submitButton}>
-              Оформити замовлення
-            </button>
+              <p className={css.useAgreement}>
+                Підтверджуючи замовлення, ви даєте згоду на обробку своїх
+                персональних даних відповідно до Закону України «Про захист
+                персональних даних»
+              </p>
+              <button type="submit" className={css.submitButton}>
+                Оформити замовлення
+              </button>
             </form>
-          
           </div>
           <div className={css.orderSummary}>
             <div className={css.backButtonContainer}>
@@ -181,7 +225,7 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
                 Повернутися до покупок
               </button>
             </div>
-            <h3 >Ваше замовлення:</h3>
+            <h3>Ваше замовлення:</h3>
             <OverlayScrollbarsComponent
               className={css.scrollWrapper}
               options={{ scrollbars: { autoHide: "scroll" } }}
