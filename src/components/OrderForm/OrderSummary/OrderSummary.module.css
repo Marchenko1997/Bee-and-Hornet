@@ -1,0 +1,65 @@
+.orderSummary {
+    width: 595px;
+    height: 100%;
+    padding: 64px 32px 64px 32px;
+    background-color: rgb(246, 246, 246);
+    border-radius: 24px;
+    position: relative;
+  }
+  
+  .orderSummary h3 {
+    margin-bottom: 32px;
+    font-size: 24px;
+    line-height: 1.3333333333;
+    width: 100%;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  
+  .scrollWrapper {
+    max-height: 400px;
+  }
+  
+  .orderSummary ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  .totalPrice {
+    font-weight: bold;
+    text-align: right;
+    font-size: 18px;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .backButton {
+    position: absolute;
+    height: 24px;
+    right: 0;
+    top: -48px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    transition: color 0.3s linear;
+    background-color: #fff;
+    font-size: 18px;
+    line-height: 1.5555555556;
+  }
+  
+  .arrowLink {
+    width: 28px;
+    height: 28px;
+    margin-right: 4px;
+  }
+  
+  .backButton:hover {
+    text-decoration: underline;
+  }
+  

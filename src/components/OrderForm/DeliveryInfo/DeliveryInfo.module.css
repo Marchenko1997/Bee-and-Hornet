@@ -1,0 +1,83 @@
+.deliveryInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 16px;
+  }
+  
+  .deliveryTitle {
+    font-size: 24px;
+    line-height: 1.3333333333;
+    width: 100%;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  
+  .deliverySelection {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .deliverySelection select,
+  .deliverySelection textarea {
+    margin-top: 8px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    background-color: rgb(246, 246, 246);
+  }
+  
+  .deliverySelection textarea {
+    height: 108px;
+    resize: none;
+  }
+  
+  .contactInfo {
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .contactInfoTitle {
+    font-size: 24px;
+    line-height: 1.3333333333;
+    max-width: 100%;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  
+  .inputWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .inputlabel {
+    font-size: 18px;
+    line-height: 1.5555555556;
+    font-style: normal;
+    letter-spacing: 0.04em;
+  }
+  
+  .inputContactInfo {
+    width: 100%;
+    height: 52px;
+    font-size: 18px;
+    line-height: 1.5555555556;
+    border-radius: 12px;
+    border: none;
+    background: #f6f6f6;
+    font-style: normal;
+    letter-spacing: 0.04em;
+    outline: none;
+  }
+  
+  .errorMessage {
+    font-size: 14px;
+    line-height: 1.4285714286;
+    color: #dc3353;
+    letter-spacing: 0.01em;
+  }
+  
