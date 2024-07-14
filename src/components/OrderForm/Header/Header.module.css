@@ -1,43 +1,65 @@
 .orderHeader {
-    height: 76px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 4px 4px #1f1b1a0d;
-    display: flex;
-    align-items: center;
-  }
-  
-  .containerHeader {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 32px; 
-    display: flex;
-    align-items: center;
-  }
-  
-  .orderLogo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-  
-  .svgLogo {
-    width: 36px;
-    height: 36px;
-    margin-right: 12px; 
-  }
-  
-  .beeAndHorn {
-    font-size: 20px;
-    line-height: 1.6;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    font-family: 'Montserrat Alternates', sans-serif;
-    color: #1f1b1a;
-  }
-  
+  height: 76px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 4px 4px #1f1b1a0d;
+  display: flex;
+  align-items: center;
+}
+
+.containerHeader {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+}
+
+.orderLogo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.svgLogo {
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
+}
+
+.beeAndHorn {
+  font-size: 20px;
+  line-height: 1.6;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #1f1b1a;
+}
+
+.navLink {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 0 0 24px 24px;
+}
+
+.link {
+  font-size: 18px;
+  cursor: pointer;
+  color: #1f1b1a;
+  font-family: Raleway, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}

@@ -2,7 +2,10 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Изменить с height: 100vh на min-height */
-  padding-top: 100px; /* Добавить отступ сверху для учета высоты хедера */
+  width: 1440px;
+  padding-left: 112px;
+  padding-right: 112px;
+  margin: 0 auto;
 }
 
 .heroSection {
@@ -27,17 +30,18 @@
   padding-bottom: 64px;
   font-size: 106px;
   line-height: 1.12;
-  letter-spacing: .008em;
+  letter-spacing: 0.008em;
   white-space: pre-line;
   font-family: Montserrat Alternates, sans-serif;
   font-weight: 600;
   color: #1f1b1a;
   width: 100%;
+  margin-top: 84px;
 }
 
 .heroContent p {
-  font-size: 24px;
-  line-height: 1.333;
+  /* font-size: 24px; */
+  /* line-height: 1.333; */
 }
 
 .mainQuotes {
@@ -48,11 +52,20 @@
   width: 100%;
   font-family: Raleway, sans-serif;
   font-weight: 400;
-  letter-spacing: .04em;
+  letter-spacing: 0.04em;
   text-align: right;
 }
 
-.featuresSection, .productsSection, .aboutUsSection, .reviewsSection {
+.mainQuotesSpan {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.56;
+}
+
+.featuresSection,
+.productsSection,
+.aboutUsSection,
+.reviewsSection {
   padding: 20px;
 }
 
@@ -61,7 +74,10 @@
   justify-content: space-around;
 }
 
-.featureItem, .productItem, .aboutUsItem, .reviewItem {
+.featureItem,
+.productItem,
+.aboutUsItem,
+.reviewItem {
   margin: 10px;
 }
 
@@ -70,31 +86,71 @@
   justify-content: space-around;
 }
 
-.ctaButton {
-  background-color: #f5a623;
-  border: none;
-  border-radius: 8px;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-.ctaButton:hover {
-  background-color: #e69500;
-}
 
 .images {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
+  gap: 32px;
 }
 
-.honeyImage {
- width: 100%;
-  border-radius: 8px;
-  height: auto; /* Обеспечить сохранение пропорций изображения */
+.honeyImageTwo {
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+  margin: 0 0 72px 144px;
+}
+
+.honeyImageOne {
+  position: static;
+  visibility: visible;
+  pointer-events: auto;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 0 0 0 32px;
+  padding: 44px 0 0;
+  text-indent: 0;
+  white-space: normal;
+  overflow: visible;
+}
+
+.buttonContainer {
+  position: relative;
+  align-self: flex-start;
+  margin-left: 75px;
+
+  margin-bottom: 400px;
+}
+
+.orderButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.iconPolygon {
+  fill: #facf5a;
+  transition: fill 0.3s linear;
+  top: -86px;
+  left: 50px;
+  width: 190px;
+  height: 172px;
+  position: absolute;
+}
+
+.iconPolygonText {
+  position: absolute;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: justify;
+  color: #1f1b1a;
+  top: -12px;
+  left: 88px;
+  font-size: 18px;
+  line-height: 1.56;
 }
 
 .socialLinks {
@@ -106,9 +162,9 @@
   gap: 10px;
 }
 
-.socialLinks .icon {
-  width: 24px;
-  height: 24px;
+.icon {
+  width: 32px;
+  height: 32px;
   fill: #f5a623;
 }
 

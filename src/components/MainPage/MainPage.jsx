@@ -1,4 +1,4 @@
-import React from "react";
+
 import Header from "../OrderForm/Header/Header";
 import css from "./MainPage.module.css";
 import honeyImage1 from "./images/honey-desktop.jpeg";
@@ -10,12 +10,12 @@ const MainPage = () => {
       <Header />
       <section className={css.heroSection}>
         <div className={css.heroContent}>
-          <h1>Натуральний мед з сімейною історією</h1>
+          <h1>Натуральний мед <br /> з сімейною історією</h1>
 
           <div className={css.wrapperInfo}>
             <p className={css.mainQuotes}>
               {" "}
-              <span>«Видно, що ви без пуття закохані в той мед».</span> Григорій
+              <span className={css.mainQuotesSpan}>«Видно, що ви без пуття закохані в той мед». <br /></span> Григорій
               Сковорода, байка «Бджола та Шершень». Точніше нашу сімейну любов
               до цієї справи не описати!
             </p>
@@ -23,26 +23,29 @@ const MainPage = () => {
             <div className={css.images}>
               <picture>
                 <source
-                  srcSet={`${honeyImage1} 1x, ${honeyImage1} 2x`}
-                  media="(min-width: 800px)"
-                />
-                <img src={honeyImage1} alt="Honey" className={css.honeyImage} />
-              </picture>
-              <picture>
-                <source
                   srcSet={`${honeyImage2} 1x, ${honeyImage2} 2x`}
                   media="(min-width: 800px)"
                 />
-                <img src={honeyImage2} alt="Honeycomb" className={css.honeyImage} />
+                <img src={honeyImage2} alt="Honeycomb" className={css.honeyImageTwo} />
+                
               </picture>
-            </div>
+              <picture>
+                <source
+                  srcSet={`${honeyImage1} 1x, ${honeyImage1} 2x`}
+                  media="(min-width: 800px)"
+                />
+                <img src={honeyImage1} alt="Honey" className={css.honeyImageOne} />
+              </picture>
+            </div> 
             <div className={css.socialLinks}>
-              <a href="">
-                <svg>
-                  <use xlinkHref="../../../public/icons/sprite.svg#polygon"></use>
-                </svg>
-                <p>Замовити</p>
-              </a>
+            <div className={css.buttonContainer}>
+                <a href="" className={css.orderButton}>
+                  <svg className={css.iconPolygon}>
+                    <use xlinkHref="../../../public/icons/sprite.svg#polygon"></use>
+                  </svg>
+                  <p className={css.iconPolygonText}>Замовити</p>
+                </a>
+              </div>
               <a
                 href="https://t.me/bdzhola_ta_shershen"
                 target="_blank"

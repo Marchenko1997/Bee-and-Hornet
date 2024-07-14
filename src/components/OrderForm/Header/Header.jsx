@@ -11,12 +11,15 @@ const Header = () => {
           </svg>
           <p className={css.beeAndHorn}>Бджола та Шершень</p>
         </Link>
-        <nav className={css.nav}>
-          <Link to="/product" className={css.navLink}>Каталог</Link>
-          <a href="#about" className={css.navLink}>Про нас</a>
-          <a href="#reviews" className={css.navLink}>Відгуки</a>
-          <a href="#contacts" className={css.navLink}>Контакти</a>
+     
+        <nav className={css.navLink}>
+          <Link to="/product" className={css.link}>Каталог</Link>
+          <a href="#about" className={css.link}>Про нас</a>
+          <a href="#reviews" className={css.link}>Відгуки</a>
+          <a href="#contacts" className={css.link}>Контакти</a>
         </nav>
+        
+      
       </div>
     </div>
   );

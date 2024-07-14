@@ -1,0 +1,31 @@
+.title {
+    padding-top: 52px;
+    padding-bottom: 32px;
+    /* font-family: $secondary-font-family; */
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 1.16; 
+    letter-spacing: 0.02em;
+    /* color: $primary-text-color; */
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .title {
+        font-size: 80px;
+        line-height: 1.1; 
+        padding-top: 64px;
+        padding-bottom: 48px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .title {
+        padding-top: 84px;
+        padding-bottom: 64px;
+        font-size: 106px;
+        line-height: 1.12; 
+        letter-spacing: 0.008em;
+        white-space: pre-line;
+    }
+}
