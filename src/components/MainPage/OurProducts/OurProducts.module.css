@@ -1,0 +1,13 @@
+
+.productsSection {
+  padding: 20px;
+}
+
+.productItem {
+  margin: 10px;
+}
+
+.products {
+  display: flex;
+  justify-content: space-around;
+}

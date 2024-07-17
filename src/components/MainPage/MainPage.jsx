@@ -1,8 +1,9 @@
-
 import Header from "../OrderForm/Header/Header";
 import css from "./MainPage.module.css";
 import honeyImage1 from "./images/honey-desktop.jpeg";
 import honeyImage2 from "./images/honeycomb-desktop.jpeg";
+import OurHoney from "./OurHoney/OurHoney";
+import OurProducts from "./OurProducts/OurProducts";
 
 const MainPage = () => {
   return (
@@ -10,14 +11,18 @@ const MainPage = () => {
       <Header />
       <section className={css.heroSection}>
         <div className={css.heroContent}>
-          <h1>Натуральний мед <br /> з сімейною історією</h1>
+          <h1>
+            Натуральний мед <br /> з сімейною історією
+          </h1>
 
           <div className={css.wrapperInfo}>
             <p className={css.mainQuotes}>
               {" "}
-              <span className={css.mainQuotesSpan}>«Видно, що ви без пуття закохані в той мед». <br /></span> Григорій
-              Сковорода, байка «Бджола та Шершень». Точніше нашу сімейну любов
-              до цієї справи не описати!
+              <span className={css.mainQuotesSpan}>
+                «Видно, що ви без пуття закохані в той мед». <br />
+              </span>{" "}
+              Григорій Сковорода, байка «Бджола та Шершень». Точніше нашу
+              сімейну любов до цієї справи не описати!
             </p>
 
             <div className={css.images}>
@@ -26,19 +31,26 @@ const MainPage = () => {
                   srcSet={`${honeyImage2} 1x, ${honeyImage2} 2x`}
                   media="(min-width: 800px)"
                 />
-                <img src={honeyImage2} alt="Honeycomb" className={css.honeyImageTwo} />
-                
+                <img
+                  src={honeyImage2}
+                  alt="Honeycomb"
+                  className={css.honeyImageTwo}
+                />
               </picture>
               <picture>
                 <source
                   srcSet={`${honeyImage1} 1x, ${honeyImage1} 2x`}
                   media="(min-width: 800px)"
                 />
-                <img src={honeyImage1} alt="Honey" className={css.honeyImageOne} />
+                <img
+                  src={honeyImage1}
+                  alt="Honey"
+                  className={css.honeyImageOne}
+                />
               </picture>
-            </div> 
+            </div>
             <div className={css.socialLinks}>
-            <div className={css.buttonContainer}>
+              <div className={css.buttonContainer}>
                 <a href="" className={css.orderButton}>
                   <svg className={css.iconPolygon}>
                     <use xlinkHref="../../../public/icons/sprite.svg#polygon"></use>
@@ -68,22 +80,10 @@ const MainPage = () => {
           </div>
         </div>
       </section>
-      <section className={css.featuresSection}>
-        <h2>Наш мед це</h2>
-        <div className={css.features}>
-          <div className={css.featureItem}>Цілющі властивості</div>
-          <div className={css.featureItem}>Родинні традиції</div>
-          <div className={css.featureItem}>Чудовий подарунок</div>
-        </div>
-      </section>
-      <section className={css.productsSection}>
-        <h2>Наша продукція</h2>
-        <div className={css.products}>
-          <div className={css.productItem}>Мед акацієвий натуральний</div>
-          <div className={css.productItem}>Мед квітковий натуральний</div>
-          <div className={css.productItem}>Мед ріпаковий натуральний</div>
-        </div>
-      </section>
+
+      <OurHoney />
+
+      <OurProducts />
       <section className={css.aboutUsSection}>
         <h2>Про нас</h2>
         <p>

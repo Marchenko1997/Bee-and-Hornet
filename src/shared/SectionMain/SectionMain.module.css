@@ -1,0 +1,15 @@
+.sectionMain {
+    padding: 40px 0;
+}
+
+@media (min-width: 768px) { 
+    .sectionMain {
+        padding: 60px 0;
+    }
+}
+
+@media (min-width: 1440px) { 
+    .sectionMain {
+        padding: 74px 0;
+    }
+}

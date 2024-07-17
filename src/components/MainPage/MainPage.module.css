@@ -39,10 +39,7 @@
   margin-top: 84px;
 }
 
-.heroContent p {
-  /* font-size: 24px; */
-  /* line-height: 1.333; */
-}
+
 
 .mainQuotes {
   font-size: 18px;
@@ -62,8 +59,7 @@
   line-height: 1.56;
 }
 
-.featuresSection,
-.productsSection,
+
 .aboutUsSection,
 .reviewsSection {
   padding: 20px;
@@ -74,17 +70,14 @@
   justify-content: space-around;
 }
 
-.featureItem,
-.productItem,
+
+
 .aboutUsItem,
 .reviewItem {
   margin: 10px;
 }
 
-.products {
-  display: flex;
-  justify-content: space-around;
-}
+
 
 
 .images {
