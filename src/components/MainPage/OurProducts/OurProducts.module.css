@@ -68,18 +68,22 @@
 
 
   .container {
-    width: 1440px;
-    /* padding: 0 112px; */
+    width: 1216px;
+    padding: 0 112px;
+    height: 808px;;
   }
   .title {
     font-size: 80px;
     line-height: 1;
-    margin-bottom: 52px;
+    margin-bottom: 64px;
   }
 
   .productList {
     margin-bottom: 52px;
     gap: 96px;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 46px;
   }
 
 

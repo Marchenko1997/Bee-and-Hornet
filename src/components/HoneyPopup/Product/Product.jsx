@@ -1,37 +1,36 @@
 import ProductDetails from "../ProductDetails/ProductDetails";
 import css from "./Product.module.css";
-import { useState } from "react";
+import PropTypes from "prop-types";
 
-const Product = () => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const openPopup = () => {
-        setIsOpen(true);
-    };
-
-    const closePopup = () => {
-        setIsOpen(false);
-    };
-    
+const Product = ({ product, onClose }) => {
   return (
-    <>
-    { !isOpen && (<button onClick={openPopup}>Открыть окно</button>)}
-    {isOpen && (
-    <div className={css.productContainer}>
-    <div className={css.productImage}>
-      <img
-        src="../../../public/img/honeyAcazion.png"
-        alt="Мед акацієвий натуральний"
-      />
+    <div className={css.overlay}>
+      <div className={css.productContainer}>
+        <button className={css.closeButton} onClick={onClose}>
+          &times;
+        </button>
+        <div className={css.productImage}>
+          <img
+            src={product.image}
+            alt={product.alt}
+          />
+        </div>
+        <ProductDetails product={product} />
+      </div>
     </div>
-    <button className={css.closeButton} onClick={closePopup}>
-              &times;
-            </button>
-    <ProductDetails />
-    </div>
-    )}
-    </>
   );
 };
 
-export default Product
+Product.propTypes = {
+  product: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    weight: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    description: PropTypes.string,
+  }).isRequired,
+  onClose: PropTypes.func.isRequired,
+};
+
+export default Product;
