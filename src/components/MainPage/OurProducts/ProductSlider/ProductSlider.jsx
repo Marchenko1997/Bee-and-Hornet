@@ -1,3 +1,4 @@
+// ProductSlider.js
 import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, A11y } from "swiper/modules";
@@ -12,12 +13,12 @@ const ProductSlider = ({ products }) => {
 
   const openProduct = (product) => {
     setSelectedProduct(product);
-    document.body.style.overflow = 'hidden'; // Отключить прокрутку страницы
+    document.body.style.overflow = 'hidden'; 
   };
 
   const closeProduct = () => {
     setSelectedProduct(null);
-    document.body.style.overflow = 'auto'; // Включить прокрутку страницы
+    document.body.style.overflow = 'auto'; 
   };
 
   return (
@@ -61,6 +62,7 @@ ProductSlider.propTypes = {
       title: PropTypes.string.isRequired,
       weight: PropTypes.string.isRequired,
       price: PropTypes.string.isRequired,
+      description: PropTypes.object.isRequired,
     })
   ).isRequired,
 };

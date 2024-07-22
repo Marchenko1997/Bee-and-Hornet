@@ -1,5 +1,4 @@
 // ProductDetails.js
-
 import css from "./ProductDetails.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setWeight, setQuantity, addToCart, updateCart } from "../../../redux/actions";
@@ -8,10 +7,10 @@ import QuantitySelector from "../QuantitySelector/QuantitySelector";
 import AddToCartButton from "../AddToCartButton/AddToCartButton";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import "overlayscrollbars/styles/overlayscrollbars.css";
+import PropTypes from 'prop-types';
 
-const ProductDetails = () => {
+const ProductDetails = ({ product }) => {
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.product);
   const cart = useSelector((state) => state.cart);
 
   const handleWeightChange = (weight) => {
@@ -24,7 +23,7 @@ const ProductDetails = () => {
 
   const handleAddToCart = () => {
     const existingItem = cart.find(item => item.weight === product.weight);
-    
+
     if (existingItem) {
       const updatedCart = cart.map(item =>
         item.weight === product.weight ? { ...item, quantity: item.quantity + product.quantity } : item
@@ -49,19 +48,11 @@ const ProductDetails = () => {
 
   return (
     <div className={css.productDetails}>
-      <h1 className={css.productTitle}>Мед акацієвий натуральний</h1>
+      <h1 className={css.productTitle}>{product.title}</h1>
       <OverlayScrollbarsComponent className={css.containerScrollBar}>
         <div className={css.scrollBar}>
           <p className={css.productDescription}>
-            Кришталево прозорий рідкий світло-золотявого кольору мед з ніжним
-            ароматом білої акації Смакові особливості: нейтральної солодкості, з
-            кислинкою і ніжним ароматом цвітіння білої акації Корисні
-            властивості: антисептична та протибактеріальна дія, нормалізація
-            тиску, розширення судин, зміцнення імунітету, має гіпоалергенні
-            властивості, містить велику концентрацію антиоксидантів Особливості:
-            єдиний сорт меду, який зберігає рідкий стан і не має терміну
-            придатності при правильному зберіганні, також єдиний сорт меду, який
-            має гіпоалергенні властивості.
+            {product.description && product.description.features ? product.description.features.join(' ') : 'Описание отсутствует'}
           </p>
         </div>
       </OverlayScrollbarsComponent>
@@ -76,11 +67,22 @@ const ProductDetails = () => {
           onQuantityChange={handleQuantityChange}
         />
       )}
-      
-        <AddToCartButton onAddToCart={handleAddToCart} totalPrice={totalPrice} />
-     
+
+      <AddToCartButton onAddToCart={handleAddToCart} totalPrice={totalPrice} />
     </div>
   );
+};
+
+ProductDetails.propTypes = {
+  product: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.shape({
+      features: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }),
+    weight: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
+    pricePerUnit: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default ProductDetails;

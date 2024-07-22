@@ -37,8 +37,9 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
     <div className={css.pageContainer}>
       <Header />
       <div className={css.container}>
-        <h2 className={css.mainTitle}>Оформлення замовлення</h2>
+      <h2 className={css.mainTitle}>Оформлення замовлення</h2>
         <div className={css.content}>
+     
           <div className={css.orderForm}>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
               {() => (

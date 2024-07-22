@@ -37,6 +37,15 @@
   position: relative;
 }
 
+.productItem {
+  cursor: pointer;
+}
+
+.productItem.active {
+  font-weight: bold;
+  color: #facf5a; /* Пример цвета для активного элемента */
+}
+
 
 @media (min-width: 768px) {
   .productsSection {
