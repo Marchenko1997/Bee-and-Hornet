@@ -1,5 +1,4 @@
 // CartPopup.js
-
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -14,10 +13,10 @@ const CartPopup = ({ onClose }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
-  const navigate = useNavigate(); // Инициализация useNavigate
+  const navigate = useNavigate();
 
   const setCart = (newCart) => {
-    dispatch(updateCart(newCart)); // Обновление корзины в Redux
+    dispatch(updateCart(newCart));
   };
 
   useEffect(() => {
@@ -28,7 +27,7 @@ const CartPopup = ({ onClose }) => {
   }, []);
 
   const handleRemoveFromCart = (index) => {
-    dispatch(removeFromCart(index)); // Удаление элемента из корзины
+    dispatch(removeFromCart(index));
   };
 
   return (
@@ -44,19 +43,19 @@ const CartPopup = ({ onClose }) => {
           <>
             <div className={css.honeySection}>
               <OverlayScrollbarsComponent ref={scrollRef} className={css.honeyList}>
-                {cart.slice(0, 5).map((item, index) => ( // Ограничение на показ до 5 элементов
+                {cart.slice(0, 5).map((item, index) => (
                   <li key={index} className={css.honeyItem}>
                     <div className={css.imgWrapper}>
                       <img
                         className={css.itemImg}
-                        src="../../../../public/img/honeyAcazion.png"
-                        alt="Мед акацієвий"
+                        src={item.image}
+                        alt={item.title}
                       />
                     </div>
                     <div className={css.descriptionWrapper}>
-                      <h3 className={css.itemTitle}>Мед акацієвий</h3>
+                      <h3 className={css.itemTitle}>{item.title}</h3>
                       <p className={css.itemWeight}>{item.weight}</p>
-                      <QuantityOfItem index={index} cart={cart} setCart={setCart} /> {/* Управление количеством */}
+                      <QuantityOfItem index={index} cart={cart} setCart={setCart} />
                       <p className={css.itemPrice}>
                         {item.pricePerUnit * item.quantity} грн
                       </p>
@@ -73,9 +72,7 @@ const CartPopup = ({ onClose }) => {
             <div className={css.modalButtonWrapper}>
               <div className={css.buttonBackWrapper}>
                 <button className={css.buttonBack} type="button">
-                  
                   <svg className={css.arrowLink}> <use  xlinkHref="../../../../../public/icons/sprite.svg#arrow-link"></use></svg>
-                  
                   Повернутися до покупок
                 </button>
               </div>

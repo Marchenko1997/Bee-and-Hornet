@@ -1,4 +1,3 @@
-// ProductSlider.js
 import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, A11y } from "swiper/modules";
@@ -13,12 +12,12 @@ const ProductSlider = ({ products }) => {
 
   const openProduct = (product) => {
     setSelectedProduct(product);
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
   };
 
   const closeProduct = () => {
     setSelectedProduct(null);
-    document.body.style.overflow = 'auto'; 
+    document.body.style.overflow = 'auto';
   };
 
   return (

@@ -1,4 +1,3 @@
-// ProductDetails.js
 import css from "./ProductDetails.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setWeight, setQuantity, addToCart, updateCart } from "../../../redux/actions";
@@ -8,10 +7,15 @@ import AddToCartButton from "../AddToCartButton/AddToCartButton";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import "overlayscrollbars/styles/overlayscrollbars.css";
 import PropTypes from 'prop-types';
+import { useEffect } from "react";
 
 const ProductDetails = ({ product }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    console.log("Product Details Component Rendered with product:", product);
+  }, [product]);
 
   const handleWeightChange = (weight) => {
     dispatch(setWeight(weight));
@@ -34,10 +38,13 @@ const ProductDetails = ({ product }) => {
         return;
       }
       const item = {
+        title: product.title,
+        image: product.image,
         weight: product.weight,
         quantity: product.quantity,
         pricePerUnit: product.pricePerUnit,
       };
+      console.log("Adding to cart item:", item);
       dispatch(addToCart(item));
     }
   };
@@ -82,6 +89,7 @@ ProductDetails.propTypes = {
     weight: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
     pricePerUnit: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
   }).isRequired,
 };
 

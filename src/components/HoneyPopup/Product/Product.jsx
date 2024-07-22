@@ -1,4 +1,3 @@
-// Product.js
 import ProductDetails from "../ProductDetails/ProductDetails";
 import css from "./Product.module.css";
 import PropTypes from "prop-types";
