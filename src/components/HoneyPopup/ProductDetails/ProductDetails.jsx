@@ -1,3 +1,4 @@
+// ProductDetails.js
 import css from "./ProductDetails.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setWeight, setQuantity, addToCart, updateCart } from "../../../redux/actions";
@@ -7,11 +8,12 @@ import AddToCartButton from "../AddToCartButton/AddToCartButton";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import "overlayscrollbars/styles/overlayscrollbars.css";
 import PropTypes from 'prop-types';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const ProductDetails = ({ product }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const [quantity, setQuantityState] = useState(1);
 
   useEffect(() => {
     console.log("Product Details Component Rendered with product:", product);
@@ -22,6 +24,7 @@ const ProductDetails = ({ product }) => {
   };
 
   const handleQuantityChange = (quantity) => {
+    setQuantityState(quantity);
     dispatch(setQuantity(quantity));
   };
 
@@ -30,7 +33,7 @@ const ProductDetails = ({ product }) => {
 
     if (existingItem) {
       const updatedCart = cart.map(item =>
-        item.weight === product.weight ? { ...item, quantity: item.quantity + product.quantity } : item
+        item.weight === product.weight ? { ...item, quantity: item.quantity + quantity } : item
       );
       dispatch(updateCart(updatedCart));
     } else {
@@ -41,7 +44,7 @@ const ProductDetails = ({ product }) => {
         title: product.title,
         image: product.image,
         weight: product.weight,
-        quantity: product.quantity,
+        quantity: quantity,
         pricePerUnit: product.pricePerUnit,
       };
       console.log("Adding to cart item:", item);
@@ -51,7 +54,13 @@ const ProductDetails = ({ product }) => {
 
   const disabledWeights = cart.map(item => item.weight);
 
-  const totalPrice = product.pricePerUnit * product.quantity;
+  const weights = product.description.weights.split(', ').reduce((acc, weight) => {
+    const [amount, price] = weight.split(' - ');
+    acc[amount] = parseInt(price.replace(' грн', ''), 10);
+    return acc;
+  }, {});
+
+  const totalPrice = weights[product.weight] * quantity;
 
   return (
     <div className={css.productDetails}>
@@ -68,9 +77,9 @@ const ProductDetails = ({ product }) => {
         onWeightChange={handleWeightChange}
         disabledWeights={disabledWeights}
       />
-      {product.quantity !== undefined && (
+      {quantity !== undefined && (
         <QuantitySelector
-          quantity={product.quantity}
+          quantity={quantity}
           onQuantityChange={handleQuantityChange}
         />
       )}
@@ -85,10 +94,9 @@ ProductDetails.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.shape({
       features: PropTypes.arrayOf(PropTypes.string).isRequired,
-    }),
+      weights: PropTypes.string.isRequired,
+    }).isRequired,
     weight: PropTypes.string.isRequired,
-    quantity: PropTypes.number.isRequired,
-    pricePerUnit: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
   }).isRequired,
 };

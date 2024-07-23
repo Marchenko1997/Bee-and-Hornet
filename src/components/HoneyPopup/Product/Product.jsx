@@ -27,6 +27,7 @@ Product.propTypes = {
     title: PropTypes.string.isRequired,
     weight: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
     description: PropTypes.object.isRequired,
   }),
   onClose: PropTypes.func.isRequired,
