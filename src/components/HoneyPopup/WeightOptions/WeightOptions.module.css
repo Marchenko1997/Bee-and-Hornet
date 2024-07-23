@@ -1,6 +1,6 @@
 
 .weightOptions button{
-    width: 80px;
+    width: 83px;
   height: 36px;
   justify-content: center;
   align-items: center;
@@ -9,12 +9,19 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  background-color: #ffc107;
-    border: none;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  border: 1px solid #cacaca;
   }
 
   .weightOptions button:hover,
 .quantityControls button:hover,
 .addToCart:hover {
-  background-color: #e0a800;
+  background-color: #facf5a;
 }
+
+.weightOptions button.selected {
+  background-color: #facf5a;
+  /* Any other styles for the selected state */
+}
+

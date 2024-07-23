@@ -1,9 +1,22 @@
 import css from "./WeightOptions.module.css";
 import PropTypes from "prop-types";
+import clsx from "clsx";
 
-const weights = ["0,25 л", "0,5 л", "1,0 л", "2,0 л", "3,0 л"];
+const WeightOptions = ({ selectedWeight, onWeightChange,  category }) => {
+  // Определим веса для категорий
+  const weights = (() => {
+    switch (category) {
+      case "Мед з горіхами":
+        return ["250 мл"];
+      case "Стільники":
+        return ["100 г"];
+      case "Пилок":
+        return ["100 г"];
+      default:
+        return ["0,25 л", "0,5 л", "1 л", "2 л", "3 л"];
+    }
+  })();
 
-const WeightOptions = ({ selectedWeight, onWeightChange }) => {
   return (
     <div className={css.qualityDetails}>
       <div className={css.productWeight}>
@@ -16,7 +29,8 @@ const WeightOptions = ({ selectedWeight, onWeightChange }) => {
               <button
                 key={weight}
                 onClick={() => onWeightChange(weight)}
-                className={`${isSelected ? css.selected : ""}`}
+                className={clsx({ [css.selected]: isSelected })}
+                
               >
                 {weight}
               </button>
@@ -29,8 +43,10 @@ const WeightOptions = ({ selectedWeight, onWeightChange }) => {
 };
 
 WeightOptions.propTypes = {
-  selectedWeight: PropTypes.string.isRequired, 
-  onWeightChange: PropTypes.func.isRequired, 
+  selectedWeight: PropTypes.string.isRequired,
+  onWeightChange: PropTypes.func.isRequired,
+  disabledWeights: PropTypes.arrayOf(PropTypes.string).isRequired,
+  category: PropTypes.string.isRequired, // Добавим категорию как обязательное свойство
 };
 
 export default WeightOptions;

@@ -15,11 +15,21 @@ const ProductDetails = ({ product }) => {
   const cart = useSelector((state) => state.cart);
   const [quantity, setQuantityState] = useState(1);
 
+  // Перепарсим веса для получения цен
+  const weights = product.description.weights.split(', ').reduce((acc, weight) => {
+    const [amount, price] = weight.split(' - ');
+    acc[amount] = parseInt(price.replace(' грн', ''), 10);
+    return acc;
+  }, {});
+
+  const [selectedWeight, setSelectedWeight] = useState(Object.keys(weights)[0]); // Выбор начального веса
+
   useEffect(() => {
     console.log("Product Details Component Rendered with product:", product);
   }, [product]);
 
   const handleWeightChange = (weight) => {
+    setSelectedWeight(weight);
     dispatch(setWeight(weight));
   };
 
@@ -29,11 +39,11 @@ const ProductDetails = ({ product }) => {
   };
 
   const handleAddToCart = () => {
-    const existingItem = cart.find(item => item.weight === product.weight);
+    const existingItem = cart.find(item => item.weight === selectedWeight);
 
     if (existingItem) {
       const updatedCart = cart.map(item =>
-        item.weight === product.weight ? { ...item, quantity: item.quantity + quantity } : item
+        item.weight === selectedWeight ? { ...item, quantity: item.quantity + quantity } : item
       );
       dispatch(updateCart(updatedCart));
     } else {
@@ -43,9 +53,9 @@ const ProductDetails = ({ product }) => {
       const item = {
         title: product.title,
         image: product.image,
-        weight: product.weight,
+        weight: selectedWeight,
         quantity: quantity,
-        pricePerUnit: product.pricePerUnit,
+        pricePerUnit: weights[selectedWeight],
       };
       console.log("Adding to cart item:", item);
       dispatch(addToCart(item));
@@ -54,13 +64,7 @@ const ProductDetails = ({ product }) => {
 
   const disabledWeights = cart.map(item => item.weight);
 
-  const weights = product.description.weights.split(', ').reduce((acc, weight) => {
-    const [amount, price] = weight.split(' - ');
-    acc[amount] = parseInt(price.replace(' грн', ''), 10);
-    return acc;
-  }, {});
-
-  const totalPrice = weights[product.weight] * quantity;
+  const totalPrice = weights[selectedWeight] * quantity;
 
   return (
     <div className={css.productDetails}>
@@ -73,17 +77,15 @@ const ProductDetails = ({ product }) => {
         </div>
       </OverlayScrollbarsComponent>
       <WeightOptions
-        selectedWeight={product.weight}
+        selectedWeight={selectedWeight}
         onWeightChange={handleWeightChange}
         disabledWeights={disabledWeights}
+        category={product.category} // Передаем категорию продукта
       />
-      {quantity !== undefined && (
-        <QuantitySelector
-          quantity={quantity}
-          onQuantityChange={handleQuantityChange}
-        />
-      )}
-
+      <QuantitySelector
+        quantity={quantity}
+        onQuantityChange={handleQuantityChange}
+      />
       <AddToCartButton onAddToCart={handleAddToCart} totalPrice={totalPrice} />
     </div>
   );
@@ -98,6 +100,7 @@ ProductDetails.propTypes = {
     }).isRequired,
     weight: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired, // Добавим категорию как обязательное свойство
   }).isRequired,
 };
 
