@@ -4,6 +4,7 @@ import css from "./OurProducts.module.css";
 import ProductSlider from "./ProductSlider/ProductSlider";
 import productsData from "./products.json";
 
+
 // Импорт изображений
 import honeyAcacia from "./images/МедАкацієвий-desktop.jpeg";
 import honeyFlower from "./images/МедКвітковий-desktop.jpeg";

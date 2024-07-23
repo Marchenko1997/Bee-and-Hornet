@@ -39,6 +39,7 @@
 
 .productItem {
   cursor: pointer;
+ 
 }
 
 .productItem.active {

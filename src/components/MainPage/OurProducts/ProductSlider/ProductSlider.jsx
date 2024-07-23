@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import css from "./ProductSlider.module.css";
 import { useState } from "react";
 import Product from "../../../HoneyPopup/Product/Product";
+import ProductTitle from "../../../../shared/ProductTitle/ProductTitle";
 
 const ProductSlider = ({ products }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -34,16 +35,17 @@ const ProductSlider = ({ products }) => {
                 <img src={product.image} alt={product.alt} className={css.productImg} />
               </div>
               <div className={css.productInfo}>
-                <h3>{product.title}</h3>
-              </div>
+              <ProductTitle title={product.title} />
+              
               <div className={css.infoWeightContainer}>
-                <h4 className={css.titleWeight}>Вага</h4>
+                <h4 className={css.titleWeight}>Вага:</h4>
                 <p className={css.productWeight}>{product.weight}</p>
               </div>
               <div className={css.infoPriceContainer}>
-                <h4 className={css.titlePrice}>Ціна</h4>
+                <h4 className={css.titlePrice}>Ціна:</h4>
                 <p className={css.productPrice}>{product.price}</p>
               </div>
+            </div>
             </div>
           </SwiperSlide>
         ))}
