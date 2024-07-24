@@ -1,4 +1,3 @@
-// ProductDetails.js
 import css from "./ProductDetails.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setWeight, setQuantity, addToCart, updateCart } from "../../../redux/actions";
@@ -10,7 +9,7 @@ import "overlayscrollbars/styles/overlayscrollbars.css";
 import PropTypes from 'prop-types';
 import { useEffect, useState } from "react";
 
-const ProductDetails = ({ product }) => {
+const ProductDetails = ({ product, onCloseProduct }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const [quantity, setQuantityState] = useState(1);
@@ -86,7 +85,11 @@ const ProductDetails = ({ product }) => {
         quantity={quantity}
         onQuantityChange={handleQuantityChange}
       />
-      <AddToCartButton onAddToCart={handleAddToCart} totalPrice={totalPrice} />
+      <AddToCartButton
+        onAddToCart={handleAddToCart}
+        totalPrice={totalPrice}
+        onCloseProduct={onCloseProduct}
+      />
     </div>
   );
 };
@@ -102,6 +105,7 @@ ProductDetails.propTypes = {
     image: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired, // Добавим категорию как обязательное свойство
   }).isRequired,
+  onCloseProduct: PropTypes.func.isRequired,
 };
 
 export default ProductDetails;

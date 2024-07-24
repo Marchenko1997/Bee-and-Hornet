@@ -14,7 +14,7 @@ const Product = ({ product, onClose }) => {
         <div className={css.productImage}>
           <img src={product.image} alt={product.alt} />
         </div>
-        <ProductDetails product={product} />
+        <ProductDetails product={product} onCloseProduct={onClose} />
       </div>
     </div>
   );

@@ -1,19 +1,15 @@
 import css from "./AddToCartButton.module.css";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
-import { useState } from "react";
-import CartPopup from "../../BuyingPopup/CartPopup/CartPopup/CartPopup";
+import { useNavigate } from 'react-router-dom';
 
-const AddToCartButton = ({ onAddToCart, totalPrice }) => {
-  const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
+const AddToCartButton = ({ onAddToCart, totalPrice, onCloseProduct }) => {
   const cart = useSelector((state) => state.cart);
+  const navigate = useNavigate();
 
   const handleCartClick = () => {
-    setIsCartPopupOpen(!isCartPopupOpen);
-  };
-
-  const handleClosePopup = () => {
-    setIsCartPopupOpen(false);
+    onCloseProduct();
+    navigate('/?popup=cart');
   };
 
   return (
@@ -23,7 +19,6 @@ const AddToCartButton = ({ onAddToCart, totalPrice }) => {
           <span className={css.productPrice}>{totalPrice} грн</span>
         </div>
         <div className={css.buttonAndIconContainer}>
-          
           <div className={css.shopCard}>
             {cart.length > 0 && (
               <div className={css.basketContainer}>
@@ -45,8 +40,6 @@ const AddToCartButton = ({ onAddToCart, totalPrice }) => {
             Додати в кошик
           </button>
         </div>
-
-        {isCartPopupOpen && <CartPopup onClose={handleClosePopup} />}
       </div>
     </div>
   );
@@ -55,6 +48,7 @@ const AddToCartButton = ({ onAddToCart, totalPrice }) => {
 AddToCartButton.propTypes = {
   onAddToCart: PropTypes.func.isRequired,
   totalPrice: PropTypes.number.isRequired,
+  onCloseProduct: PropTypes.func.isRequired,
 };
 
 export default AddToCartButton;
