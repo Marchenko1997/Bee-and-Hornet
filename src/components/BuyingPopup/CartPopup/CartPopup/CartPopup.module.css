@@ -8,8 +8,9 @@
   place-items: center;
   background: rgba(0, 0, 0, 0.5);
   overflow: auto;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
   opacity: 1;
+  z-index: 1000;
 }
 
 .cartPopupContent {
@@ -23,9 +24,14 @@
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
   transform: scale(1);
   opacity: 1;
+}
+
+.cartPopup.closing .cartPopupContent {
+  transform: scale(0.9);
+  opacity: 0;
 }
 
 .closeButton {

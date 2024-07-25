@@ -1,5 +1,5 @@
 // CartPopup.js
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
@@ -9,29 +9,55 @@ import css from './CartPopup.module.css';
 import { removeFromCart, updateCart } from '../../../../redux/actions';
 import QuantityOfItem from '../QuantityOfItem/QuantityOfItem';
 
+
 const CartPopup = ({ onClose }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
   const navigate = useNavigate();
+  const [isClosing, setIsClosing] = useState(false);
 
   const setCart = (newCart) => {
     dispatch(updateCart(newCart));
   };
 
-  useEffect(() => {
-    const osInstance = scrollRef.current.osInstance();
-    return () => {
-      if (osInstance) osInstance.destroy();
-    };
-  }, []);
-
   const handleRemoveFromCart = (index) => {
     dispatch(removeFromCart(index));
   };
 
+  const handleBackdropClick = (event) => {
+    if (event.target === event.currentTarget) {
+      closePopup();
+    }
+  };
+
+  const handleEsc = (event) => {
+    if (event.key === 'Escape') {
+      closePopup();
+    }
+  };
+
+  const closePopup = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 200); 
+  };
+
+  useEffect(() => {
+    // Установка overflow и добавление обработчика события keydown
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', handleEsc);
+
+    return () => {
+      // Восстановление overflow и удаление обработчика события keydown
+      document.body.style.overflow = 'auto';
+      document.removeEventListener('keydown', handleEsc);
+    };
+  }, );
+
   return (
-    <div className={css.cartPopup}>
+    <div className={`${css.cartPopup} ${isClosing ? css.closing : ''}`} onClick={handleBackdropClick}>
       <div className={css.cartPopupContent}>
         <button className={css.closeButton} onClick={onClose}>
           ×
@@ -96,6 +122,7 @@ const CartPopup = ({ onClose }) => {
         )}
       </div>
     </div>
+  
   );
 };
 

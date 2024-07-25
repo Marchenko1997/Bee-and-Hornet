@@ -1,52 +1,30 @@
+import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import Header from "../OrderForm/Header/Header";
+import CartPopup from "../../components/BuyingPopup/CartPopup/CartPopup/CartPopup";
+import Product from "../HoneyPopup/Product/Product";
+import css from "./MainPage.module.css";
+import honeyImage1 from "./images/honey-desktop.jpeg";
+import honeyImage2 from "./images/honeycomb-desktop.jpeg";
+import OurHoney from "./OurHoney/OurHoney";
+import OurProducts from "./OurProducts/OurProducts";
 
-import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import Header from '../OrderForm/Header/Header';
-import CartPopup from '../../components/BuyingPopup/CartPopup/CartPopup/CartPopup';
-import Product from '../HoneyPopup/Product/Product';
-import css from './MainPage.module.css';
-import honeyImage1 from './images/honey-desktop.jpeg';
-import honeyImage2 from './images/honeycomb-desktop.jpeg';
-import OurHoney from './OurHoney/OurHoney';
-import OurProducts from './OurProducts/OurProducts';
-// import { productsData, getProductById } from './OurProducts/productsData';
 
 const MainPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // useEffect(() => {
-  //   const query = new URLSearchParams(location.search);
-  //   const popup = query.get('popup');
-  //   const productId = query.get('product');
-  //   if (popup === 'product' && productId) {
-  //     const product = getProductById(productId);
-  //     setSelectedProduct(product);
-  //   } else {
-  //     setSelectedProduct(null);
-  //   }
-  // }, [location.search]);
-
-  // const openCartPopup = () => {
-  //   navigate('/?popup=cart');
-  // };
-
-  // const openProductPopup = (product) => {
-  //   setSelectedProduct(product);
-  //   navigate(`/?popup=product&product=${product.id}`);
-  // };
-
   const handleCloseAllPopups = () => {
-    navigate('/');
+    navigate("/");
     setSelectedProduct(null);
   };
 
   const query = new URLSearchParams(location.search);
-  const popup = query.get('popup');
+  const popup = query.get("popup");
 
-  const isCartPopupOpen = popup === 'cart';
-  const isProductPopupOpen = popup === 'product' && selectedProduct;
+  const isCartPopupOpen = popup === "cart";
+  const isProductPopupOpen = popup === "product" && selectedProduct;
 
   return (
     <div className={css.mainPage}>
@@ -162,8 +140,6 @@ const MainPage = () => {
         <p>Phone: +38 096 888 07 39</p>
         <p>Created by GoIT</p>
       </footer>
-      {/* <button onClick={openCartPopup}>Открыть корзину</button>
-      <button onClick={() => openProductPopup(getProductById('1'))}>Открыть продукт</button> */}
 
       {isCartPopupOpen && <CartPopup onClose={handleCloseAllPopups} />}
       {isProductPopupOpen && selectedProduct && (
