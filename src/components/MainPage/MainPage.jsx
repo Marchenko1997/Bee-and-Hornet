@@ -8,6 +8,7 @@ import honeyImage1 from "./images/honey-desktop.jpeg";
 import honeyImage2 from "./images/honeycomb-desktop.jpeg";
 import OurHoney from "./OurHoney/OurHoney";
 import OurProducts from "./OurProducts/OurProducts";
+import AboutUs from "../AboutUs/AboutUs";
 
 
 const MainPage = () => {
@@ -100,28 +101,7 @@ const MainPage = () => {
       </section>
       <OurHoney />
       <OurProducts />
-      <section className={css.aboutUsSection}>
-        <h2>Про нас</h2>
-        <p>
-          Бажаємо здоров’я! Ми невеличка українська родина, яка розвиває
-          бджільництво вже у третьому поколінні.
-        </p>
-        <div className={css.aboutUsContent}>
-          <div className={css.aboutUsItem}>
-            Історію своєї родини розказую вам я, Анастасія, от тут на фото стою
-            в соняхах.
-          </div>
-          <div className={css.aboutUsItem}>
-            Це мій батько Андрій. Він обожнює бджіл, турбується про довкілля та
-            зберігає всі знання, які передавав йому його батько — мій дідусь
-            Гриша.
-          </div>
-          <div className={css.aboutUsItem}>
-            Бджільництво — це справжнє мистецтво і традиційне ремесло для нашої
-            родини.
-          </div>
-        </div>
-      </section>
+     <AboutUs/>
       <section className={css.reviewsSection}>
         <h2>Відгуки покупців</h2>
         <div className={css.reviewItem}>
