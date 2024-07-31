@@ -1,0 +1,353 @@
+.feedbackSection {
+  padding: 40px 0;
+}
+
+.feedbackContainer {
+  position: relative;
+  padding: 0 20px;
+}
+
+.feedbackTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.feedbackCardsContainer {
+  height: 524px;
+  padding: 32px 0;
+  border-radius: 24px;
+  background-color: #f7f5ed;
+  /* width: 100%; */
+}
+
+.prevButton {
+  position: absolute;
+  border-radius: 50%;
+  background-color: none;
+  top: 575px;
+  left: 50px;
+  z-index: 2;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.svg {
+  width: 32px;
+  height: 32px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photoContainer {
+  position: relative;
+  margin: 0 61.5px 24px;
+  width: 148px;
+  height: 136px;
+}
+
+.svgClassName {
+  width: 132px;
+  height: 120px;
+}
+
+.iconClassName {
+  position: absolute;
+  fill: #facf5a;
+  bottom: 0;
+  left: 0;
+}
+
+.photo {
+  position: absolute;
+  width: 124px;
+  height: 124px;
+  bottom: 0;
+  right: 0;
+}
+
+.content {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 256px;
+  margin: 0;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.name {
+  font-family: Montserrat Alternates, sans-serif;
+  font-weight: 600;
+  margin: 0;
+  padding: 0 32px;
+  font-size: 18px;
+  line-height: 1.5555555556;
+}
+
+.review {
+  font-family: Raleway, sans-serif;
+  margin-top: 12px;
+  font-weight: 400;
+  padding: 0 50px 0 32px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.nextButton {
+  position: absolute;
+  border-radius: 50%;
+  background-color: none;
+  top: 525px;
+  right: 143.5px;
+  z-index: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .feedbackSection {
+    padding: 60px 0;
+  }
+
+  .feedbackContainer {
+    position: relative;
+    padding: 0 32px;
+  }
+
+  .feedbackTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 48px;
+    font-size: 60px;
+    line-height: 1;
+  }
+
+  .feedbackCardsContainer {
+    height: 312px;
+    padding: 64px;
+    border-radius: 24px;
+    background-color: #f7f5ed;
+    position: relative;
+  }
+
+  .prevButton,
+  .nextButton {
+    position: absolute;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none; 
+    outline: none; 
+    /* top: 50%;  */
+    transform: translateY(-50%); 
+  }
+
+  .prevButton {
+    position: absolute;
+    border-radius: 50%;
+    background-color: none;
+    top: 250px;
+    left: 48px;
+    z-index: 2;
+  }
+
+  .card {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 184px;
+    /* margin-left:50px; */
+  }
+
+  .photoContainer {
+    position: relative;
+    margin: 12px 24px 12px 0;
+    width: 148px;
+    height: 136px;
+  }
+
+  .svgClassName {
+    width: 132px;
+    height: 120px;
+  }
+
+  .iconClassName {
+    position: absolute;
+    fill: #facf5a;
+    bottom: 0;
+    left: 0;
+  }
+
+  .photo {
+    position: absolute;
+    width: 124px;
+    height: 124px;
+    bottom: 0;
+    right: 0;
+  }
+
+  .content {
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 184px;
+    margin: 0;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 404px;
+  }
+
+  .name {
+    font-family: Montserrat Alternates, sans-serif;
+    padding: 0;
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  .review {
+    font-family: Raleway, sans-serif;
+    padding: 0 26px 0 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .nextButton {
+    position: absolute;
+    border-radius: 50%;
+    background-color: none;
+    top: 250px;
+    right: 48px;
+    z-index: 1;
+  }
+
+  .prevButton:hover,
+  .prevButton:focus,
+  .nextButton:hover,
+  .nextButton:focus {
+    background-color: white;
+    border: none; /* Убираем черную обводку */
+    outline: none;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .feedbackSection {
+    padding: 74px 0;
+  }
+
+  .feedbackContainer {
+    position: relative;
+    padding: 0 112px;
+  }
+
+  .feedbackTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 64px;
+    font-weight: 600px;
+    font-size: 80px;
+    line-height: 1;
+  }
+
+  .feedbackCardsContainer {
+    height: 356px;
+    display: flex;
+    align-items: center;
+    padding-left: 104px;
+    padding-right: 104px;
+    padding-top: 0px;
+        padding-bottom: 0px;
+    border-radius: 24px;
+    background-color: #f7f5ed;
+  }
+
+  .prevButton {
+    position: absolute;
+    border-radius: 50%;
+    background-color: none;
+    top: 164px;
+    /* left: 152px; */
+    z-index: 2;
+  }
+
+  .svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .card {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 196px;
+    margin-left: 50px;
+  }
+
+  .photoContainer {
+    position: relative;
+    margin: 0;
+    width: 212px;
+    height: 196px;
+  }
+
+  .svgClassName {
+    width: 190px;
+    height: 172px;
+  }
+
+  .iconClassName {
+    position: absolute;
+    fill: #facf5a;
+    bottom: 0;
+    left: 0;
+  }
+
+  .photo {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    bottom: 0;
+    right: 0;
+  }
+  .content {
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 196px;
+    padding: 28px 0;
+    margin-left: 32px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 764px;
+  }
+
+  .name {
+    font-family: Montserrat Alternates, sans-serif;
+    font-size: 24px;
+    line-height: 1.3333333333;
+  }
+
+  .review {
+    font-family: Raleway, sans-serif;
+    margin-top: 24px;
+    padding: 0 56px 0 0;
+    font-size: 18px;
+    line-height: 1.5555555556;
+  }
+
+  .nextButton {
+    position: absolute;
+    border-radius: 50%;
+    background-color: none;
+    top: 164px;
+    /* right: 152px;  */
+    z-index: 1;
+  }
+}

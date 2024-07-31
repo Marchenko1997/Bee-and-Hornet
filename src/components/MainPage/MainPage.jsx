@@ -9,6 +9,7 @@ import honeyImage2 from "./images/honeycomb-desktop.jpeg";
 import OurHoney from "./OurHoney/OurHoney";
 import OurProducts from "./OurProducts/OurProducts";
 import AboutUs from "../AboutUs/AboutUs";
+import Feedback from "../Feedbacks/Feedback/Feedback";
 
 
 const MainPage = () => {
@@ -102,18 +103,7 @@ const MainPage = () => {
       <OurHoney />
       <OurProducts />
      <AboutUs/>
-      <section className={css.reviewsSection}>
-        <h2>Відгуки покупців</h2>
-        <div className={css.reviewItem}>
-          <p>
-            Для мене важливо підтримувати сімейний бізнес. Я більше ціную кожну
-            краплю цього меду. (Уявляю як ти весь день влітку працюєш з
-            батьком😊) І мені здається смак дуже насиченим в порівнянні з
-            магазинним.
-          </p>
-          <p>Мар'яна</p>
-        </div>
-      </section>
+      <Feedback />
       <footer className={css.footer}>
         <p>Бджола та Шершень</p>
         <p>Email: plokhaanastasiia@gmail.com</p>
