@@ -10,6 +10,7 @@ import OurHoney from "./OurHoney/OurHoney";
 import OurProducts from "./OurProducts/OurProducts";
 import AboutUs from "../AboutUs/AboutUs";
 import Feedback from "../Feedbacks/Feedback/Feedback";
+import Footer from "../Footer/Footer";
 
 
 const MainPage = () => {
@@ -29,6 +30,7 @@ const MainPage = () => {
   const isProductPopupOpen = popup === "product" && selectedProduct;
 
   return (
+    <>
     <div className={css.mainPage}>
       <Header />
       <section className={css.heroSection}>
@@ -104,18 +106,18 @@ const MainPage = () => {
       <OurProducts />
      <AboutUs/>
       <Feedback />
-      <footer className={css.footer}>
-        <p>Бджола та Шершень</p>
-        <p>Email: plokhaanastasiia@gmail.com</p>
-        <p>Phone: +38 096 888 07 39</p>
-        <p>Created by GoIT</p>
-      </footer>
+    
 
       {isCartPopupOpen && <CartPopup onClose={handleCloseAllPopups} />}
       {isProductPopupOpen && selectedProduct && (
         <Product product={selectedProduct} onClose={handleCloseAllPopups} />
       )}
     </div>
+    <div className={css.footer}>
+    <Footer />
+    </div>
+  
+    </>
   );
 };
 

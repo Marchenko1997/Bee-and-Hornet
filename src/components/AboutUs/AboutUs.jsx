@@ -35,7 +35,7 @@ import {
 const AboutUs = () => {
   return (
     <div className={css.aboutUsContainer}>
-      <section className={css.aboutUsSection}>
+      <section className={css.aboutUsSection} id="about">
         <h2 className={css.abooutUsTitle}>Про нас</h2>
         <div className={css.infoCompany}>
           <div className={css.blockFirst}>

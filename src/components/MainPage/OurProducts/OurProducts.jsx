@@ -42,8 +42,8 @@ const OurProducts = () => {
 
   return (
     <div>
-      <section className={css.productsSection}>
-        <div className={css.container}>
+      <section className={css.productsSection}  >
+        <div className={css.container} id='products'>
           <h2 className={css.title}>Наша продукція</h2>
           <ul className={css.productList}>
             {['Мед', 'Мед з горіхами', 'Стільники', 'Пилок'].map((honey) => (

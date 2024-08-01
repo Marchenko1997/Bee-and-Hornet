@@ -11,8 +11,8 @@ const Feedback = () => {
     const [swiper, setSwiper] = useState(null);
   return (
     <>
-    <section className={css.feedbackSection}>
-    <div className={css.feedbackContainer}>
+    <section className={css.feedbackSection} id='reviews'>
+    <div className={css.feedbackContainer} >
         <h2 className={css.feedbackTitle}>Відгуки покупців</h2>
         <div className={css.feedbackCardsContainer}>
         <button className={css.prevButton} onClick={() => swiper && swiper.slidePrev()}>
@@ -46,6 +46,7 @@ const Feedback = () => {
         </div>
     </div>
     </section>
+    
   
     </>
   )

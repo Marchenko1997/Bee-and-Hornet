@@ -1,0 +1,153 @@
+.footer {
+  font-size: 16px;
+  width: 100%;
+  color: #fff;
+  text-align: left;
+  padding-top: 48px;
+  padding-bottom: 16px;
+  background-color: #1f1b1a;
+}
+.footerContainer {
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 375px;
+}
+
+.orderLogo {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.svgLogo {
+  width: 24px;
+  height: 24px;
+}
+.beeAndHorn {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+}
+.socialWrap {
+  margin-top: 32px;
+}
+.contactsList {
+}
+.emailItem {
+  margin-bottom: 12px;
+}
+.email {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: Raleway, sans-serif;
+  color: #fff;
+}
+
+.email:hover,
+.phone:hover {
+  color: #facf5a;
+  transition: color 0.3s linear;
+}
+.phoneItem {
+}
+.phone {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: Raleway, sans-serif;
+  color: #fff;
+}
+.socialList {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+.socialItem {
+}
+.socialLink {
+}
+.svgSocial {
+  fill: #facf5a;
+  width: 32px;
+  height: 32px;
+}
+
+.svgSocial:hover {
+  fill:rgb(235, 180, 28);
+  transition: color 0.3s linear;
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    padding-top: 60px;
+    padding-bottom: 24px;
+  }
+
+  .footerContainer {
+    width: 768px;
+    padding: 0 32px;
+  }
+
+  .footerContent {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    max-width: 1440px;
+    gap: 645px;
+  }
+
+  .orderLogo {
+    gap: 12px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .svgLogo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .beeAndHorn {
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  .socialWrap {
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .footer {
+    padding-top: 80px;
+    width: 100%;
+  }
+
+  .footerContainer {
+    width: 1440px;
+    padding-left: 112px;
+    padding-right: 112px;
+  }
+
+  .svgLogo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .beeAndHorn {
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  .email {
+    font-size: 18px;
+    line-height: 1.5555555556;
+  }
+
+  .phone {
+    font-size: 18px;
+    line-height: 1.5555555556;
+  }
+}
