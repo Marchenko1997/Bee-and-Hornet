@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import css from './OrderItem.module.css';
 
 const OrderItem = ({ item }) => {
+ 
   return (
     <li className={css.orderItem}>
       <img
@@ -19,7 +20,7 @@ const OrderItem = ({ item }) => {
 OrderItem.propTypes = {
   item: PropTypes.shape({
     image: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     weight: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
     pricePerUnit: PropTypes.number.isRequired,
