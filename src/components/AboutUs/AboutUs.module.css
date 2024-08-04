@@ -104,7 +104,7 @@
   color: #1f1b1a;
   font-family: Raleway, sans-serif;
   font-weight: 400;
-  letter-spacing: .039em;
+  letter-spacing: 0.039em;
   text-align: left;
   font-size: 16px;
   line-height: 1.5;
@@ -114,14 +114,15 @@
   color: #1f1b1a;
   font-family: Raleway, sans-serif;
   font-weight: 400;
-  letter-spacing: .039em;
+  letter-spacing: 0.039em;
   text-align: left;
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 12px;
 }
 
-.seedImgWrapper::after, .honeycombImgWrapper::after { 
+.seedImgWrapper::after,
+.honeycombImgWrapper::after {
   content: "";
   display: block;
   height: 96px;
@@ -129,7 +130,6 @@
   background-color: #858585;
   position: absolute;
   top: 264px;
-
 }
 
 .honeycombImg {
@@ -148,12 +148,12 @@
   color: #1f1b1a;
   font-family: Raleway, sans-serif;
   font-weight: 400;
-  letter-spacing: .039em;
+  letter-spacing: 0.039em;
   text-align: left;
   font-size: 16px;
   line-height: 1.5;
   position: relative;
-    margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 .honeycombImg {
@@ -192,17 +192,19 @@
   .seedImgWrapper {
     width: 152px;
   }
-  .seedImgWrapper::before, .honeycombImgWrapper::before { 
+  .seedImgWrapper::before,
+  .honeycombImgWrapper::before {
     content: "";
-        display: block;
-        height: 96px;
-        width: 1px;
-        background-color: #858585;
-        position: absolute;
-        top: 264px;
+    display: block;
+    height: 96px;
+    width: 1px;
+    background-color: #858585;
+    position: absolute;
+    top: 264px;
   }
 
-  .seedImgWrapper::after, .honeycombImgWrapper::after { 
+  .seedImgWrapper::after,
+  .honeycombImgWrapper::after {
     content: "";
     display: block;
     height: 96px;
@@ -228,7 +230,7 @@
     align-items: center;
     gap: 28px;
   }
-  
+
   .aboutUsLastBlock {
     display: flex;
     flex-direction: column-reverse;
@@ -236,11 +238,11 @@
     align-items: flex-end;
     flex-basis: 50%;
   }
-  
+
   .lastParagraph {
     margin-bottom: 32.5px;
-        width: 208px;
-        align-self: flex-start;
+    width: 208px;
+    align-self: flex-start;
   }
 
   .lastParagraph::after {
@@ -252,7 +254,7 @@
     background-color: #858585;
     bottom: -32.5px;
   }
-  
+
   .honeycombImg {
     /* стили для изображения сот */
   }
@@ -276,6 +278,11 @@
   .blockFirst {
     gap: 104px;
     margin-bottom: 104px;
+  }
+
+  .blockSecond {
+    display: flex;
+    width: 1216px;
   }
 
   .girlImage {
@@ -319,13 +326,14 @@
 
   .blockSecond {
     gap: 0px;
-        margin-bottom: 32px;
+    margin-bottom: 32px;
   }
 
   .aboutUsInfoSecond {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+  
   }
 
   .seedImgWrapper {
@@ -334,7 +342,8 @@
     margin-bottom: 32px;
   }
 
-  .seedImgWrapper::before, .honeycombImgWrapper::before {
+  .seedImgWrapper::before,
+  .honeycombImgWrapper::before {
     content: "";
     position: absolute;
     height: 112px;
@@ -342,8 +351,9 @@
     top: 404px;
     background-color: #858585;
   }
-  
-  .seedImgWrapper::after, .honeycombImgWrapper::after {
+
+  .seedImgWrapper::after,
+  .honeycombImgWrapper::after {
     height: 112px;
     width: 1px;
     top: 404px;
@@ -354,37 +364,42 @@
   .paragraphSecond {
     margin-left: 104.5px;
     font-size: 18px;
-        line-height: 1.5555555556;
+    line-height: 1.5555555556;
+    width: 520px;
   }
   .paragraphSecondLast {
     margin-left: 104.5px;
     font-size: 18px;
-        line-height: 1.5555555556;
+    line-height: 1.5555555556;
   }
 
   .blockThird {
     gap: 240px;
+    width: 1216px;
+    margin: 0 auto;
   }
-  
+
   .aboutUsLastBlock {
     flex-direction: row;
     gap: 104px;
   }
-  
+
   .lastParagraph {
     margin-bottom: 72px;
     align-self: flex-end;
     font-size: 18px;
-        line-height: 1.5555555556;
+    line-height: 1.5555555556;
   }
 
   .lastParagraph::after {
-   
-  
     bottom: -72.5px;
   }
-  
+
   .honeycombImg {
     /* стили для изображения сот */
+  }
+
+  .infoCompany {
+    /* width: 1216.5px; */
   }
 }

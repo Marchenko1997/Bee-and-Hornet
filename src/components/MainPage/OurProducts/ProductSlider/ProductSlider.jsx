@@ -27,6 +27,8 @@ const ProductSlider = ({ products }) => {
         modules={[Navigation, A11y]}
         slidesPerView={3}
         navigation
+        width={1440}
+       
       >
         {products.map((product, index) => (
           <SwiperSlide key={index} className={css.productItem} onClick={() => openProduct(product)}>

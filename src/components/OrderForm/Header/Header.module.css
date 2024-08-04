@@ -45,6 +45,7 @@
   display: flex;
   position: relative;
   flex-direction: row;
+  flex-grow: 1;
   align-items: center;
   justify-content: center;
   gap: 40px;
@@ -62,4 +63,62 @@
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.04em;
+  position: relative; 
+  padding-bottom: 3px; 
+  display: inline-block; 
 }
+
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px; 
+  background-color: #facf5a; 
+  transition: width 0.3s ease; 
+}
+
+.link:hover::after, .link:focus::after {
+  width: 100%; 
+  color: #1f1b1a;
+
+}
+
+
+.link:focus {
+  outline: none; 
+  position: relative;
+  color: #1f1b1a;
+}
+
+.basketContainer {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 40px;
+}
+
+.basketIcon {
+  width: 52px;
+  height: 52px;
+}
+
+.basketCardSircle {
+  top: 28px;
+  left: 28px;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #facf5a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.basketQuantity {
+  cursor: pointer;
+}
+

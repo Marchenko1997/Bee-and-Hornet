@@ -68,7 +68,7 @@ const ProductDetails = ({ product, onCloseProduct }) => {
   return (
     <div className={css.productDetails}>
       <h1 className={css.productTitle}>{product.title}</h1>
-      <OverlayScrollbarsComponent className={css.containerScrollBar}>
+      <OverlayScrollbarsComponent className={css.containerScrollBar} >
         <div className={css.scrollBar}>
           <p className={css.productDescription}>
             {product.description && product.description.features ? product.description.features.join(' ') : 'Описание отсутствует'}

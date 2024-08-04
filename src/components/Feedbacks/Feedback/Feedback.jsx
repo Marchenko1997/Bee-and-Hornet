@@ -20,7 +20,7 @@ const Feedback = () => {
             <use xlinkHref="../../public/icons/sprite.svg#arrow-left" />
           </svg>
         </button>
-        <Swiper rewind={true} onSwiper={setSwiper} slidesPerView={1}>
+        <Swiper rewind={true} onSwiper={setSwiper} slidesPerView={1} width={1440}>
           {Array.isArray(data) && data.map((item, index) => (
             <SwiperSlide key={index}>
               <div className={css.card}>

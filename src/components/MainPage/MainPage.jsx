@@ -13,7 +13,7 @@ import Feedback from "../Feedbacks/Feedback/Feedback";
 import Footer from "../Footer/Footer";
 
 
-const MainPage = () => {
+const MainPage = ( ) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -32,7 +32,7 @@ const MainPage = () => {
   return (
     <>
     <div className={css.mainPage}>
-      <Header />
+    <Header  />
       <section className={css.heroSection}>
         <div className={css.heroContent}>
           <h1>
@@ -112,11 +112,12 @@ const MainPage = () => {
       {isProductPopupOpen && selectedProduct && (
         <Product product={selectedProduct} onClose={handleCloseAllPopups} />
       )}
+      
     </div>
     <div className={css.footer}>
     <Footer />
     </div>
-  
+ 
     </>
   );
 };
