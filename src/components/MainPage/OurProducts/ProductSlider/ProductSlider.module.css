@@ -9,6 +9,8 @@
   /* padding: 8px 24px; */
   white-space: nowrap;
   cursor: pointer;
+  justify-content: space-between;
+  gap: 32px;
 }
 
 .productTitle {
@@ -48,6 +50,42 @@
   gap: 24px;
 }
 
+.sliderContainer {
+  position: relative;
+
+}
+
+.prevButton, .nextButton {
+  position: absolute;
+  top: 32%; /* Центрирование по вертикали */
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0; /* Убедитесь, что вокруг кнопок нет лишних отступов */
+  outline: none; /* Убирает стандартный outline, добавляемый при фокусе */
+  background-color: transparent;
+  box-shadow: none;
+
+}
+
+.prevButton {
+  left: -48px; 
+  background-color: transparent;
+}
+
+.nextButton {
+  right: -48px; 
+}
+
+.prevButton:hover, .prevButton:focus, .nextButton:hover, .nextButton:focus {
+  background-color: #f7f5ed;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+}
+
+
 @media screen and (min-width: 768px) {
   .imagesContainer {
     height: 336px;
@@ -70,6 +108,18 @@
     white-space: nowrap;
     cursor: pointer;
     flex-direction: column;
+    padding-bottom: 8px; 
+  }
+
+  .productItem::after {
+    content: ''; 
+    display: block;
+    position: absolute;
+    bottom: 0; 
+    left: 0; 
+    width: 384px; 
+    height: 1px; 
+    background-color: #858585; 
   }
 
   .productTitle {
@@ -121,3 +171,4 @@
     letter-spacing: 0.02em;
   }
 }
+

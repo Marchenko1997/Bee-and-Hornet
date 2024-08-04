@@ -1,15 +1,12 @@
-
 .basementContainer {
   padding-top: 20px;
-    border-top: 1px solid rgba(133, 133, 133, .25);
+  border-top: 1px solid rgba(133, 133, 133, 0.25);
 }
-
-
 
 .productPriceContainer {
   display: flex;
   flex-direction: row;
- 
+
   align-items: center;
 }
 
@@ -67,11 +64,27 @@
   background-color: #facf5a;
   padding: 10px;
   font-size: 18px;
-  font-weight: bold;
   width: 214px;
   height: 52px;
   justify-content: center;
   align-items: center;
   padding: 12px 32px 12px 32px;
-  
+  border-radius: 12px;
+  border: none;
+  outline: none;
+}
+
+.addToCart:hover:focus {
+  border: none;
+  outline: none;
+  background-color: rgb(235, 180, 28);
+}
+
+@media screen and (min-width: 1440px) {
+  .addToCart {
+    width: 214px;
+    height: 52px;
+    font-size: 18px;
+    line-height: 28px;
+  }
 }

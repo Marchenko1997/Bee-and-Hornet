@@ -13,6 +13,7 @@ import Feedback from "../Feedbacks/Feedback/Feedback";
 import Footer from "../Footer/Footer";
 
 
+
 const MainPage = ( ) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -77,7 +78,8 @@ const MainPage = ( ) => {
                   <svg className={css.iconPolygon}>
                     <use xlinkHref="../../../public/icons/sprite.svg#polygon"></use>
                   </svg>
-                  <p className={css.iconPolygonText}>Замовити</p>
+                  <a href="/#products" className={css.iconPolygonText}>Замовити</a>
+
                 </a>
               </div>
               <a

@@ -44,6 +44,19 @@
   right: 24px;
   width: 40px;
   height: 40px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.closeButton:hover:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.modalCloseButtonIcon {
+  width: 40px;
+  height: 40px;
 }
 
 .myBasket {
@@ -229,6 +242,17 @@
   cursor: pointer;
   font-size: 18px;
   line-height: 1.5555555556;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  color: rgb(31, 27, 26);
+}
+
+.buttonBack:hover:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  color: rgb(31, 27, 26);
 }
 
 .arrowLink {

@@ -38,14 +38,13 @@ const Header = ({onCloseProduct}) => {
                 <svg className={css.basketIcon} onClick={handleCartClick}>
                   <use xlinkHref="../../../public/icons/sprite.svg#basket"></use>
                 </svg>
-                <span
-                  className={css.basketCardSircle}
-                  onClick={handleCartClick}
-                >
-                  <span className={css.basketQuantity}>
-                    {Math.min(cart.length, 5)}
-                  </span>
-                </span>
+                {cart.length > 0 && (
+            <span className={css.basketCardSircle} onClick={handleCartClick}>
+              <span className={css.basketQuantity}>
+                {Math.min(cart.length, 5)}
+              </span>
+            </span>
+          )}
               </div>
       </div>
     </div>

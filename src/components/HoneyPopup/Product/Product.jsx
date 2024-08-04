@@ -19,6 +19,8 @@ const Product = ({ product, onClose }) => {
     };
   });
 
+
+
   const closePopup = () => {
     setIsClosing(true);
     setTimeout(() => {
@@ -41,7 +43,9 @@ const Product = ({ product, onClose }) => {
     >
       <div className={css.productContainer}>
         <button className={css.closeButton} onClick={onClose}>
-          &times;
+       <svg className={css.modalCloseButtonIcon}>
+         <use xlinkHref="../../../../public/icons/sprite.svg#cross-close" />
+       </svg>
         </button>
         <div className={css.productImage}>
           <img src={product.image} alt={product.alt} />
@@ -59,7 +63,7 @@ Product.propTypes = {
     title: PropTypes.string.isRequired,
     weight: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
-    quantity: PropTypes.number.isRequired,
+   
     description: PropTypes.object.isRequired,
   }),
   onClose: PropTypes.func.isRequired,

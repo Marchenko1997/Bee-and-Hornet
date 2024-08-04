@@ -1,34 +1,35 @@
-
-.productQuantity  {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0px;
-    gap: 27px;
-    }
-    
-    .quantity {
-    
-      font-weight: bold;
-    }
-    
-    
-.quantityControls button,
-.addToCart {
-  background-color:  #facf5a;
-  border: none;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+.productQuantity {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px;
+  gap: 27px;
 }
 
-.weightOptions button:hover,
-.quantityControls button:hover,
-.addToCart:hover {
-  background-color: #e0a800;
+.quantity {
+  font-weight: bold;
+}
+
+.quantityControls button,
+.addToCart {
+  background-color: transparent;
+  border: 1px;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #cacaca;
+}
+
+
+.quantityControls button:hover:focus{
+  border: 1px solid #cacaca;
+  box-shadow: none;
+
 }
 
 .quantityControls {
@@ -36,28 +37,39 @@
   align-items: center;
 }
 
+.quantityWrapper {
+  background: transparent; /* Настройте цвет в соответствии с вашим дизайном */
+
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
 
 .quantityIncrease {
-  background-color:  #facf5a;
-  width: 30px;
-  height: 30px;
+  background-color: #facf5a;
+  width: 32px;
+  height: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  
+  border-radius: 50%;
+  border: 1px;
 }
 
-.quantityDecrease{
-  
-  background-color:  #facf5a;
-  width: 30px;
-  height: 30px;
+
+
+.quantityDecrease {
+  background-color: #facf5a;
+  width: 32px;
+  height: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
   font-weight: bold;
+  border-radius: 50%;
+  border: 1px;
 }
 
 .quantityNumber {

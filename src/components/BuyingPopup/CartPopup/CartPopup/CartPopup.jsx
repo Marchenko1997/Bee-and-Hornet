@@ -8,6 +8,7 @@ import css from "./CartPopup.module.css";
 import { removeFromCart, updateCart } from "../../../../redux/actions";
 import QuantityOfItem from "../QuantityOfItem/QuantityOfItem";
 import Emptybasket from "../Emptybasket/Emptybasket";
+import { HashLink } from "react-router-hash-link";
 
 const CartPopup = ({ onClose }) => {
   const cart = useSelector((state) => state.cart);
@@ -73,7 +74,9 @@ const CartPopup = ({ onClose }) => {
     >
       <div className={css.cartPopupContent}>
         <button className={css.closeButton} onClick={onClose}>
-          ×
+          <svg className={css.modalCloseButtonIcon}>
+            <use xlinkHref="../../../../public/icons/sprite.svg#cross-close"></use>
+          </svg>
         </button>
         <h2 className={css.myBasket}>Ваш кошик</h2>
         <div className={css.honeySection}>
@@ -117,13 +120,12 @@ const CartPopup = ({ onClose }) => {
         </div>
         <div className={css.modalButtonWrapper}>
           <div className={css.buttonBackWrapper}>
-            <button className={css.buttonBack} type="button">
-              <svg className={css.arrowLink}>
-                {" "}
-                <use xlinkHref="../../../../../public/icons/sprite.svg#arrow-link"></use>
-              </svg>
-              Повернутися до покупок
-            </button>
+          <HashLink to="/#products" className={css.buttonBack}>
+            <svg className={css.arrowLink}>
+              <use xlinkHref="../../../../../public/icons/sprite.svg#arrow-link"></use>
+            </svg>
+            Повернутися до покупок
+          </HashLink>
           </div>
           <div className={css.modalSubmitWrapper}>
             <p className={css.totalPrice}>
