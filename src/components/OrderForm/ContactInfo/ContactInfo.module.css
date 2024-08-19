@@ -27,7 +27,7 @@
   }
   
   .inputContactInfo {
-    width: 100%;
+    width: 572px;
     height: 52px;
     font-size: 18px;
     line-height: 1.5555555556;
@@ -37,6 +37,7 @@
     font-style: normal;
     letter-spacing: 0.04em;
     outline: none;
+    padding-left: 16px;
   }
   
   .errorMessage {

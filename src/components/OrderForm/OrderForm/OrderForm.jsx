@@ -24,7 +24,7 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
     lastName: Yup.string().required('Будь ласка, введіть коректне прізвище кирилицею'),
     phone: Yup.string().required('Введіть коректний номер мобільного телефону'),
     city: Yup.string().required('Оберіть населений пункт'),
-    branch: Yup.string().required('Обрати відділення'),
+    // branch: Yup.string().required('Обрати відділення'),
   });
 
   const handleSubmit = values => {

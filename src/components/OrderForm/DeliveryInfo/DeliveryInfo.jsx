@@ -1,20 +1,20 @@
-
-import { Field, ErrorMessage, useFormikContext } from 'formik';
-import css from './DeliveryInfo.module.css';
-import Select from 'react-select';
-import AsyncSelect from 'react-select/async';
-import { useNovaPoshta } from '../../../hooks/useNovaPoshta'; 
+import { Field, useFormikContext } from "formik";
+import css from "./DeliveryInfo.module.css";
+import Select from "react-select";
+import AsyncSelect from "react-select/async";
+import { useNovaPoshta } from "../../../hooks/useNovaPoshta";
 import {
   deliveryTypeOptions,
   defaultOptionsForLocationSelect,
-}  from '../../../dataForNovaPoshta/selectCities';
-import SelectField from '../shared/SelectField/SelectField';
-import DropdownIndicator from '../shared/DropDownIndicator/DropDownIndicator';
-import { selectStyles } from '../helpers/index.js';
+} from "../../../dataForNovaPoshta/selectCities";
+import SelectField from "../shared/SelectField/SelectField";
+import DropdownIndicator from "../shared/DropDownIndicator/DropDownIndicator";
+import { selectStyles } from "../helpers/index.js";
+import InputField from "../shared/InputField/InputField";
+import clsx from "clsx";
 
 const DeliveryInfo = () => {
   const { setFieldValue, setFieldTouched, values } = useFormikContext();
-
 
   const cityId = values.location ? values.location.cityId : null;
 
@@ -32,7 +32,6 @@ const DeliveryInfo = () => {
         Вкажіть адресу доставки (Нова пошта):
       </h3>
       <div className={css.deliverySelection}>
-
         {/* Выбор типа доставки */}
         <SelectField
           name="deliveryType"
@@ -44,11 +43,11 @@ const DeliveryInfo = () => {
               options={deliveryTypeOptions}
               components={{ DropdownIndicator }}
               styles={selectStyles}
-              onMenuClose={() => setFieldTouched('deliveryType', true)}
+              onMenuClose={() => setFieldTouched("deliveryType", true)}
               onChange={(selectOption) => {
-                setFieldValue('deliveryType', selectOption.value);
-                setFieldValue('location', '');
-                setFieldValue('branch', '');
+                setFieldValue("deliveryType", selectOption.value);
+                setFieldValue("location", "");
+                setFieldValue("branch", "");
                 setValueForSelect((prev) => ({
                   ...prev,
                   deliveryType: [selectOption],
@@ -72,14 +71,17 @@ const DeliveryInfo = () => {
               defaultOptions={defaultOptionsForLocationSelect}
               loadOptions={getSettlementsList}
               loadingMessage={() =>
-                'Зачекайте, будь ласка, триває завантаження...'
+                "Зачекайте, будь ласка, триває завантаження..."
               }
               components={{ DropdownIndicator }}
               styles={selectStyles}
-              onMenuClose={() => setFieldTouched('location', true)}
+              onMenuClose={() => setFieldTouched("location", true)}
+              className={clsx({
+                [css.invalid]: !values.location && values.deliveryType,
+              })}
               onChange={(selectOption) => {
-                setFieldValue('location', selectOption.value);
-                setFieldValue('branch', '');
+                setFieldValue("location", selectOption.value);
+                setFieldValue("branch", "");
                 setValueForSelect((prev) => ({
                   ...prev,
                   locationSelect: [selectOption],
@@ -90,40 +92,38 @@ const DeliveryInfo = () => {
           }
         />
 
-        {/* Поле для ввода адреса или выбора отделения в зависимости от типа доставки */}
-        {values.deliveryType === 'Доставка до дверей' ? (
-          <label>
-            <Field
-              as="textarea"
-              name="branch"
-              placeholder="Введіть адресу доставки"
-              className={css.inputContactInfo}
-            />
-            <ErrorMessage
-              name="branch"
-              component="span"
-              className={css.errorMessage}
-            />
-          </label>
+        {values.deliveryType === "Доставка кур`єром" ? (
+          <InputField
+            name="branch"
+            disabled={!cityId}
+            placeholder="Введіть адресу доставки"
+            wrapperClassName={clsx(css.inputWrapperDeliveryAd, {
+              [css.invalid]: !values.branch && values.deliveryType,
+            })}
+            invalidClassName={css.errorMessage}
+          />
         ) : (
           <SelectField
             name="branch"
             errorClassName={css.errorMessage}
             component={
               <AsyncSelect
-                isDisabled={!cityId} // Используем проверенную переменную
+                isDisabled={!cityId}
                 placeholder="Оберіть відділення"
                 value={!values.deliveryType ? [] : valueForSelect.addressSelect}
                 defaultOptions={divisions}
                 loadOptions={getDivisionsList}
                 loadingMessage={() =>
-                  'Зачекайте, будь ласка, триває завантаження...'
+                  "Зачекайте, будь ласка, триває завантаження..."
                 }
                 components={{ DropdownIndicator }}
                 styles={selectStyles}
-                onMenuClose={() => setFieldTouched('branch', true)}
+                className={clsx({
+                  [css.invalid]: !values.branch && values.deliveryType,
+                })}
+                onMenuClose={() => setFieldTouched("branch", true)}
                 onChange={(selectOption) => {
-                  setFieldValue('branch', selectOption.value);
+                  setFieldValue("branch", selectOption.value);
                   setValueForSelect((prev) => ({
                     ...prev,
                     addressSelect: [selectOption],
@@ -134,20 +134,18 @@ const DeliveryInfo = () => {
           />
         )}
 
-        {/* Поле для ввода комментария */}
-        <label>
-          <Field
-            as="textarea"
-            name="comment"
-            placeholder="Додати коментар до замовлення"
-            className={css.inputContactInfo}
-          />
-          <ErrorMessage
-            name="comment"
-            component="span"
-            className={css.errorMessage}
-          />
-        </label>
+        <Field name="comment">
+          {({ field, meta }) => (
+            <div className={css.comment}>
+              <textarea
+                {...field}
+                placeholder="Додати коментар до замовлення"
+                className={css.textarea}
+              />
+              {meta.error && meta.touched && <span>{meta.error}</span>}
+            </div>
+          )}
+        </Field>
       </div>
     </div>
   );
