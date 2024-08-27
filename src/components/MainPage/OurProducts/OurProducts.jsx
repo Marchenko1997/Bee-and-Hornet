@@ -56,7 +56,7 @@ const OurProducts = () => {
               </li>
             ))}
           </ul>
-          <ProductSlider products={products} />
+          <ProductSlider products={products} category={category} />
         </div>
       </section>
     </div>

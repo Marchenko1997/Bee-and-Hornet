@@ -1,25 +1,35 @@
 import css from "./ProductDetails.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setWeight, setQuantity, addToCart, updateCart } from "../../../redux/actions";
+import {
+  setWeight,
+  setQuantity,
+  addToCart,
+  updateCart,
+} from "../../../redux/actions";
 import WeightOptions from "../WeightOptions/WeightOptions";
 import QuantitySelector from "../QuantitySelector/QuantitySelector";
 import AddToCartButton from "../AddToCartButton/AddToCartButton";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import "overlayscrollbars/styles/overlayscrollbars.css";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
 const ProductDetails = ({ product, onCloseProduct }) => {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) =>
+    Array.isArray(state.cart) ? state.cart : []
+  );
+
   const [quantity, setQuantityState] = useState(1);
 
   // Перепарсим веса для получения цен
-  const weights = product.description.weights.split(', ').reduce((acc, weight) => {
-    const [amount, price] = weight.split(' - ');
-    acc[amount] = parseInt(price.replace(' грн', ''), 10);
-    return acc;
-  }, {});
+  const weights = product.description.weights
+    .split(", ")
+    .reduce((acc, weight) => {
+      const [amount, price] = weight.split(" - ");
+      acc[amount] = parseInt(price.replace(" грн", ""), 10);
+      return acc;
+    }, {});
 
   const [selectedWeight, setSelectedWeight] = useState(Object.keys(weights)[0]); // Выбор начального веса
 
@@ -38,11 +48,15 @@ const ProductDetails = ({ product, onCloseProduct }) => {
   };
 
   const handleAddToCart = () => {
-    const existingItem = cart.find(item => item.weight === selectedWeight);
+    const existingItem = cart.find(
+      (item) => item.weight === selectedWeight && item.title === product.title
+    );
 
     if (existingItem) {
-      const updatedCart = cart.map(item =>
-        item.weight === selectedWeight ? { ...item, quantity: item.quantity + quantity } : item
+      const updatedCart = cart.map((item) =>
+        item.weight === selectedWeight && item.title === product.title
+          ? { ...item, quantity: item.quantity + quantity }
+          : item
       );
       dispatch(updateCart(updatedCart));
     } else {
@@ -61,17 +75,19 @@ const ProductDetails = ({ product, onCloseProduct }) => {
     }
   };
 
-  const disabledWeights = cart.map(item => item.weight);
+  const disabledWeights = cart.map((item) => item.weight);
 
   const totalPrice = weights[selectedWeight] * quantity;
 
   return (
     <div className={css.productDetails}>
       <h1 className={css.productTitle}>{product.title}</h1>
-      <OverlayScrollbarsComponent className={css.containerScrollBar} >
+      <OverlayScrollbarsComponent className={css.containerScrollBar}>
         <div className={css.scrollBar}>
           <p className={css.productDescription}>
-            {product.description && product.description.features ? product.description.features.join(' ') : 'Описание отсутствует'}
+            {product.description && product.description.features
+              ? product.description.features.join(" ")
+              : "Описание отсутствует"}
           </p>
         </div>
       </OverlayScrollbarsComponent>
@@ -103,7 +119,7 @@ ProductDetails.propTypes = {
     }).isRequired,
     weight: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired, // Добавим категорию как обязательное свойство
+    category: PropTypes.string.isRequired,
   }).isRequired,
   onCloseProduct: PropTypes.func.isRequired,
 };

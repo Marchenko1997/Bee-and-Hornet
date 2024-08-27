@@ -8,6 +8,7 @@ export default defineConfig({
       // Настройки для CSS-модулей (необязательно)
       // scopeBehaviour: 'local', // по умолчанию 'local'
       // generateScopedName: '[name]__[local]___[hash:base64:5]', // по умолчанию '[hash:base64]'
+      
     }
   }
 });

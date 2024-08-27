@@ -7,28 +7,26 @@ import css from "./ProductSlider.module.css";
 import { useState } from "react";
 import Product from "../../../HoneyPopup/Product/Product";
 import ProductTitle from "../../../../shared/ProductTitle/ProductTitle";
-import {  useRef } from "react";
+import { useRef } from "react";
 
-
-const ProductSlider = ({ products }) => {
+const ProductSlider = ({ products, category }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const swiperRef = useRef(null); 
+  const swiperRef = useRef(null);
 
- 
   const openProduct = (product) => {
     setSelectedProduct(product);
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = "hidden";
   };
 
   const closeProduct = () => {
     setSelectedProduct(null);
-    document.body.style.overflow = 'auto'; 
+    document.body.style.overflow = "auto";
   };
 
   return (
     <>
       <div className={css.sliderContainer}>
-        {/* Кнопка для перехода к предыдущему слайду */}
+      {category === 'Мед' && (
         <button
           className={css.prevButton}
           onClick={() => swiperRef.current.swiper.slidePrev()}
@@ -37,20 +35,28 @@ const ProductSlider = ({ products }) => {
             <use xlinkHref="../../../../../public/icons/sprite.svg#arrow-left" />
           </svg>
         </button>
-        
-        {/* Конфигурация Swiper без встроенной навигации */}
+      )}
+
         <Swiper
           ref={swiperRef}
           modules={[Navigation, A11y]}
           slidesPerView={3}
-          navigation={false} // Отключение встроенной навигации
+          navigation={false}
           rewind={true}
         >
           {products.map((product, index) => (
-            <SwiperSlide key={index} className={css.productItem} onClick={() => openProduct(product)}>
+            <SwiperSlide
+              key={index}
+              className={css.productItem}
+              onClick={() => openProduct(product)}
+            >
               <div className={css.productInfoBlock}>
                 <div className={css.imagesContainer}>
-                  <img src={product.image} alt={product.alt} className={css.productImg} />
+                  <img
+                    src={product.image}
+                    alt={product.alt}
+                    className={css.productImg}
+                  />
                 </div>
                 <div className={css.productInfo}>
                   <ProductTitle title={product.title} />
@@ -67,8 +73,7 @@ const ProductSlider = ({ products }) => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        {/* Кнопка для перехода к следующему слайду */}
+        {category === 'Мед' && (
         <button
           className={css.nextButton}
           onClick={() => swiperRef.current.swiper.slideNext()}
@@ -77,8 +82,11 @@ const ProductSlider = ({ products }) => {
             <use xlinkHref="../../../../../public/icons/sprite.svg#arrow-right" />
           </svg>
         </button>
+      )}
       </div>
-      {selectedProduct && <Product product={selectedProduct} onClose={closeProduct} />}
+      {selectedProduct && (
+        <Product product={selectedProduct} onClose={closeProduct} />
+      )}
     </>
   );
 };
@@ -94,6 +102,7 @@ ProductSlider.propTypes = {
       description: PropTypes.object.isRequired,
     })
   ).isRequired,
+  category: PropTypes.string.isRequired,
 };
 
 export default ProductSlider;
