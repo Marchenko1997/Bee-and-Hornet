@@ -31,7 +31,7 @@ a:hover:focus {
 
 body {
   margin: 0;
-  padding: 0;
+  /* padding: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -39,10 +39,9 @@ body {
   padding: 0;
   justify-content: center;
   align-items: center;
-  /* background-color: #f5f5f5; */
   background-color: #fff;
   height: 100%;
-  overflow: auto; 
+  overflow: auto;  */
 }
 
 h1 {

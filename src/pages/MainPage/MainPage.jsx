@@ -41,10 +41,10 @@ const MainPage = () => {
         {isProductPopupOpen && selectedProduct && (
           <Product product={selectedProduct} onClose={handleCloseAllPopups} />
         )}
-      </div>
-      <div className={css.footer}>
+       </div> 
+      {/* <div className={css.footer}>  */}
         <Footer />
-      </div>
+      {/* </div> */}
     </>
   );
 };
