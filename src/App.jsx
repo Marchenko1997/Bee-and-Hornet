@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 
 import OrderPage from './pages/OrderPage/OrderPage'; 
-import MainPage from './components/MainPage/MainPage';
+import MainPage from './pages/MainPage/MainPage';
 
 import "./App.css";
 
