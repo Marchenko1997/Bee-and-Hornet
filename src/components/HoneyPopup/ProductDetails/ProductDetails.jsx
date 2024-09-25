@@ -83,12 +83,57 @@ const ProductDetails = ({ product, onCloseProduct }) => {
     <div className={css.productDetails}>
       <h1 className={css.productTitle}>{product.title}</h1>
       <OverlayScrollbarsComponent className={css.containerScrollBar}>
-        <div className={css.scrollBar}>
+        {/* <div className={css.scrollBar}>
           <p className={css.productDescription}>
             {product.description && product.description.features
               ? product.description.features.join(" ")
               : "Описание отсутствует"}
           </p>
+        </div> */}
+        <div className={css.descriptionArea}>
+          
+          {/* {product.title && (
+            <h3 className={css.productName}>{product.title}</h3>
+          )} */}
+
+          {/* Описание продукта, если оно есть */}
+          {product.description && product.description.descr && (
+            <p className={css.productText}>{product.description.descr}</p>
+          )}
+
+          {/* Смакові особливості (flavor), если они есть */}
+          {product.description && product.description.flavor && (
+            <p className={css.productText}>
+              <span className={css.prodDescriptionHeader}>
+                Смакові особливості:
+              </span>
+              {` ${product.description.flavor}`}
+            </p>
+          )}
+
+          {/* Корисні властивості (advantage), если они есть */}
+          {product.description && product.description.advantage && (
+            <p className={css.productText}>
+              <span className={css.prodDescriptionHeader}>
+                Корисні властивості:
+              </span>
+              {` ${product.description.advantage}`}
+            </p>
+          )}
+
+          {/* Особливості (features) - массив */}
+          {product.description &&
+            product.description.features &&
+            product.description.features.length > 0 && (
+              <>
+                <span className={css.prodDescriptionHeader}>Особливості:</span>
+                {product.description.features.map((feature, index) => (
+                  <p key={index} className={css.productText}>
+                    {feature}
+                  </p>
+                ))}
+              </>
+            )}
         </div>
       </OverlayScrollbarsComponent>
       <WeightOptions

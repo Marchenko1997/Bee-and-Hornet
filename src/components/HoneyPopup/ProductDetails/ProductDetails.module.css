@@ -12,80 +12,97 @@
 } */
 
 .productDetails {
-    margin-left: 64px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  margin-left: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .containerScrollBar {
-    max-height: 268px;
-    overflow-y: auto;
-    width: 480px;
-    height: 212px;
-    position: relative;
-    direction: ltr;
-    padding: 0;
-    border: none;
+  max-height: 268px;
+  overflow-y: auto;
+  width: 480px;
+  height: 212px;
+  position: relative;
+  direction: ltr;
+  padding: 0;
+  border: none;
 }
 
 .scrollBar {
-    border-radius: var(--os-track-border-radius);
-    background: var(--os-track-bg);
-    transition: opacity 0.15s, background-color 0.15s, border-color 0.15s;
-    pointer-events: none;
-    background: var(--os-handle-bg);
-    
+  border-radius: var(--os-track-border-radius);
+  background: var(--os-track-bg);
+  transition: opacity 0.15s, background-color 0.15s, border-color 0.15s;
+  pointer-events: none;
+  background: var(--os-handle-bg);
 }
 
 .productTitle {
-    color: rgb(31, 27, 26);
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 32px;
-    letter-spacing: 0.02em;
-    text-align: left;
+  color: rgb(31, 27, 26);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0.02em;
+  text-align: left;
 }
 
 .productDetails h1 {
-    font-size: 24px;
+  font-size: 24px;
+}
+
+.prodDescriptionHeader {
+  padding-top: 16px;
+  font-family: var(--primary-font-family);
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 4%;
+  font-weight: 600;
+}
+
+.productText {
+  padding-top: 24px;
+  padding-right: 12px;
+  font-size: 18px;
+  line-height: 28px;
+  font-family: var(--primary-font-family);
 }
 
 .productPriceContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .productPrice {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
 }
 
 .productPurchase {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Стили для OverlayScrollbars */
 .os-theme-dark > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle {
-    background-color: #FACF5A; /* Желтый цвет ползунка */
+  background-color: #facf5a; /* Желтый цвет ползунка */
 }
 
 .os-theme-dark > .os-scrollbar > .os-scrollbar-track {
-    background-color: rgb(247, 245, 237); /* Фоновая линия */
+  background-color: rgb(247, 245, 237); /* Фоновая линия */
 }
 
 .os-theme-dark > .os-scrollbar-corner {
-    background-color: transparent;
+  background-color: transparent;
 }
 
-.os-scrollbar.os-scrollbar-track-interactive .os-scrollbar-track, .os-scrollbar.os-scrollbar-handle-interactive .os-scrollbar-handle {
-    pointer-events: auto;
-    touch-action: none;
-    background-color: #FACF5A;
+.os-scrollbar.os-scrollbar-track-interactive .os-scrollbar-track,
+.os-scrollbar.os-scrollbar-handle-interactive .os-scrollbar-handle {
+  pointer-events: auto;
+  touch-action: none;
+  background-color: #facf5a;
 }
