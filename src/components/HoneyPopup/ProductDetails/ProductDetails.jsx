@@ -9,10 +9,11 @@ import {
 import WeightOptions from '../WeightOptions/WeightOptions';
 import QuantitySelector from '../QuantitySelector/QuantitySelector';
 import AddToCartButton from '../AddToCartButton/AddToCartButton';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+
 import 'overlayscrollbars/styles/overlayscrollbars.css';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import CustomScrollWrapper from '../../OrderForm/shared/СustomScrollWrapper/СustomScrollWrapper';
 
 const ProductDetails = ({ product, onCloseProduct }) => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const ProductDetails = ({ product, onCloseProduct }) => {
   );
 
   const [quantity, setQuantityState] = useState(1);
+ 
 
   const weights = product.description.weights
     .split(', ')
@@ -32,9 +34,7 @@ const ProductDetails = ({ product, onCloseProduct }) => {
 
   const [selectedWeight, setSelectedWeight] = useState(Object.keys(weights)[0]);
 
-  useEffect(() => {
-    console.log('Product Details Component Rendered with product:', product);
-  }, [product]);
+  
 
   const handleWeightChange = (weight) => {
     setSelectedWeight(weight);
@@ -80,8 +80,12 @@ const ProductDetails = ({ product, onCloseProduct }) => {
 
   return (
     <div className={css.productDetails}>
-      <OverlayScrollbarsComponent className={css.containerScrollBar}>
-        <div className={css.descriptionArea}>
+      <CustomScrollWrapper >
+        <div
+          className={css.descriptionArea}
+       
+          
+        >
           {product.title && (
             <h3 className={css.productName}>{product.title}</h3>
           )}
@@ -117,7 +121,7 @@ const ProductDetails = ({ product, onCloseProduct }) => {
               </p>
             )}
         </div>
-      </OverlayScrollbarsComponent>
+      </CustomScrollWrapper>
       <WeightOptions
         selectedWeight={selectedWeight}
         onWeightChange={handleWeightChange}

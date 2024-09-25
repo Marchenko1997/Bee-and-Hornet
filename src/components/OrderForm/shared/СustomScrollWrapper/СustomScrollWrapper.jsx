@@ -4,17 +4,20 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 
-const CustomScrollWrapper = ({ children, wrapClassName }) => {
+const CustomScrollWrapper = ({ children, wrapClassName, showScrollBar }) => {
  
-  console.log(css.myScroll); 
+  const options = {
+    scrollbars: {
+      autoHide: showScrollBar ? 'scroll' : 'never', 
+      theme: 'os-theme-dark',
+    },
+  };
 
   return (
     <OverlayScrollbarsComponent
       element="div"
       className={clsx(css.myScroll, wrapClassName && wrapClassName)}
-      options={{
-        scrollbars: { autoHide: 'never', theme: 'no-theme' },
-      }}
+      options={options}
       defer
     >
       {children}
@@ -25,6 +28,7 @@ const CustomScrollWrapper = ({ children, wrapClassName }) => {
 CustomScrollWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   wrapClassName: PropTypes.string,
+  showScrollBar: PropTypes.bool.isRequired,
 };
 
 export default CustomScrollWrapper;

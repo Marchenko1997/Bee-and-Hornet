@@ -1,21 +1,7 @@
-/* Закомментированные старые стили скролл бара */
-/* .os-theme-dark > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle {
-    background-color: #FFC107;
-}
-
-.os-theme-dark > .os-scrollbar > .os-scrollbar-track {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.os-theme-dark > .os-scrollbar-corner {
-    background-color: transparent;
-} */
-
 .productDetails {
   margin-left: 64px;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
 }
 
 .containerScrollBar {
@@ -29,16 +15,8 @@
   border: none;
 }
 
-.scrollBar {
-  border-radius: var(--os-track-border-radius);
-  background: var(--os-track-bg);
-  transition: opacity 0.15s, background-color 0.15s, border-color 0.15s;
-  pointer-events: none;
-  background: var(--os-handle-bg);
-}
-
 .descriptionArea {
- height: 268px;
+  height: 268px;
 }
 
 .productTitle {
@@ -89,24 +67,4 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-
-/* Стили для OverlayScrollbars */
-.os-theme-dark > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle {
-  background-color: #facf5a; /* Желтый цвет ползунка */
-}
-
-.os-theme-dark > .os-scrollbar > .os-scrollbar-track {
-  background-color: rgb(247, 245, 237); /* Фоновая линия */
-}
-
-.os-theme-dark > .os-scrollbar-corner {
-  background-color: transparent;
-}
-
-.os-scrollbar.os-scrollbar-track-interactive .os-scrollbar-track,
-.os-scrollbar.os-scrollbar-handle-interactive .os-scrollbar-handle {
-  pointer-events: auto;
-  touch-action: none;
-  background-color: #facf5a;
 }
