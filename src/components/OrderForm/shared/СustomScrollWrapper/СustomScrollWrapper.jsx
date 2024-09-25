@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 
 const CustomScrollWrapper = ({ children, wrapClassName }) => {
-  // Логируем значение css.myScroll
-  console.log(css.myScroll); // Это выведет значение класса myScroll
+ 
+  console.log(css.myScroll); 
 
   return (
     <OverlayScrollbarsComponent

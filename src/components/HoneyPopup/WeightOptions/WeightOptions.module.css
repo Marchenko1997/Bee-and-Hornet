@@ -1,6 +1,33 @@
+.qualityDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 30px;
+}
 
-.weightOptions button{
-    width: 83px;
+.productWeight {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.weightLabel {
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 4%;
+  font-weight: 600;
+  font-family: var(--primary-font-family);
+}
+
+.weightOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.weightOptions button {
+  width: 83px;
   height: 36px;
   justify-content: center;
   align-items: center;
@@ -12,9 +39,9 @@
   background-color: rgb(255, 255, 255);
   border-radius: 8px;
   border: 1px solid #cacaca;
-  }
+}
 
-  .weightOptions button:hover,
+.weightOptions button:hover,
 .quantityControls button:hover,
 .addToCart:hover {
   background-color: #facf5a;
@@ -24,4 +51,3 @@
   background-color: #facf5a;
   /* Any other styles for the selected state */
 }
-

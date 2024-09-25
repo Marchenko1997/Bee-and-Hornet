@@ -20,7 +20,7 @@ const WeightOptions = ({ selectedWeight, onWeightChange,  category }) => {
   return (
     <div className={css.qualityDetails}>
       <div className={css.productWeight}>
-        <span>Вага</span>
+        <span className={css.weightLabel}>Вага</span>
         <div className={css.weightOptions}>
           {weights.map((weight) => {
             const isSelected = weight === selectedWeight;

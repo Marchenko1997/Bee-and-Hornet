@@ -1,18 +1,18 @@
-import css from "./ProductDetails.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import css from './ProductDetails.module.css';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   setWeight,
   setQuantity,
   addToCart,
   updateCart,
-} from "../../../redux/actions";
-import WeightOptions from "../WeightOptions/WeightOptions";
-import QuantitySelector from "../QuantitySelector/QuantitySelector";
-import AddToCartButton from "../AddToCartButton/AddToCartButton";
-import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
-import "overlayscrollbars/styles/overlayscrollbars.css";
-import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+} from '../../../redux/actions';
+import WeightOptions from '../WeightOptions/WeightOptions';
+import QuantitySelector from '../QuantitySelector/QuantitySelector';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import 'overlayscrollbars/styles/overlayscrollbars.css';
+import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 
 const ProductDetails = ({ product, onCloseProduct }) => {
   const dispatch = useDispatch();
@@ -22,19 +22,18 @@ const ProductDetails = ({ product, onCloseProduct }) => {
 
   const [quantity, setQuantityState] = useState(1);
 
-  // Перепарсим веса для получения цен
   const weights = product.description.weights
-    .split(", ")
+    .split(', ')
     .reduce((acc, weight) => {
-      const [amount, price] = weight.split(" - ");
-      acc[amount] = parseInt(price.replace(" грн", ""), 10);
+      const [amount, price] = weight.split(' - ');
+      acc[amount] = parseInt(price.replace(' грн', ''), 10);
       return acc;
     }, {});
 
-  const [selectedWeight, setSelectedWeight] = useState(Object.keys(weights)[0]); 
+  const [selectedWeight, setSelectedWeight] = useState(Object.keys(weights)[0]);
 
   useEffect(() => {
-    console.log("Product Details Component Rendered with product:", product);
+    console.log('Product Details Component Rendered with product:', product);
   }, [product]);
 
   const handleWeightChange = (weight) => {
@@ -70,7 +69,7 @@ const ProductDetails = ({ product, onCloseProduct }) => {
         quantity: quantity,
         pricePerUnit: weights[selectedWeight],
       };
-      console.log("Adding to cart item:", item);
+      console.log('Adding to cart item:', item);
       dispatch(addToCart(item));
     }
   };
@@ -81,58 +80,41 @@ const ProductDetails = ({ product, onCloseProduct }) => {
 
   return (
     <div className={css.productDetails}>
-      <h1 className={css.productTitle}>{product.title}</h1>
       <OverlayScrollbarsComponent className={css.containerScrollBar}>
-        {/* <div className={css.scrollBar}>
-          <p className={css.productDescription}>
-            {product.description && product.description.features
-              ? product.description.features.join(" ")
-              : "Описание отсутствует"}
-          </p>
-        </div> */}
         <div className={css.descriptionArea}>
-          
-          {/* {product.title && (
+          {product.title && (
             <h3 className={css.productName}>{product.title}</h3>
-          )} */}
+          )}
 
-          {/* Описание продукта, если оно есть */}
           {product.description && product.description.descr && (
             <p className={css.productText}>{product.description.descr}</p>
           )}
 
-          {/* Смакові особливості (flavor), если они есть */}
           {product.description && product.description.flavor && (
             <p className={css.productText}>
               <span className={css.prodDescriptionHeader}>
-                Смакові особливості:
-              </span>
-              {` ${product.description.flavor}`}
+                Смакові особливості :
+              </span>{' '}
+              {product.description.flavor}
             </p>
           )}
 
-          {/* Корисні властивості (advantage), если они есть */}
           {product.description && product.description.advantage && (
             <p className={css.productText}>
               <span className={css.prodDescriptionHeader}>
-                Корисні властивості:
-              </span>
-              {` ${product.description.advantage}`}
+                Корисні властивості :
+              </span>{' '}
+              {product.description.advantage}
             </p>
           )}
 
-          {/* Особливості (features) - массив */}
           {product.description &&
             product.description.features &&
             product.description.features.length > 0 && (
-              <>
-                <span className={css.prodDescriptionHeader}>Особливості:</span>
-                {product.description.features.map((feature, index) => (
-                  <p key={index} className={css.productText}>
-                    {feature}
-                  </p>
-                ))}
-              </>
+              <p className={css.productText}>
+                <span className={css.prodDescriptionHeader}>Особливості :</span>{' '}
+                {product.description.features.join(', ')}
+              </p>
             )}
         </div>
       </OverlayScrollbarsComponent>
@@ -140,7 +122,7 @@ const ProductDetails = ({ product, onCloseProduct }) => {
         selectedWeight={selectedWeight}
         onWeightChange={handleWeightChange}
         disabledWeights={disabledWeights}
-        category={product.category} // Передаем категорию продукта
+        category={product.category}
       />
       <QuantitySelector
         quantity={quantity}
@@ -157,16 +139,18 @@ const ProductDetails = ({ product, onCloseProduct }) => {
 
 ProductDetails.propTypes = {
   product: PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired, // Название продукта
+    image: PropTypes.string.isRequired, // Изображение продукта
+    category: PropTypes.string.isRequired, // Категория продукта
     description: PropTypes.shape({
-      features: PropTypes.arrayOf(PropTypes.string).isRequired,
-      weights: PropTypes.string.isRequired,
+      descr: PropTypes.string, // Описание продукта
+      flavor: PropTypes.string, // Смакові особливості
+      advantage: PropTypes.string, // Корисні властивості
+      features: PropTypes.arrayOf(PropTypes.string).isRequired, // Особливості - массив строк
+      weights: PropTypes.string.isRequired, // Веса и цены продукта
     }).isRequired,
-    weight: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
   }).isRequired,
-  onCloseProduct: PropTypes.func.isRequired,
+  onCloseProduct: PropTypes.func.isRequired, // Функция для закрытия продукта
 };
 
 export default ProductDetails;

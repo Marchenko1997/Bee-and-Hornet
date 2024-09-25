@@ -15,11 +15,11 @@
   margin-left: 64px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .containerScrollBar {
-  max-height: 268px;
+  max-height: 248px;
   overflow-y: auto;
   width: 480px;
   height: 212px;
@@ -35,6 +35,10 @@
   transition: opacity 0.15s, background-color 0.15s, border-color 0.15s;
   pointer-events: none;
   background: var(--os-handle-bg);
+}
+
+.descriptionArea {
+ height: 268px;
 }
 
 .productTitle {
