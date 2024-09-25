@@ -31,7 +31,7 @@ const ProductDetails = ({ product, onCloseProduct }) => {
       return acc;
     }, {});
 
-  const [selectedWeight, setSelectedWeight] = useState(Object.keys(weights)[0]); // Выбор начального веса
+  const [selectedWeight, setSelectedWeight] = useState(Object.keys(weights)[0]); 
 
   useEffect(() => {
     console.log("Product Details Component Rendered with product:", product);

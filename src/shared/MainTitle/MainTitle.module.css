@@ -19,8 +19,9 @@
   
   @media (min-width: 1440px) {
     .title {
-      font-size: 56px;
-      line-height: 64px;
+      font-size: 80px;
+      line-height: 1;
+              width: 531px
     }
   }
   

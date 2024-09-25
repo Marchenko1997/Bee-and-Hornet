@@ -15,7 +15,7 @@ const QuantitySelector = ({ quantity, onQuantityChange }) => {
 
   return (
     <div className={css.productQuantity}>
-      <span className={css.quantity}>Количество</span>
+      <span className={css.quantity}>Кількість</span>
       <div className={css.quantityWrapper}> {/* Добавлена обертка вокруг элементов управления для последовательного стиля */}
         <div className={css.quantityControls}>
           <button

@@ -1,16 +1,17 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  color: rgb(31, 27, 26);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --primary-font-family: 'Raleway', sans-serif;
+  --secondary-font-family: 'Montserrat Alternates', sans-serif;
+  --primary-text-color: #1f1b1a;
+  --light-bg-color: #ffffff;
+  --primary-accent-color: #facf5a;
+  --primary-hover-color: #ebb41c;
+  --primary-darkgrey-color: #858585;
+  --primary-grey-color: #cacaca;
+  --primary-lightgrey-color: #f6f6f6;
+  --primary-white-color: #ffffff;
+  --error-input-color: #dc3353;
+  --animation-time-function: linear;
+  --animation-duration: 0.3s;
 }
 
 html {
@@ -18,53 +19,38 @@ html {
   scroll-behavior: smooth;
 }
 
-a {
-  text-decoration: none;
-  text-emphasis: none;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
-a:hover:focus {
-  color: rgb(31, 27, 26);
-  text-decoration: none;
-  text-emphasis: none;
-}
-
 
 body {
   margin: 0;
+  font-family: var(--primary-font-family);
+  color: var(--primary-text-color);
+  background-color: var(--light-bg-color);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-  margin-top: 0;
-  margin-bottom: 0; 
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-h2 {
-  margin-top: 0;
-  margin-bottom: 0; 
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+li {
   margin: 0;
-    /* font-family: Montserrat Alternates, sans-serif; */
-}
-
-h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-p {
-  margin-top: 0;        
-  margin-bottom: 0;   
+  font-family: var(--secondary-font-family);
 }
 
 ul {
-  margin-top: 0;
-  margin-bottom: 0;
   padding-left: 0;
   list-style: none;
 }
-
-
 
 button {
   border: none;
@@ -74,29 +60,21 @@ button {
   background: none;
   cursor: pointer;
   transition: border-color 0.25s;
-
-  &:active {
-    transform: scale(0.95);
-  }
-}
-button:hover {
-  color: rgb(31, 27, 26);
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
+button:active {
+  transform: scale(0.95);
+}
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: rgb(31, 27, 26);
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: rgb(31, 27, 26);
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+img {
+  display: block;
+  width: 100%;
+}
+
+a {
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: inherit;
 }
