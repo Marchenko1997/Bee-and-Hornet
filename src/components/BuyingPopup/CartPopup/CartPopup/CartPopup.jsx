@@ -1,19 +1,19 @@
-import { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import PropTypes from "prop-types";
-import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
-import "overlayscrollbars/overlayscrollbars.css";
-import { useNavigate } from "react-router-dom";
-import css from "./CartPopup.module.css";
-import { removeFromCart, updateCart } from "../../../../redux/actions";
-import QuantityOfItem from "../QuantityOfItem/QuantityOfItem";
-import Emptybasket from "../Emptybasket/Emptybasket";
-import { HashLink } from "react-router-hash-link";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import 'overlayscrollbars/overlayscrollbars.css';
+import { useNavigate } from 'react-router-dom';
+import css from './CartPopup.module.css';
+import { removeFromCart, updateCart } from '../../../../redux/actions';
+import QuantityOfItem from '../QuantityOfItem/QuantityOfItem';
+import Emptybasket from '../Emptybasket/Emptybasket';
+import { HashLink } from 'react-router-hash-link';
+import CustomScrollWrapper from '../../../OrderForm/shared/СustomScrollWrapper/СustomScrollWrapper';
 
 const CartPopup = ({ onClose }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const scrollRef = useRef(null);
+
   const navigate = useNavigate();
   const [isClosing, setIsClosing] = useState(false);
 
@@ -32,7 +32,7 @@ const CartPopup = ({ onClose }) => {
   };
 
   const handleEsc = (event) => {
-    if (event.key === "Escape") {
+    if (event.key === 'Escape') {
       closePopup();
     }
   };
@@ -45,21 +45,19 @@ const CartPopup = ({ onClose }) => {
   };
 
   useEffect(() => {
-    // Установка overflow и добавление обработчика события keydown
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", handleEsc);
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', handleEsc);
 
     return () => {
-      // Восстановление overflow и удаление обработчика события keydown
-      document.body.style.overflow = "auto";
-      document.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = 'auto';
+      document.removeEventListener('keydown', handleEsc);
     };
-  }, ); 
+  });
 
   if (cart.length === 0) {
     return (
       <div
-        className={`${css.cartPopup} ${isClosing ? css.closing : ""}`}
+        className={`${css.cartPopup} ${isClosing ? css.closing : ''}`}
         onClick={handleBackdropClick}
       >
         <Emptybasket onClose={closePopup} />
@@ -69,7 +67,7 @@ const CartPopup = ({ onClose }) => {
 
   return (
     <div
-      className={`${css.cartPopup} ${isClosing ? css.closing : ""}`}
+      className={`${css.cartPopup} ${isClosing ? css.closing : ''}`}
       onClick={handleBackdropClick}
     >
       <div className={css.cartPopupContent}>
@@ -80,10 +78,7 @@ const CartPopup = ({ onClose }) => {
         </button>
         <h2 className={css.myBasket}>Ваш кошик</h2>
         <div className={css.honeySection}>
-          <OverlayScrollbarsComponent
-            ref={scrollRef}
-            className={css.honeyList}
-          >
+          <CustomScrollWrapper className={css.honeyList}>
             {cart.slice(0, 5).map((item, index) => (
               <li key={index} className={css.honeyItem}>
                 <div className={css.imgWrapper}>
@@ -96,11 +91,7 @@ const CartPopup = ({ onClose }) => {
                 <div className={css.descriptionWrapper}>
                   <h3 className={css.itemTitle}>{item.title}</h3>
                   <p className={css.itemWeight}>{item.weight}</p>
-                  <QuantityOfItem
-                    index={index}
-                    cart={cart}
-                    setCart={setCart}
-                  />
+                  <QuantityOfItem index={index} cart={cart} setCart={setCart} />
                   <p className={css.itemPrice}>
                     {item.pricePerUnit * item.quantity} грн
                   </p>
@@ -116,29 +107,30 @@ const CartPopup = ({ onClose }) => {
                 </button>
               </li>
             ))}
-          </OverlayScrollbarsComponent>
+          </CustomScrollWrapper>
         </div>
+        <div className={css.listBorder}></div>
         <div className={css.modalButtonWrapper}>
           <div className={css.buttonBackWrapper}>
-          <HashLink to="/#products" className={css.buttonBack}>
-            <svg className={css.arrowLink}>
-              <use xlinkHref="../../../../../public/icons/sprite.svg#arrow-link"></use>
-            </svg>
-            Повернутися до покупок
-          </HashLink>
+            <HashLink to="/#products" className={css.buttonBack}>
+              <svg className={css.arrowLink}>
+                <use xlinkHref="../../../../../public/icons/sprite.svg#arrow-link"></use>
+              </svg>
+              Повернутися до покупок
+            </HashLink>
           </div>
           <div className={css.modalSubmitWrapper}>
             <p className={css.totalPrice}>
               {cart.reduce(
                 (total, item) => total + item.pricePerUnit * item.quantity,
                 0
-              )}{" "}
+              )}{' '}
               грн
             </p>
             <button
               className={css.modalSubmitBtn}
               type="button"
-              onClick={() => navigate("/order")}
+              onClick={() => navigate('/order')}
             >
               Оформити замовлення
             </button>

@@ -16,7 +16,7 @@
 }
 
 .descriptionArea {
-  height: 268px;
+  height: 248px;
 }
 
 .productTitle {
@@ -67,4 +67,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.hideScroll {
+    display: none;
 }

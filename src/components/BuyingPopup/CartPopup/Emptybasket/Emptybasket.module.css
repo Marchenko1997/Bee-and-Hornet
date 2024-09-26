@@ -1,15 +1,117 @@
 .closeButton {
-    position: absolute;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    top: 24px;
-    right: 24px;
-    width: 40px;
-    height: 40px;
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+}
+
+.emptyBasket {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 375px;
+  height: fit-content;
+  padding: 32px 0 24px 20px;
+  border-radius: 0;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.emptyBasket.closing {
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.emptyContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.emptyTitle {
+  font-family: Montserrat Alternates, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.5555555556;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #1f1b1a;
+  padding-right: 20px;
+  margin-bottom: 16px;
+}
+
+.emptyText {
+  font-family: var(--primary-font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: #1f1b1a;
+  padding-right: 20px;
+}
+
+.buttonBasket {
+  font-family: var(--primary-font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #1f1b1a;
+  background: #facf5a;
+  border-radius: 12px;
+  padding: 12px 32px;
+  width: 100%;
+  height: 48px;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s linear;
+}
+
+.buttonBasket:hover {
+  background: rgb(235, 180, 28);
+}
+
+.myBasket {
+  font-size: 80px;
+  margin-bottom: 64px;
+  font-family: Montserrat Alternates, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: #1f1b1a;
+}
+
+.borderWrapper {
+  margin-bottom: 20px;
+  padding-right: 20px;
+}
+
+ .emptyCartBorder {
+   height: 1px;
+    width: 335px;
+    background-color: #858585;
   }
-  
+
+   .modalCloseIcon {
+    fill: #1f1b1a;
+    width: 32px;
+    height: 32px;
+   }
+
+@media screen and (min-width: 768px) {
   .emptyBasket {
     position: relative;
     margin-left: auto;
@@ -17,7 +119,7 @@
     width: 375px;
     height: fit-content;
     padding: 32px 0 24px 20px;
-    border-radius: 0;
+    border-radius: 24px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -25,134 +127,71 @@
     transform: scale(1);
     opacity: 1;
   }
-  
-  .emptyBasket.closing {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  
-  .emptyContent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
+
   .emptyTitle {
-    font-family: Montserrat Alternates, sans-serif;
-    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  .emptyText {
     font-size: 18px;
     line-height: 1.5555555556;
-    letter-spacing: .02em;
-    text-align: center;
-    color: #1f1b1a;
-    padding-right: 20px;
-    margin-bottom: 16px;
+    margin-bottom: 32px;
   }
-  
-  .emptyText {
-    font-family: Raleway, sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: .04em;
-    text-align: center;
-    color: #1f1b1a;
-    padding-right: 20px;
-  }
-  
+
   .buttonBasket {
-    font-family: Raleway, sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: .04em;
-    color: #1f1b1a;
-    background: #facf5a;
-    border-radius: 12px;
-    padding: 12px 32px;
-    width: 100%;
-    height: 48px;
-    outline: none;
-    border: none;
+    width: 163px;
+  }
+
+  .borderWrapper {
+    padding-right: 16px;
+    margin-bottom: 24px;
+  }
+
+    .emptyCartBorder {
+    width: 576px;
+  }
+
+  .modalCloseIcon {
+    width: 40px;
+        height: 40px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .borderWrapper {
+    width: 1088px;
+    margin-bottom: 32px;
+  }
+
+  .emptyCartBorder {
+    width: 1088px;
+  }
+
+  .emptyBasket {
+    width: 1216px;
+    padding: 74px 48px 74px 48px;
+  }
+
+  .emptyTitle {
+    font-size: 24px;
+    line-height: 1.3333333333;
+  }
+
+  .emptyText {
+    font-size: 18px;
+    line-height: 1.5555555556;
+  }
+
+  .buttonContainer {
     display: flex;
-    align-items: center;
     justify-content: center;
-    transition: background-color .2s linear;
   }
-  
-  .buttonBasket:hover {
-    background: rgb(235, 180, 28);
+
+  .buttonBasket {
+    font-size: 18px;
+    line-height: 1.5555555556;
+    width: 174px;
+    height: 52px;
   }
-  
-  .myBasket {
-    font-size: 80px;
-    margin-bottom: 64px;
-    font-family: Montserrat Alternates, sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    text-align: left;
-    color: #1f1b1a;
-  }
-  
-  @media screen and (min-width: 768px) {
-    .emptyBasket {
-      position: relative;
-      margin-left: auto;
-      margin-right: auto;
-      width: 375px;
-      height: fit-content;
-      padding: 32px 0 24px 20px;
-      border-radius: 24px;
-      background-color: #fff;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-      transform: scale(1);
-      opacity: 1;
-    }
-  
-    .emptyTitle {
-      font-size: 20px;
-      line-height: 1.4;
-    }
-  
-    .emptyText {
-      font-size: 18px;
-      line-height: 1.5555555556;
-      margin-bottom: 32px;
-    }
-  
-    .buttonBasket {
-      width: 163px;
-    }
-  }
-  
-  @media screen and (min-width: 1440px) {
-    .emptyBasket {
-      width: 1000px;
-      padding: 74px 48px 74px 48px;
-    }
-  
-    .emptyTitle {
-      font-size: 24px;
-      line-height: 1.3333333333;
-    }
-  
-    .emptyText {
-      font-size: 18px;
-      line-height: 1.5555555556;
-    }
-  
-    .buttonContainer {
-      display: flex;
-      justify-content: center;
-    }
-  
-    .buttonBasket {
-      font-size: 18px;
-      line-height: 1.5555555556;
-      width: 174px;
-      height: 52px;
-    }
-  }
-  
+}

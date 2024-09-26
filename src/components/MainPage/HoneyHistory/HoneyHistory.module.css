@@ -1,159 +1,180 @@
-
 .heroSection {
-    background-color: #fff;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    flex: 0 0 auto; /* Фиксированная высота */
-  }
-  
-  .heroContent {
-    padding: 0 112px;
-  }
-  
-  .wrapperInfo {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .heroContent h1 {
-    padding-top: 84px;
-    padding-bottom: 64px;
-    font-size: 106px;
-    line-height: 1.12;
-    letter-spacing: 0.008em;
-    white-space: pre-line;
-    font-family: Montserrat Alternates, sans-serif;
-    font-weight: 600;
-    color: #1f1b1a;
-    width: 100%;
-    margin-top: 84px;
-    text-align: start;
-  }
-  
-  
-  
-  .mainQuotes {
-    font-size: 18px;
-    line-height: 1.56;
-    max-width: 520px;
-    align-self: flex-end;
-    width: 100%;
-    font-family: Raleway, sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    text-align: right;
-  }
-  
-  .mainQuotesSpan {
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 1.56;
-  }
-  
-  
-  
-  .reviewsSection {
-    padding: 20px;
-  }
-  
-  .features {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  
-  
-  
-  .reviewItem {
-    margin: 10px;
-  }
-  
-  
-  
-  
-  .images {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    gap: 32px;
-  }
-  
-  .honeyImageTwo {
-    width: auto;
-    max-width: 100%;
-    object-fit: cover;
-    margin: 0 0 72px 144px;
-  }
-  
-  .honeyImageOne {
-    position: static;
-    visibility: visible;
-    pointer-events: auto;
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    margin: 0 0 0 32px;
-    padding: 44px 0 0;
-    text-indent: 0;
-    white-space: normal;
-    overflow: visible;
-  }
-  
-  .buttonContainer {
-    position: relative;
-    align-self: flex-start;
-    margin-left: 75px;
-  
-    margin-bottom: 400px;
-  }
-  
-  .orderButton {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-  }
-  
-  
-  .iconPolygon {
-    fill: #facf5a;
-    transition: fill 0.3s linear;
-    top: -86px;
-    left: 50px;
-    width: 190px;
-    height: 172px;
-    position: absolute;
-  }
-  
-  .iconPolygon:hover {
-    fill: rgb(235, 180, 28);
-  }
-  
-  .iconPolygonText {
-    position: absolute;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #1f1b1a;
-    top: -12px;
-    left: 88px;
-    font-size: 18px;
-    line-height: 1.56;
-  }
-  
-  .socialLinks {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .icon {
-    width: 32px;
-    height: 32px;
-    fill: #f5a623;
-  }
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.heroContent {
+  padding: 0 112px;
+}
+
+.wrapperInfo {
+  display: flex;
+  flex-direction: column;
+  width: 1187px;
+}
+
+.wrapperInfo::after {
+  position: absolute;
+  bottom: 0px;
+  left: 270px;
+  content: '';
+  width: 312px;
+  height: 1px;
+  background-color: #858585;
+}
+
+.heroContent h1 {
+  padding-top: 84px;
+  padding-bottom: 64px;
+  font-size: 106px;
+  line-height: 1.12;
+  letter-spacing: 0.008em;
+  white-space: pre-line;
+  font-family: Montserrat Alternates, sans-serif;
+  font-weight: 600;
+  color: #1f1b1a;
+  width: 100%;
+  margin-top: 84px;
+  text-align: start;
+}
+
+.mainQuotes {
+  font-size: 18px;
+  line-height: 1.56;
+  max-width: 520px;
+  align-self: flex-end;
+  width: 100%;
+  font-family: Raleway, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: right;
+}
+
+.mainQuotesSpan {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.56;
+}
+
+.reviewsSection {
+  padding: 20px;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+}
+
+.reviewItem {
+  margin: 10px;
+}
+
+.images {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+   min-height: 300px; 
+}
+
+.honeyImageTwo {
+  width: 416px;
+  max-width: 100%;
+  object-fit: cover;
+  margin: 0 0 72px 144px;
+  height: auto;
+}
+
+.honeyImageOne {
+  position: static;
+  visibility: visible;
+  pointer-events: auto;
+  width: 592px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 0 0 32px;
+  padding: 44px 0 0;
+  text-indent: 0;
+  white-space: normal;
+  overflow: visible;
+}
+
+
+.buttonContainer {
+  position: relative;
+  align-self: flex-start;
+  margin-left: 75px;
+
+  margin-bottom: 485px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.orderButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.iconPolygon {
+  fill: #facf5a;
+  transition: fill 0.3s linear;
+  top: -86px;
+  left: 50px;
+  width: 190px;
+  height: 172px;
+  position: absolute;
+}
+
+.iconPolygon:hover {
+  fill: rgb(235, 180, 28);
+}
+
+.iconPolygonText {
+  position: absolute;
+  font-weight: 800;
+  font-family: var(--primary-font-family);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: justify;
+  color: #1f1b1a;
+  top: -12px;
+  left: 88px;
+  font-size: 18px;
+  line-height: 1.56;
+}
+
+.socialLinks {
+  position: absolute;
+  bottom: 68px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.socialLinks::before {
+  content: '';
+  width: 1px;
+  height: 80px;
+  background-color: #858585;
+  margin-left: 14px;
+  margin-bottom: 34px;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  fill: #facf5a;
+}
+
+.icon:hover {
+  fill: rgb(235, 180, 28);
+  transition: fill 0.3s linear;
+}

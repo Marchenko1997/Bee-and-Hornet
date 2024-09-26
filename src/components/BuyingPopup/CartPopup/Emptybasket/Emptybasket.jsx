@@ -10,13 +10,15 @@ const Emptybasket = ({ onClose }) => {
     setIsClosing(true);
     setTimeout(() => {
       onClose();
-    }, 200); 
+    }, 100); 
   };
 
   return (
-    <div className={`${css.emptyBasket} ${isClosing ? css.closing : ""}`}>
+    <div className={`${css.emptyBasket} ${isClosing ? css.closing : ''}`}>
       <button className={css.closeButton} onClick={handleClose}>
-        ×
+        <svg className={css.modalCloseIcon}>
+          <use xlinkHref="/public/icons/sprite.svg#cross-close"></use>
+       </svg>
       </button>
       <h2 className={css.myBasket}>Ваш кошик</h2>
       <div className={css.emptyContent}>
@@ -32,9 +34,12 @@ const Emptybasket = ({ onClose }) => {
         <p className={css.emptyText}>
           Дивись наш каталог та обирай смачний та корисний мед
         </p>
-        <div className={css.buttonContainer}>
-          <button className={css.buttonBasket}>Купити мед</button>
+        <div className={css.borderWrapper}>
+          <div className={css.emptyCartBorder}></div>
         </div>
+      </div>
+      <div className={css.buttonContainer}>
+        <button className={css.buttonBasket} onClick ={handleClose}>Купити мед</button>
       </div>
     </div>
   );

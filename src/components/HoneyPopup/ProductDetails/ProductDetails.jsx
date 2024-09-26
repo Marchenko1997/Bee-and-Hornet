@@ -12,7 +12,7 @@ import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 import 'overlayscrollbars/styles/overlayscrollbars.css';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import {  useState} from 'react';
 import CustomScrollWrapper from '../../OrderForm/shared/СustomScrollWrapper/СustomScrollWrapper';
 
 const ProductDetails = ({ product, onCloseProduct }) => {
@@ -23,6 +23,8 @@ const ProductDetails = ({ product, onCloseProduct }) => {
 
   const [quantity, setQuantityState] = useState(1);
  
+ 
+
 
   const weights = product.description.weights
     .split(', ')
@@ -80,12 +82,11 @@ const ProductDetails = ({ product, onCloseProduct }) => {
 
   return (
     <div className={css.productDetails}>
-      <CustomScrollWrapper >
-        <div
-          className={css.descriptionArea}
+      <CustomScrollWrapper
        
-          
-        >
+      
+      >
+        <div className={css.descriptionArea}>
           {product.title && (
             <h3 className={css.productName}>{product.title}</h3>
           )}
@@ -147,10 +148,13 @@ ProductDetails.propTypes = {
     image: PropTypes.string.isRequired, // Изображение продукта
     category: PropTypes.string.isRequired, // Категория продукта
     description: PropTypes.shape({
-      descr: PropTypes.string, // Описание продукта
+      descr: PropTypes.oneOfType([
+        PropTypes.string, // Может быть строкой
+        PropTypes.arrayOf(PropTypes.string), // Или массивом строк
+      ]).isRequired,
       flavor: PropTypes.string, // Смакові особливості
       advantage: PropTypes.string, // Корисні властивості
-      features: PropTypes.arrayOf(PropTypes.string).isRequired, // Особливості - массив строк
+      features: PropTypes.arrayOf(PropTypes.string), // Особливості - массив строк
       weights: PropTypes.string.isRequired, // Веса и цены продукта
     }).isRequired,
   }).isRequired,

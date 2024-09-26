@@ -26,17 +26,16 @@ const ProductSlider = ({ products, category }) => {
   return (
     <>
       <div className={css.sliderContainer}>
-      {category === 'Мед' && (
-        <button
-          className={css.prevButton}
-          onClick={() => swiperRef.current.swiper.slidePrev()}
-        >
-          <svg width="48" height="48">
-            <use xlinkHref="../../../../../public/icons/sprite.svg#arrow-left" />
-          </svg>
-        </button>
-      )}
-
+        {['Мед', 'Мед з горіхами'].includes(category) && (
+          <button
+            className={css.prevButton}
+            onClick={() => swiperRef.current.swiper.slidePrev()}
+          >
+            <svg width="48" height="48">
+              <use xlinkHref="../../../../../public/icons/sprite.svg#arrow-left" />
+            </svg>
+          </button>
+        )}
         <Swiper
           ref={swiperRef}
           modules={[Navigation, A11y]}
@@ -73,16 +72,16 @@ const ProductSlider = ({ products, category }) => {
             </SwiperSlide>
           ))}
         </Swiper>
-        {category === 'Мед' && (
-        <button
-          className={css.nextButton}
-          onClick={() => swiperRef.current.swiper.slideNext()}
-        >
-          <svg width="48" height="48">
-            <use xlinkHref="../../../../../public/icons/sprite.svg#arrow-right" />
-          </svg>
-        </button>
-      )}
+        {['Мед', 'Мед з горіхами'].includes(category) && (
+          <button
+            className={css.nextButton}
+            onClick={() => swiperRef.current.swiper.slideNext()}
+          >
+            <svg width="48" height="48">
+              <use xlinkHref="../../../../../public/icons/sprite.svg#arrow-right" />
+            </svg>
+          </button>
+        )}
       </div>
       {selectedProduct && (
         <Product product={selectedProduct} onClose={closeProduct} />

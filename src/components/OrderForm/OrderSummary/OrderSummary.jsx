@@ -5,6 +5,7 @@ import css from './OrderSummary.module.css';
 import OrderItem from '../OrderItem/OrderItem';
 import { HashLink } from 'react-router-hash-link';
 
+
 const OrderSummary = ({ cart, onBackToCart, totalPrice }) => {
   return (
     <div className={css.orderSummary}>

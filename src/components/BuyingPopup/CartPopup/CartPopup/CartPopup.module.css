@@ -17,7 +17,7 @@
   background: #fff;
   border-radius: 24px;
   max-width: 1216px;
-  padding: 64px 48px 64px 64px;
+  padding: 64px 48px 64px 48px;
   height: fit-content;
   position: relative;
   margin-left: auto;
@@ -77,8 +77,9 @@
 .honeySection {
   display: flex;
   flex-direction: column;
-  max-height: 500px;
+  max-height: 536px;
   overflow: hidden;
+  width: 1106px;
 }
 
 .honeyList {
@@ -87,21 +88,14 @@
   margin: 0;
 }
 
-.os-theme-dark {
-  --os-size: 12px;
+.listBorder {
+  width: 1088px;
+  margin-bottom: 42px;
+  height: 1px;
+  background-color: #858585;
 }
 
-.os-theme-dark > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle {
-  background-color: #f1c40f; /* Цвет полосы прокрутки */
-  border-radius: 10px;
-}
 
-.os-theme-dark
-  > .os-scrollbar:hover
-  > .os-scrollbar-track
-  > .os-scrollbar-handle {
-  background-color: #e2b607; /* Цвет полосы прокрутки при наведении */
-}
 
 .honeyItem {
   position: relative;
@@ -210,9 +204,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute; /* Абсолютное позиционирование */
-  bottom: 16px; /* Отступ от нижнего края */
-  right: 16px; /* Отступ от правого края */
+  position: absolute; 
+  bottom: 16px; 
+  right: 16px; 
 }
 
 .bucketIcon {
@@ -225,7 +219,6 @@
   display: flex;
   justify-content: space-between;
   padding-right: 16px;
-  margin-top: 42px;
   height: 84px;
   align-items: center;
 }
@@ -275,11 +268,11 @@
 }
 
 .modalSubmitBtn {
-  /* font-size: 18px; */
+  font-size: 18px;
   line-height: 1.5555555556;
   width: 282px;
   height: 52px;
-  font-family: Raleway, sans-serif;
+  font-family: var(--primary-font-family);
   font-weight: 600;
   letter-spacing: 0.04em;
   color: #1f1b1a;
