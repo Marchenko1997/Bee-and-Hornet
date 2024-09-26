@@ -7,6 +7,8 @@ import Header from '../Header/Header';
 import ContactInfo from '../ContactInfo/ContactInfo';
 import DeliveryInfo from '../DeliveryInfo/DeliveryInfo';
 import OrderSummary from '../OrderSummary/OrderSummary';
+import { toast } from 'react-toastify';
+import Toastify from '../shared/Toastify/Toastify';
 
 const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
   const initialValues = {
@@ -24,12 +26,18 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
     lastName: Yup.string().required('Будь ласка, введіть коректне прізвище кирилицею'),
     phone: Yup.string().required('Введіть коректний номер мобільного телефону'),
     city: Yup.string().required('Оберіть населений пункт'),
-    // branch: Yup.string().required('Обрати відділення'),
   });
 
-  const handleSubmit = values => {
-    onSubmitOrder(values);
-  };
+  const handleSubmit = (values, { setSubmitting, setErrors }) => {
+    try {
+      onSubmitOrder(values);
+      toast.success('Замовлення успішно оформлено!');
+    } catch (error) {
+      toast.error('Виникла помилка при оформленні замовлення!');
+      setErrors({ submit: 'Помилка при відправці даних' });
+    }
+    setSubmitting(false);
+  }
 
   const totalPrice = cart.reduce((total, item) => total + item.pricePerUnit * item.quantity, 0);
 
@@ -37,11 +45,14 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
     <div className={css.pageContainer}>
       <Header />
       <div className={css.container}>
-      <h2 className={css.mainTitle}>Оформлення замовлення</h2>
+        <h2 className={css.mainTitle}>Оформлення замовлення</h2>
         <div className={css.content}>
-     
           <div className={css.orderForm}>
-            <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
               {() => (
                 <Form className={css.form}>
                   <ContactInfo />
@@ -58,9 +69,14 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
               )}
             </Formik>
           </div>
-          <OrderSummary cart={cart} onBackToCart={onBackToCart} totalPrice={totalPrice} />
+          <OrderSummary
+            cart={cart}
+            onBackToCart={onBackToCart}
+            totalPrice={totalPrice}
+          />
         </div>
       </div>
+      <Toastify />
     </div>
   );
 };
