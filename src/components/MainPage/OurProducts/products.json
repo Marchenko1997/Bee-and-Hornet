@@ -2,7 +2,7 @@
   {
     "id": "1",
     "category": "Мед",
-    "image": "МедАкацієвий-desktop.jpeg",
+    "image": "https://res.cloudinary.com/doxxxyqxs/image/upload/v1714652492/honey_img/products/natural-acacia-honey.webp",
     "alt": "Мед акацієвий",
     "title": "Мед акацієвий натуральний",
     "weight": "0,25 л - 3 л",
@@ -20,7 +20,7 @@
   {
     "id": "2",
     "category": "Мед",
-    "image": "МедКвітковий-desktop.jpeg",
+    "image": "https://res.cloudinary.com/doxxxyqxs/image/upload/v1714652492/honey_img/products/natural-floral-honey.webp",
     "alt": "Мед квітковий",
     "title": "Мед квітковий натуральний",
     "weight": "0,25 л - 3 л",
@@ -38,7 +38,7 @@
   {
     "id": "3",
     "category": "Мед",
-    "image": "МедРіпаковий-desktop.jpeg",
+    "image": "https://res.cloudinary.com/doxxxyqxs/image/upload/v1714652492/honey_img/products/natural-rapeseed-honey.webp",
     "alt": "Мед ріпаковий",
     "title": "Мед ріпаковий натуральний",
     "weight": "0,25 л - 3 л",
@@ -56,7 +56,7 @@
   {
     "id": "4",
     "category": "Мед",
-    "image": "МедСоняшниковий-desktop.jpeg",
+    "image": "https://res.cloudinary.com/doxxxyqxs/image/upload/v1714652492/honey_img/products/natural-sunflower-honey.webp",
     "alt": "Мед соняшниковий",
     "title": "Мед соняшниковий натуральний",
     "weight": "0,25 л - 3 л",
@@ -74,7 +74,7 @@
   {
     "id": "5",
     "category": "Мед з горіхами",
-    "image": "ВолозськиГоріхи-desktop.jpeg",
+    "image": "https://res.cloudinary.com/doxxxyqxs/image/upload/v1714652492/honey_img/products/honey-with-walnuts.webp",
     "alt": "Мед з волоськими горіхами",
     "title": "Мед з волоськими горіхами",
     "weight": "250 мл",
@@ -89,7 +89,7 @@
   {
     "id": "6",
     "category": "Мед з горіхами",
-    "image": "ЗМигдалем-desktop.jpeg",
+    "image": "https://res.cloudinary.com/doxxxyqxs/image/upload/v1714652492/honey_img/products/honey-with-almonds.webp",
     "alt": "Мед з мигдалем",
     "title": "Мед з мигдалем",
     "weight": "250 мл",
@@ -104,7 +104,7 @@
   {
     "id": "7",
     "category": "Мед з горіхами",
-    "image": "ЗЛіщиною-desktop.jpeg",
+    "image": "https://res.cloudinary.com/doxxxyqxs/image/upload/v1714652492/honey_img/products/honey-with-hazelnuts.webp",
     "alt": "Мед з ліщиною",
     "title": "Мед з ліщиною",
     "weight": "250 мл",
@@ -119,7 +119,7 @@
   {
     "id": "8",
     "category": "Мед з горіхами",
-    "image": "ЗКешю-desktop.jpeg",
+    "image": "https://res.cloudinary.com/doxxxyqxs/image/upload/v1714652492/honey_img/products/cashew-honey.webp",
     "alt": "Мед з кешью",
     "title": "Мед з кешью",
     "weight": "250 мл",
@@ -134,7 +134,7 @@
   {
     "id": "9",
     "category": "Стільники",
-    "image": "Стільник-desktop.jpeg",
+    "image": "https://res.cloudinary.com/doxxxyqxs/image/upload/v1714652492/honey_img/products/honeycombs.webp",
     "alt": "Стільники з акацієвим медом",
     "title": "Стільники з акацієвим медом",
     "weight": "100 г",
@@ -151,7 +151,7 @@
   {
     "id": "10",
     "category": "Пилок",
-    "image": "Пилок-desktop.jpeg",
+    "image": "https://res.cloudinary.com/doxxxyqxs/image/upload/v1714652492/honey_img/products/pollen.webp",
     "alt": "Квітковий пилок",
     "title": "Квітковий пилок",
     "weight": "100 г",

@@ -1,5 +1,7 @@
-import css from "./QuantitySelector.module.css";
+// src/components/QuantitySelector/QuantitySelector.jsx
+import css from './QuantitySelector.module.css';
 import PropTypes from 'prop-types';
+
 const QuantitySelector = ({ quantity, onQuantityChange }) => {
   const handleDecrease = () => {
     if (quantity > 0) {
@@ -16,7 +18,7 @@ const QuantitySelector = ({ quantity, onQuantityChange }) => {
   return (
     <div className={css.productQuantity}>
       <span className={css.quantity}>Кількість</span>
-      <div className={css.quantityWrapper}> {/* Добавлена обертка вокруг элементов управления для последовательного стиля */}
+      <div className={css.quantityWrapper}>
         <div className={css.quantityControls}>
           <button
             className={css.quantityDecrease}
@@ -41,7 +43,7 @@ const QuantitySelector = ({ quantity, onQuantityChange }) => {
 
 QuantitySelector.propTypes = {
   quantity: PropTypes.number.isRequired,
-  onQuantityChange: PropTypes.func.isRequired
+  onQuantityChange: PropTypes.func.isRequired,
 };
 
 export default QuantitySelector;

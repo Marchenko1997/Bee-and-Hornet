@@ -13,7 +13,6 @@ import CustomScrollWrapper from '../../../OrderForm/shared/СustomScrollWrapper/
 const CartPopup = ({ onClose }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
   const [isClosing, setIsClosing] = useState(false);
 
@@ -52,7 +51,7 @@ const CartPopup = ({ onClose }) => {
       document.body.style.overflow = 'auto';
       document.removeEventListener('keydown', handleEsc);
     };
-  });
+  }, []); // Добавлено [] для предотвращения повторного срабатывания
 
   if (cart.length === 0) {
     return (
@@ -64,6 +63,17 @@ const CartPopup = ({ onClose }) => {
       </div>
     );
   }
+
+  // Логируем состояние корзины перед расчетом
+  console.log('Current Cart:', cart);
+
+  const totalPrice = cart.reduce((total, item) => {
+    const itemTotal = item.pricePerUnit * item.quantity; // Рассчитываем общую цену для каждого товара
+    console.log(
+      `Item Price: ${item.pricePerUnit}, Quantity: ${item.quantity}, Item Total: ${itemTotal}`
+    ); // Логируем каждую итерацию
+    return total + (isNaN(itemTotal) ? 0 : itemTotal); // Если itemTotal не число, добавляем 0
+  }, 0);
 
   return (
     <div
@@ -120,13 +130,7 @@ const CartPopup = ({ onClose }) => {
             </HashLink>
           </div>
           <div className={css.modalSubmitWrapper}>
-            <p className={css.totalPrice}>
-              {cart.reduce(
-                (total, item) => total + item.pricePerUnit * item.quantity,
-                0
-              )}{' '}
-              грн
-            </p>
+            <p className={css.totalPrice}>{totalPrice} грн</p>
             <button
               className={css.modalSubmitBtn}
               type="button"

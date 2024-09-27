@@ -1,4 +1,4 @@
-// productsData.js
+
 export const productsData = [
     {
         "id": "1",

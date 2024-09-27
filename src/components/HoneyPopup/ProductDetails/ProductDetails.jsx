@@ -1,133 +1,114 @@
 import css from './ProductDetails.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  setWeight,
-  setQuantity,
-  addToCart,
-  updateCart,
-} from '../../../redux/actions';
+import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { setWeight, setQuantity, addToCart } from '../../../redux/actions';
 import WeightOptions from '../WeightOptions/WeightOptions';
 import QuantitySelector from '../QuantitySelector/QuantitySelector';
 import AddToCartButton from '../AddToCartButton/AddToCartButton';
-
-import 'overlayscrollbars/styles/overlayscrollbars.css';
-import PropTypes from 'prop-types';
-import {  useState} from 'react';
 import CustomScrollWrapper from '../../OrderForm/shared/СustomScrollWrapper/СustomScrollWrapper';
+import PropTypes from 'prop-types';
 
-const ProductDetails = ({ product, onCloseProduct }) => {
+const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
   const dispatch = useDispatch();
-  const cart = useSelector((state) =>
-    Array.isArray(state.cart) ? state.cart : []
-  );
-
   const [quantity, setQuantityState] = useState(1);
- 
- 
+  const [selectedWeight, setSelectedWeight] = useState('');
+  const [totalPrice, setTotalPrice] = useState(0); // Хранение общей цены
 
+  useEffect(() => {
+    if (product && honeyData.length > 0) {
+      const currentProduct = honeyData.find((item) => item.id === product.id);
+      if (currentProduct) {
+        const weights = currentProduct.description.weights
+          .split(', ')
+          .reduce((acc, weight) => {
+            const [amount, price] = weight.split(' - ');
+            acc[amount] = parseInt(price.replace(' грн', ''), 10);
+            return acc;
+          }, {});
+        setSelectedWeight(Object.keys(weights)[0] || '');
+        setTotalPrice(weights[Object.keys(weights)[0]] * quantity); // Устанавливаем общую цену
+      }
+    }
+  }, [product, honeyData, quantity]); // Добавлено quantity в зависимости
 
-  const weights = product.description.weights
-    .split(', ')
-    .reduce((acc, weight) => {
-      const [amount, price] = weight.split(' - ');
-      acc[amount] = parseInt(price.replace(' грн', ''), 10);
-      return acc;
-    }, {});
+  if (!product || honeyData.length === 0) {
+    return <p>Загрузка данных...</p>;
+  }
 
-  const [selectedWeight, setSelectedWeight] = useState(Object.keys(weights)[0]);
+  const currentProduct = honeyData.find((item) => item.id === product.id);
 
-  
+  if (!currentProduct) {
+    return <p>Товар не найден</p>;
+  }
 
   const handleWeightChange = (weight) => {
     setSelectedWeight(weight);
     dispatch(setWeight(weight));
+    const price = currentProduct.description.weights
+      .split(', ')
+      .reduce((acc, w) => {
+        const [amount, price] = w.split(' - ');
+        acc[amount] = parseInt(price.replace(' грн', ''), 10);
+        return acc;
+      }, {})[weight];
+
+    setTotalPrice(price * quantity); // Обновляем общую цену при изменении веса
   };
 
   const handleQuantityChange = (quantity) => {
     setQuantityState(quantity);
     dispatch(setQuantity(quantity));
+    // Обновляем общую цену при изменении количества
+    const price = currentProduct.description.weights
+      .split(', ')
+      .reduce((acc, w) => {
+        const [amount, price] = w.split(' - ');
+        acc[amount] = parseInt(price.replace(' грн', ''), 10);
+        return acc;
+      }, {})[selectedWeight];
+
+    setTotalPrice(price * quantity);
   };
 
-  const handleAddToCart = () => {
-    const existingItem = cart.find(
-      (item) => item.weight === selectedWeight && item.title === product.title
-    );
+ const handleAddToCart = () => {
+   const item = {
+     title: currentProduct.title,
+     image: currentProduct.image,
+     weight: selectedWeight,
+     quantity,
+     pricePerUnit: currentProduct.description.weights
+       .split(', ')
+       .reduce((acc, weight) => {
+         const [amount, price] = weight.split(' - ');
+         acc[amount] = parseInt(price.replace(' грн', ''), 10);
+         return acc;
+       }, {})[selectedWeight], 
+   };
 
-    if (existingItem) {
-      const updatedCart = cart.map((item) =>
-        item.weight === selectedWeight && item.title === product.title
-          ? { ...item, quantity: item.quantity + quantity }
-          : item
-      );
-      dispatch(updateCart(updatedCart));
-    } else {
-      if (cart.length >= 5) {
-        return;
-      }
-      const item = {
-        title: product.title,
-        image: product.image,
-        weight: selectedWeight,
-        quantity: quantity,
-        pricePerUnit: weights[selectedWeight],
-      };
-      console.log('Adding to cart item:', item);
-      dispatch(addToCart(item));
-    }
-  };
-
-  const disabledWeights = cart.map((item) => item.weight);
-
-  const totalPrice = weights[selectedWeight] * quantity;
+   dispatch(addToCart(item));
+ };
 
   return (
     <div className={css.productDetails}>
-      <CustomScrollWrapper
-       
-      
-      >
+      <CustomScrollWrapper>
         <div className={css.descriptionArea}>
-          {product.title && (
-            <h3 className={css.productName}>{product.title}</h3>
-          )}
-
-          {product.description && product.description.descr && (
-            <p className={css.productText}>{product.description.descr}</p>
-          )}
-
-          {product.description && product.description.flavor && (
-            <p className={css.productText}>
-              <span className={css.prodDescriptionHeader}>
-                Смакові особливості :
-              </span>{' '}
-              {product.description.flavor}
-            </p>
-          )}
-
-          {product.description && product.description.advantage && (
-            <p className={css.productText}>
-              <span className={css.prodDescriptionHeader}>
-                Корисні властивості :
-              </span>{' '}
-              {product.description.advantage}
-            </p>
-          )}
-
-          {product.description &&
-            product.description.features &&
-            product.description.features.length > 0 && (
-              <p className={css.productText}>
-                <span className={css.prodDescriptionHeader}>Особливості :</span>{' '}
-                {product.description.features.join(', ')}
-              </p>
-            )}
+          <h3 className={css.productName}>{currentProduct.title}</h3>
+          <p className={css.productText}>{currentProduct.description.descr}</p>
+          <p className={css.productText}>
+            Смакові особливості: {currentProduct.description.flavor}
+          </p>
+          <p className={css.productText}>
+            Корисні властивості: {currentProduct.description.advantage}
+          </p>
+          <p className={css.productText}>
+            Особливості: {currentProduct.description.features?.join(', ')}
+          </p>
         </div>
       </CustomScrollWrapper>
       <WeightOptions
         selectedWeight={selectedWeight}
         onWeightChange={handleWeightChange}
-        disabledWeights={disabledWeights}
-        category={product.category}
+        category={currentProduct.category}
       />
       <QuantitySelector
         quantity={quantity}
@@ -144,21 +125,20 @@ const ProductDetails = ({ product, onCloseProduct }) => {
 
 ProductDetails.propTypes = {
   product: PropTypes.shape({
-    title: PropTypes.string.isRequired, // Название продукта
-    image: PropTypes.string.isRequired, // Изображение продукта
-    category: PropTypes.string.isRequired, // Категория продукта
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
     description: PropTypes.shape({
-      descr: PropTypes.oneOfType([
-        PropTypes.string, // Может быть строкой
-        PropTypes.arrayOf(PropTypes.string), // Или массивом строк
-      ]).isRequired,
-      flavor: PropTypes.string, // Смакові особливості
-      advantage: PropTypes.string, // Корисні властивості
-      features: PropTypes.arrayOf(PropTypes.string), // Особливості - массив строк
-      weights: PropTypes.string.isRequired, // Веса и цены продукта
+      descr: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+      flavor: PropTypes.string,
+      advantage: PropTypes.string,
+      features: PropTypes.arrayOf(PropTypes.string),
+      weights: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  onCloseProduct: PropTypes.func.isRequired, // Функция для закрытия продукта
+  onCloseProduct: PropTypes.func.isRequired,
+  honeyData: PropTypes.array.isRequired,
 };
 
 export default ProductDetails;

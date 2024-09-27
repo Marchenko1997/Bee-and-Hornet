@@ -1,14 +1,15 @@
-import css from "./AddToCartButton.module.css";
-import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
+// src/components/AddToCartButton/AddToCartButton.jsx
+import css from './AddToCartButton.module.css';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const AddToCartButton = ({ onAddToCart, totalPrice, onCloseProduct }) => {
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart); // Корзина из Redux
   const navigate = useNavigate();
 
   const handleCartClick = () => {
-    onCloseProduct();
+    onCloseProduct(); // Закрываем продукт, при этом переходим в корзину
     navigate('/?popup=cart');
   };
 

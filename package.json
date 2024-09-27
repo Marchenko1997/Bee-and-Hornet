@@ -11,10 +11,11 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
-    "axios": "^1.7.3",
+    "axios": "^1.7.7",
     "clsx": "^2.1.1",
     "clx": "^1.0.0",
     "dotenv": "^16.4.5",
+    "firebase": "^10.13.2",
     "formik": "^2.4.6",
     "modern-normalize": "^3.0.1",
     "overlayscrollbars": "^2.9.1",

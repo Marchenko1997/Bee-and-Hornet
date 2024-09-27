@@ -1,26 +1,25 @@
-import PropTypes from "prop-types";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, A11y } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import css from "./ProductSlider.module.css";
-import { useState } from "react";
-import Product from "../../../HoneyPopup/Product/Product";
-import ProductTitle from "../../../../shared/ProductTitle/ProductTitle";
-import { useRef } from "react";
+import PropTypes from 'prop-types';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, A11y } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import css from './ProductSlider.module.css';
+import { useState } from 'react';
+import Product from '../../../HoneyPopup/Product/Product';
+import ProductTitle from '../../../../shared/ProductTitle/ProductTitle';
+import { useRef } from 'react';
 
-const ProductSlider = ({ products, category }) => {
+const ProductSlider = ({ products, category, honeyData, onProductClick }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const swiperRef = useRef(null);
 
   const openProduct = (product) => {
-    setSelectedProduct(product);
-    document.body.style.overflow = "hidden";
+    onProductClick(product); // Передаем только продукт
   };
 
   const closeProduct = () => {
     setSelectedProduct(null);
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = 'auto';
   };
 
   return (
@@ -84,7 +83,11 @@ const ProductSlider = ({ products, category }) => {
         )}
       </div>
       {selectedProduct && (
-        <Product product={selectedProduct} onClose={closeProduct} />
+        <Product
+          product={selectedProduct}
+          onClose={closeProduct}
+          honeyData={honeyData}
+        />
       )}
     </>
   );
@@ -102,6 +105,8 @@ ProductSlider.propTypes = {
     })
   ).isRequired,
   category: PropTypes.string.isRequired,
+  honeyData: PropTypes.array.isRequired, // Добавлено для валидации
+  onProductClick: PropTypes.func.isRequired, // Добавлено для валидации
 };
 
 export default ProductSlider;

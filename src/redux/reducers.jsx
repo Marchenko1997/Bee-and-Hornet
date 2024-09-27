@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // Для использования localStorage
+import honeyReducer from './honey/slice';
+import storage from "redux-persist/lib/storage"; 
 
 import {
   ADD_TO_CART,
@@ -70,6 +71,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   product: productReducer,
   cart: cartReducer,
+  honey: honeyReducer,
 });
 
 // Оборачиваем rootReducer в persistReducer
