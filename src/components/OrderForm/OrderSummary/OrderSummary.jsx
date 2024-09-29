@@ -5,8 +5,7 @@ import OrderItem from '../OrderItem/OrderItem';
 import { HashLink } from 'react-router-hash-link';
 
 const OrderSummary = ({ cart, onBackToCart, totalPrice }) => {
-  // Логируем текущую корзину
-  console.log('Current Cart in OrderSummary:', cart);
+ 
 
   return (
     <div className={css.orderSummary}>

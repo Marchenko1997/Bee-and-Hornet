@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import 'overlayscrollbars/overlayscrollbars.css';
@@ -9,8 +10,12 @@ import DeliveryInfo from '../DeliveryInfo/DeliveryInfo';
 import OrderSummary from '../OrderSummary/OrderSummary';
 import { toast } from 'react-toastify';
 import Toastify from '../shared/Toastify/Toastify';
+import ThanksForOrder from '../../ThanksForOrder/ThanksForOrder';
+import { sendMessageTg } from '../../../services/tgApi';
 
 const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const initialValues = {
     firstName: '',
     lastName: '',
@@ -22,24 +27,53 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
   };
 
   const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required('Будь ласка, введіть коректне ім’я кирилицею'),
-    lastName: Yup.string().required('Будь ласка, введіть коректне прізвище кирилицею'),
+    firstName: Yup.string().required(
+      'Будь ласка, введіть коректне ім’я кирилицею'
+    ),
+    lastName: Yup.string().required(
+      'Будь ласка, введіть коректне прізвище кирилицею'
+    ),
     phone: Yup.string().required('Введіть коректний номер мобільного телефону'),
-    city: Yup.string().required('Оберіть населений пункт'),
+    city: Yup.string(),
   });
 
-  const handleSubmit = (values, { setSubmitting, setErrors }) => {
+  const totalPrice = cart.reduce(
+    (total, item) => total + item.pricePerUnit * item.quantity,
+    0
+  );
+
+  const handleSubmit = async (
+    values,
+    { setSubmitting, setErrors, resetForm }
+  ) => {
+    const orderDetails = {
+      products: cart.map((item) => ({
+        title: item.title,
+        quantity: item.quantity,
+        price: item.pricePerUnit,
+      })),
+      totalPrice,
+      ...values,
+    };
+
     try {
-      onSubmitOrder(values);
+      const result = await sendMessageTg(orderDetails);
       toast.success('Замовлення успішно оформлено!');
+      onSubmitOrder(values);
+      resetForm();
+      setIsModalOpen(true);
+      return result;
     } catch (error) {
       toast.error('Виникла помилка при оформленні замовлення!');
       setErrors({ submit: 'Помилка при відправці даних' });
     }
-    setSubmitting(false);
-  }
 
-  const totalPrice = cart.reduce((total, item) => total + item.pricePerUnit * item.quantity, 0);
+    setSubmitting(false);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className={css.pageContainer}>
@@ -51,7 +85,9 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
-              onSubmit={handleSubmit}
+              onSubmit={(values, formikBag) => {
+                handleSubmit(values, formikBag);
+              }}
             >
               {() => (
                 <Form className={css.form}>
@@ -77,6 +113,7 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
         </div>
       </div>
       <Toastify />
+      {isModalOpen && <ThanksForOrder handleClose={closeModal} />}
     </div>
   );
 };

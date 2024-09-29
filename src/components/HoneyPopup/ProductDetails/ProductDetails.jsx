@@ -11,25 +11,39 @@ import PropTypes from 'prop-types';
 const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantityState] = useState(1);
-  const [selectedWeight, setSelectedWeight] = useState('');
-  const [totalPrice, setTotalPrice] = useState(0); // Хранение общей цены
+  const [selectedWeight, setSelectedWeight] = useState(''); // Изменим начальное значение на пустое
+  const [totalPrice, setTotalPrice] = useState(0);
 
+  // Функция для получения цены по весу
+  const getPriceByWeight = (weightsStr, weight) => {
+    const weights = weightsStr.split(', ').reduce((acc, weight) => {
+      const [amount, price] = weight.split(' - ');
+      acc[amount] = parseInt(price.replace(' грн', ''), 10);
+      return acc;
+    }, {});
+    return weights[weight] || 0; // Возвращаем цену для выбранного веса
+  };
+
+  // Инициализация состояния (вес и цена) при первой загрузке компонента
   useEffect(() => {
     if (product && honeyData.length > 0) {
       const currentProduct = honeyData.find((item) => item.id === product.id);
       if (currentProduct) {
-        const weights = currentProduct.description.weights
-          .split(', ')
-          .reduce((acc, weight) => {
-            const [amount, price] = weight.split(' - ');
-            acc[amount] = parseInt(price.replace(' грн', ''), 10);
-            return acc;
-          }, {});
-        setSelectedWeight(Object.keys(weights)[0] || '');
-        setTotalPrice(weights[Object.keys(weights)[0]] * quantity); // Устанавливаем общую цену
+        // Устанавливаем начальный вес только при первой загрузке
+        if (!selectedWeight) {
+          const initialWeight = currentProduct.description.weights
+            .split(', ')[0]
+            .split(' - ')[0];
+          setSelectedWeight(initialWeight);
+          const initialPrice = getPriceByWeight(
+            currentProduct.description.weights,
+            initialWeight
+          );
+          setTotalPrice(initialPrice * quantity);
+        }
       }
     }
-  }, [product, honeyData, quantity]); // Добавлено quantity в зависимости
+  }, [product, honeyData, selectedWeight, quantity]); // Добавляем зависимость от selectedWeight
 
   if (!product || honeyData.length === 0) {
     return <p>Загрузка данных...</p>;
@@ -41,52 +55,40 @@ const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
     return <p>Товар не найден</p>;
   }
 
+  // Обновление цены при изменении веса
   const handleWeightChange = (weight) => {
     setSelectedWeight(weight);
-    dispatch(setWeight(weight));
-    const price = currentProduct.description.weights
-      .split(', ')
-      .reduce((acc, w) => {
-        const [amount, price] = w.split(' - ');
-        acc[amount] = parseInt(price.replace(' грн', ''), 10);
-        return acc;
-      }, {})[weight];
-
-    setTotalPrice(price * quantity); // Обновляем общую цену при изменении веса
+    dispatch(setWeight(weight)); // Диспатчим вес для Redux
+    const price = getPriceByWeight(currentProduct.description.weights, weight);
+    setTotalPrice(price * quantity); // Обновляем общую цену
   };
 
-  const handleQuantityChange = (quantity) => {
-    setQuantityState(quantity);
-    dispatch(setQuantity(quantity));
-    // Обновляем общую цену при изменении количества
-    const price = currentProduct.description.weights
-      .split(', ')
-      .reduce((acc, w) => {
-        const [amount, price] = w.split(' - ');
-        acc[amount] = parseInt(price.replace(' грн', ''), 10);
-        return acc;
-      }, {})[selectedWeight];
-
-    setTotalPrice(price * quantity);
+  // Обновление цены при изменении количества
+  const handleQuantityChange = (newQuantity) => {
+    setQuantityState(newQuantity);
+    dispatch(setQuantity(newQuantity)); // Диспатчим количество для Redux
+    const price = getPriceByWeight(
+      currentProduct.description.weights,
+      selectedWeight
+    ); // Используем текущий вес
+    setTotalPrice(price * newQuantity); // Обновляем общую цену
   };
 
- const handleAddToCart = () => {
-   const item = {
-     title: currentProduct.title,
-     image: currentProduct.image,
-     weight: selectedWeight,
-     quantity,
-     pricePerUnit: currentProduct.description.weights
-       .split(', ')
-       .reduce((acc, weight) => {
-         const [amount, price] = weight.split(' - ');
-         acc[amount] = parseInt(price.replace(' грн', ''), 10);
-         return acc;
-       }, {})[selectedWeight], 
-   };
+  // Добавление товара в корзину
+  const handleAddToCart = () => {
+    const item = {
+      title: currentProduct.title,
+      image: currentProduct.image,
+      weight: selectedWeight,
+      quantity,
+      pricePerUnit: getPriceByWeight(
+        currentProduct.description.weights,
+        selectedWeight
+      ),
+    };
 
-   dispatch(addToCart(item));
- };
+    dispatch(addToCart(item)); // Добавляем товар в корзину
+  };
 
   return (
     <div className={css.productDetails}>
@@ -106,18 +108,18 @@ const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
         </div>
       </CustomScrollWrapper>
       <WeightOptions
-        selectedWeight={selectedWeight}
-        onWeightChange={handleWeightChange}
+        selectedWeight={selectedWeight} // Передаем выбранный вес
+        onWeightChange={handleWeightChange} // Обработчик изменения веса
         category={currentProduct.category}
       />
       <QuantitySelector
-        quantity={quantity}
-        onQuantityChange={handleQuantityChange}
+        quantity={quantity} // Передаем текущее количество
+        onQuantityChange={handleQuantityChange} // Обработчик изменения количества
       />
       <AddToCartButton
-        onAddToCart={handleAddToCart}
-        totalPrice={totalPrice}
-        onCloseProduct={onCloseProduct}
+        onAddToCart={handleAddToCart} // Обработчик добавления в корзину
+        totalPrice={totalPrice} // Передаем рассчитанную общую цену
+        onCloseProduct={onCloseProduct} // Обработчик закрытия попапа
       />
     </div>
   );

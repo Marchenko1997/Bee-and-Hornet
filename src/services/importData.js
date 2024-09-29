@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore'; // Используем только getDocs для получения данных
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA5nhg9P4K1dFCKHs_y2U8Ooyx7DxLi3kE',
-  authDomain: 'bee-and-hornet-c35e0.firebaseapp.com',
-  projectId: 'bee-and-hornet-c35e0',
-  storageBucket: 'bee-and-hornet-c35e0.appspot.com',
-  messagingSenderId: '698549756883',
-  appId: '1:698549756883:web:8e830d8649b67ab2f58526',
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 // Инициализация Firebase
