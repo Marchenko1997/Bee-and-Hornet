@@ -7,7 +7,7 @@ const instance = axios.create({
 });
 
 export const sendMessageTg = async (message) => {
-      console.log(VITE_TG_BOT_TOKEN, VITE_TG_CHANEL_ID);
+      
   const { data } = await instance.post('/sendMessage', {
     chat_id: VITE_TG_CHANEL_ID,
     parse_mode: 'html',

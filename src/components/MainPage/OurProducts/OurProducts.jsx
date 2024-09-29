@@ -13,8 +13,6 @@ const OurProducts = () => {
 
   const dispatch = useDispatch();
   const honeyData = useSelector((state) => state.honey.honey);
-  const isLoading = useSelector((state) => state.honey.isLoading);
-  const error = useSelector((state) => state.honey.error);
 
   useEffect(() => {
     dispatch(fetchHoney());
@@ -31,14 +29,6 @@ const OurProducts = () => {
     setSelectedProduct(null);
     document.body.style.overflow = 'auto';
   };
-
-  if (isLoading) {
-    return <p>Загрузка...</p>;
-  }
-
-  if (error) {
-    return <p>Ошибка загрузки данных: {error}</p>;
-  }
 
   return (
     <div>
@@ -70,7 +60,7 @@ const OurProducts = () => {
         <Product
           product={selectedProduct}
           onClose={handleCloseProduct}
-          honeyData={honeyData} // Передаем honeyData
+          honeyData={honeyData}
         />
       )}
     </div>

@@ -25,7 +25,7 @@ export const getAllHoney = async () => {
       honeyData.push({ id: doc.id, ...doc.data() });
     });
 
-    console.log('Honey Data:', honeyData); // Логируем данные перед возвратом
+     
     return honeyData;
   } catch (error) {
     console.error('Ошибка при получении данных:', error);

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import css from './ProductTitle.module.css';
 
 const ProductTitle = ({ title }) => {
-  // Проверяем, содержит ли заголовок слово "натуральний"
+  
   const index = title.indexOf('натуральний');
   const mainTitle = title.substring(0, index);
   const secondTitle = title.substring(index);

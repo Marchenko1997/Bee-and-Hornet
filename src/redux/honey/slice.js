@@ -20,13 +20,11 @@ const honeySlice = createSlice({
       })
       .addCase(fetchHoney.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.honey = action.payload; // Здесь сохраняем данные
-        console.log('Honey data saved in Redux:', action.payload); // Логируем сохраненные данные
+        state.honey = action.payload;
       })
       .addCase(fetchHoney.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-        console.error('Error loading honey data:', action.payload); // Логируем ошибку
       });
   },
 });

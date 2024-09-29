@@ -16,6 +16,7 @@
     "clx": "^1.0.0",
     "dotenv": "^16.4.5",
     "firebase": "^10.13.2",
+    "firebase-admin": "^12.5.0",
     "formik": "^2.4.6",
     "modern-normalize": "^3.0.1",
     "overlayscrollbars": "^2.9.1",

@@ -2,6 +2,7 @@ import ProductDetails from '../ProductDetails/ProductDetails';
 import css from './Product.module.css';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import {icons } from '../../../../public/icons/index';
 
 const Product = ({ product, onClose, honeyData }) => {
   const [isClosing, setIsClosing] = useState(false);
@@ -32,7 +33,7 @@ const Product = ({ product, onClose, honeyData }) => {
     }
   };
 
-  if (!product) return null; // Проверка на наличие продукта
+  if (!product) return null;
 
   return (
     <div
@@ -42,7 +43,7 @@ const Product = ({ product, onClose, honeyData }) => {
       <div className={css.productContainer}>
         <button className={css.closeButton} onClick={closePopup}>
           <svg className={css.modalCloseButtonIcon}>
-            <use xlinkHref="../../../../public/icons/sprite.svg#cross-close" />
+            <use xlinkHref={`${icons}#cross-close`} />
           </svg>
         </button>
         <div className={css.productImage}>
@@ -51,7 +52,7 @@ const Product = ({ product, onClose, honeyData }) => {
         <ProductDetails
           product={product}
           onCloseProduct={closePopup}
-          honeyData={honeyData} // Передаем honeyData сюда
+          honeyData={honeyData} 
         />
       </div>
     </div>
@@ -68,7 +69,7 @@ Product.propTypes = {
     description: PropTypes.object.isRequired,
   }),
   onClose: PropTypes.func.isRequired,
-  honeyData: PropTypes.array.isRequired, // Добавлено для проверки
+  honeyData: PropTypes.array.isRequired, 
 };
 
 export default Product;

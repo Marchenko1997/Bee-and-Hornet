@@ -1,5 +1,3 @@
-// QuantityOfItem.js
-
 import PropTypes from 'prop-types';
 import css from './QuantityOfItem.module.css';
 import { useDispatch } from 'react-redux';
@@ -13,20 +11,22 @@ const QuantityOfItem = ({ index, cart, setCart }) => {
     const newCart = cart.map((item, i) =>
       i === index ? { ...item, quantity: item.quantity + 1 } : item
     );
-    dispatch(updateCart(newCart)); // Обновление корзины в Redux
-    setCart(newCart); // Обновление локального состояния
+    dispatch(updateCart(newCart));
+    setCart(newCart);
   };
 
   const handleDecreaseQuantity = () => {
     const newCart = cart.map((item, i) =>
-      i === index && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
+      i === index && item.quantity > 1
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
     );
-    dispatch(updateCart(newCart)); // Обновление корзины в Redux
-    setCart(newCart); // Обновление локального состояния
+    dispatch(updateCart(newCart));
+    setCart(newCart);
   };
 
   if (!item) {
-    return null; // Обработка, если item не определен
+    return null;
   }
 
   return (

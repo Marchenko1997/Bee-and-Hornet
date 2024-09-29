@@ -10,6 +10,7 @@ import AboutUs from '../../components/AboutUs/AboutUs';
 import Feedback from '../../components/Feedbacks/Feedback/Feedback';
 import Footer from '../../components/Footer/Footer';
 import HoneyHistory from '../../components/MainPage/HoneyHistory/HoneyHistory';
+import Toastify from '../../components/OrderForm/shared/Toastify/Toastify';
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -44,6 +45,8 @@ const MainPage = () => {
       </div>
 
       <Footer />
+
+      <Toastify />
     </>
   );
 };

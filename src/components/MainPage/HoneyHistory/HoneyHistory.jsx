@@ -1,6 +1,7 @@
 import css from "./HoneyHistory.module.css";
 import honeyImage1 from "../images/honey-desktop.jpeg"
 import honeyImage2 from "../images/honeycomb-desktop.jpeg";
+import { icons } from "../../../../public/icons/index";
 
 const HoneyHistory = () => {
   return (
@@ -45,7 +46,7 @@ const HoneyHistory = () => {
               <div className={css.buttonContainer}>
                 <a href="/#products" className={css.orderButton}>
                   <svg className={css.iconPolygon}>
-                    <use xlinkHref="../../../public/icons/sprite.svg#polygon"></use>
+                    <use xlinkHref={`${icons}#polygon`}></use>
                   </svg>
                   <span className={css.iconPolygonText}>Замовити</span>
                 </a>
@@ -54,12 +55,12 @@ const HoneyHistory = () => {
 
             <div className={css.socialLinks}>
               <a
-                href="https://t.me/bdzhola_ta_shershen"
+                href="https://t.me/Gmail_samel"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <svg className={css.icon}>
-                  <use xlinkHref="/icons/sprite.svg#telegram"></use>
+                  <use xlinkHref={`${icons}#telegram`}></use>
                 </svg>
               </a>
               <a
@@ -68,7 +69,7 @@ const HoneyHistory = () => {
                 rel="noopener noreferrer"
               >
                 <svg className={css.icon}>
-                  <use xlinkHref="/icons/sprite.svg#instagram"></use>
+                  <use xlinkHref={`${icons}#instagram`}></use>
                 </svg>
               </a>
             </div>

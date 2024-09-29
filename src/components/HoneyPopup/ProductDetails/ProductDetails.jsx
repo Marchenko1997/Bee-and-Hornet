@@ -11,25 +11,25 @@ import PropTypes from 'prop-types';
 const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantityState] = useState(1);
-  const [selectedWeight, setSelectedWeight] = useState(''); // Изменим начальное значение на пустое
+  const [selectedWeight, setSelectedWeight] = useState(''); 
   const [totalPrice, setTotalPrice] = useState(0);
 
-  // Функция для получения цены по весу
+  
   const getPriceByWeight = (weightsStr, weight) => {
     const weights = weightsStr.split(', ').reduce((acc, weight) => {
       const [amount, price] = weight.split(' - ');
       acc[amount] = parseInt(price.replace(' грн', ''), 10);
       return acc;
     }, {});
-    return weights[weight] || 0; // Возвращаем цену для выбранного веса
+    return weights[weight] || 0; 
   };
 
-  // Инициализация состояния (вес и цена) при первой загрузке компонента
+  
   useEffect(() => {
     if (product && honeyData.length > 0) {
       const currentProduct = honeyData.find((item) => item.id === product.id);
       if (currentProduct) {
-        // Устанавливаем начальный вес только при первой загрузке
+      
         if (!selectedWeight) {
           const initialWeight = currentProduct.description.weights
             .split(', ')[0]
@@ -43,10 +43,10 @@ const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
         }
       }
     }
-  }, [product, honeyData, selectedWeight, quantity]); // Добавляем зависимость от selectedWeight
+  }, [product, honeyData, selectedWeight, quantity]); 
 
   if (!product || honeyData.length === 0) {
-    return <p>Загрузка данных...</p>;
+    return <p>Завантаження даних...</p>;
   }
 
   const currentProduct = honeyData.find((item) => item.id === product.id);
@@ -55,26 +55,24 @@ const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
     return <p>Товар не найден</p>;
   }
 
-  // Обновление цены при изменении веса
+  
   const handleWeightChange = (weight) => {
     setSelectedWeight(weight);
-    dispatch(setWeight(weight)); // Диспатчим вес для Redux
+    dispatch(setWeight(weight)); 
     const price = getPriceByWeight(currentProduct.description.weights, weight);
-    setTotalPrice(price * quantity); // Обновляем общую цену
+    setTotalPrice(price * quantity); 
   };
 
-  // Обновление цены при изменении количества
   const handleQuantityChange = (newQuantity) => {
     setQuantityState(newQuantity);
-    dispatch(setQuantity(newQuantity)); // Диспатчим количество для Redux
+    dispatch(setQuantity(newQuantity)); 
     const price = getPriceByWeight(
       currentProduct.description.weights,
       selectedWeight
-    ); // Используем текущий вес
-    setTotalPrice(price * newQuantity); // Обновляем общую цену
+    ); 
+    setTotalPrice(price * newQuantity); 
   };
 
-  // Добавление товара в корзину
   const handleAddToCart = () => {
     const item = {
       title: currentProduct.title,
@@ -87,7 +85,7 @@ const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
       ),
     };
 
-    dispatch(addToCart(item)); // Добавляем товар в корзину
+    dispatch(addToCart(item)); 
   };
 
   return (
@@ -108,18 +106,18 @@ const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
         </div>
       </CustomScrollWrapper>
       <WeightOptions
-        selectedWeight={selectedWeight} // Передаем выбранный вес
-        onWeightChange={handleWeightChange} // Обработчик изменения веса
+        selectedWeight={selectedWeight} 
+        onWeightChange={handleWeightChange} 
         category={currentProduct.category}
       />
       <QuantitySelector
-        quantity={quantity} // Передаем текущее количество
-        onQuantityChange={handleQuantityChange} // Обработчик изменения количества
+        quantity={quantity} 
+        onQuantityChange={handleQuantityChange} 
       />
       <AddToCartButton
-        onAddToCart={handleAddToCart} // Обработчик добавления в корзину
-        totalPrice={totalPrice} // Передаем рассчитанную общую цену
-        onCloseProduct={onCloseProduct} // Обработчик закрытия попапа
+        onAddToCart={handleAddToCart} 
+        totalPrice={totalPrice}
+        onCloseProduct={onCloseProduct} 
       />
     </div>
   );

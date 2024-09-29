@@ -8,13 +8,14 @@ import { useState } from 'react';
 import Product from '../../../HoneyPopup/Product/Product';
 import ProductTitle from '../../../../shared/ProductTitle/ProductTitle';
 import { useRef } from 'react';
+import {icons} from '../../../../../public/icons/index';
 
 const ProductSlider = ({ products, category, honeyData, onProductClick }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const swiperRef = useRef(null);
 
   const openProduct = (product) => {
-    onProductClick(product); // Передаем только продукт
+    onProductClick(product); 
   };
 
   const closeProduct = () => {
@@ -31,7 +32,7 @@ const ProductSlider = ({ products, category, honeyData, onProductClick }) => {
             onClick={() => swiperRef.current.swiper.slidePrev()}
           >
             <svg width="48" height="48">
-              <use xlinkHref="../../../../../public/icons/sprite.svg#arrow-left" />
+              <use xlinkHref={`${icons}#arrow-left`} />
             </svg>
           </button>
         )}
@@ -77,7 +78,7 @@ const ProductSlider = ({ products, category, honeyData, onProductClick }) => {
             onClick={() => swiperRef.current.swiper.slideNext()}
           >
             <svg width="48" height="48">
-              <use xlinkHref="../../../../../public/icons/sprite.svg#arrow-right" />
+              <use xlinkHref={`${icons}#arrow-right`} />
             </svg>
           </button>
         )}
@@ -105,8 +106,8 @@ ProductSlider.propTypes = {
     })
   ).isRequired,
   category: PropTypes.string.isRequired,
-  honeyData: PropTypes.array.isRequired, // Добавлено для валидации
-  onProductClick: PropTypes.func.isRequired, // Добавлено для валидации
+  honeyData: PropTypes.array.isRequired, 
+  onProductClick: PropTypes.func.isRequired, 
 };
 
 export default ProductSlider;

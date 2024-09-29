@@ -3,6 +3,7 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import css from './OrderSummary.module.css';
 import OrderItem from '../OrderItem/OrderItem';
 import { HashLink } from 'react-router-hash-link';
+import { icons } from "../../../../public/icons/index";
 
 const OrderSummary = ({ cart, onBackToCart, totalPrice }) => {
  
@@ -16,7 +17,7 @@ const OrderSummary = ({ cart, onBackToCart, totalPrice }) => {
           className={css.backButton}
         >
           <svg className={css.arrowLink}>
-            <use xlinkHref="../../../public/icons/sprite.svg#arrow-link"></use>
+            <use xlinkHref={`${icons}#arrow-left`}></use>
           </svg>
           Повернутися до покупок
         </HashLink>

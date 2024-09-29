@@ -1,5 +1,7 @@
 import css from "./Footer.module.css";
 import { Link } from "react-router-dom";
+import {icons} from "../../../public/icons/index";
+
 
 const Footer = () => {
   return (
@@ -31,16 +33,24 @@ const Footer = () => {
               </ul>
               <ul className={css.socialList}>
                 <li className={css.socialItem}>
-                  <a href="#" className={css.socialLink}>
+                  <a
+                    href="https://t.me/Gmail_samel"
+                    target="_blank"
+                    className={css.socialLink}
+                  >
                     <svg className={css.svgSocial}>
-                      <use xlinkHref="../../../public/icons/sprite.svg#telegram"></use>
+                      <use xlinkHref={`${icons}#telegram`}></use>
                     </svg>
                   </a>
                 </li>
                 <li className={css.socialItem}>
-                  <a href="#" className={css.socialLink}>
+                  <a
+                    href="https://www.instagram.com/bdzhola_ta_shershen"
+                    target="_blank"
+                    className={css.socialLink}
+                  >
                     <svg className={css.svgSocial}>
-                      <use xlinkHref="../../../public/icons/sprite.svg#instagram"></use>
+                      <use xlinkHref={`${icons}#instagram`}></use>
                     </svg>
                   </a>
                 </li>

@@ -7,10 +7,10 @@ export const fetchHoney = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const honeyData = await getAllHoney();
-      console.log('Fetched Honey Data:', honeyData); // Логируем полученные данные
+    
       return honeyData;
     } catch (error) {
-      console.error('Error fetching honey data:', error); // Логируем ошибку
+      console.error('Error fetching honey data:', error); 
       return rejectWithValue(error.message);
     }
   }

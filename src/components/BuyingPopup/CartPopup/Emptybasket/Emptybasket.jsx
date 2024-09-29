@@ -2,6 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import css from "./Emptybasket.module.css";
 import emptyBasketImage from "./images/cart-background-d.png";
+import { icons } from "../../../../../public/icons/index";
 
 const Emptybasket = ({ onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
@@ -17,8 +18,8 @@ const Emptybasket = ({ onClose }) => {
     <div className={`${css.emptyBasket} ${isClosing ? css.closing : ''}`}>
       <button className={css.closeButton} onClick={handleClose}>
         <svg className={css.modalCloseIcon}>
-          <use xlinkHref="/public/icons/sprite.svg#cross-close"></use>
-       </svg>
+          <use xlinkHref={`${icons}#cross-close`}></use>
+        </svg>
       </button>
       <h2 className={css.myBasket}>Ваш кошик</h2>
       <div className={css.emptyContent}>
@@ -39,7 +40,9 @@ const Emptybasket = ({ onClose }) => {
         </div>
       </div>
       <div className={css.buttonContainer}>
-        <button className={css.buttonBasket} onClick ={handleClose}>Купити мед</button>
+        <button className={css.buttonBasket} onClick={handleClose}>
+          Купити мед
+        </button>
       </div>
     </div>
   );

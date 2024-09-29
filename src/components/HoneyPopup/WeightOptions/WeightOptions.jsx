@@ -1,10 +1,8 @@
-// src/components/WeightOptions/WeightOptions.jsx
 import css from './WeightOptions.module.css';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 const WeightOptions = ({ selectedWeight, onWeightChange, category }) => {
-  // Определение доступных весов в зависимости от категории продукта
   const weights = (() => {
     switch (category) {
       case 'Мед з горіхами':

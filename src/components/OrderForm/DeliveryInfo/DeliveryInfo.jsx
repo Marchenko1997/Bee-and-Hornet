@@ -32,7 +32,7 @@ const DeliveryInfo = () => {
         Вкажіть адресу доставки (Нова пошта):
       </h3>
       <div className={css.deliverySelection}>
-        {/* Выбор типа доставки */}
+      
         <SelectField
           name="deliveryType"
           errorClassName={css.errorMessage}
@@ -59,7 +59,7 @@ const DeliveryInfo = () => {
           }
         />
 
-        {/* Асинхронный выбор населенного пункта */}
+      
         <SelectField
           name="location"
           errorClassName={css.errorMessage}

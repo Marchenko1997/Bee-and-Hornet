@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import 'overlayscrollbars/overlayscrollbars.css';
 import { useNavigate } from 'react-router-dom';
 import css from './CartPopup.module.css';
 import { removeFromCart, updateCart } from '../../../../redux/actions';
@@ -9,6 +8,7 @@ import QuantityOfItem from '../QuantityOfItem/QuantityOfItem';
 import Emptybasket from '../Emptybasket/Emptybasket';
 import { HashLink } from 'react-router-hash-link';
 import CustomScrollWrapper from '../../../OrderForm/shared/СustomScrollWrapper/СustomScrollWrapper';
+import { icons } from '../../../../../public/icons/index';
 
 const CartPopup = ({ onClose }) => {
   const cart = useSelector((state) => state.cart);
@@ -43,15 +43,31 @@ const CartPopup = ({ onClose }) => {
     }, 200);
   };
 
+ 
+  const disableScroll = () => {
+    const scrollPosition = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = '100%';
+  };
+
+  
+  const enableScroll = () => {
+    const scrollPosition = Math.abs(parseInt(document.body.style.top, 10));
+    document.body.style.position = '';
+    document.body.style.top = '';
+    window.scrollTo(0, scrollPosition);
+  };
+
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    disableScroll();
     document.addEventListener('keydown', handleEsc);
 
     return () => {
-      document.body.style.overflow = 'auto';
+      enableScroll();
       document.removeEventListener('keydown', handleEsc);
     };
-  }, []); // Добавлено [] для предотвращения повторного срабатывания
+  }, []);
 
   if (cart.length === 0) {
     return (
@@ -64,15 +80,9 @@ const CartPopup = ({ onClose }) => {
     );
   }
 
-  // Логируем состояние корзины перед расчетом
-  console.log('Current Cart:', cart);
-
   const totalPrice = cart.reduce((total, item) => {
-    const itemTotal = item.pricePerUnit * item.quantity; // Рассчитываем общую цену для каждого товара
-    console.log(
-      `Item Price: ${item.pricePerUnit}, Quantity: ${item.quantity}, Item Total: ${itemTotal}`
-    ); // Логируем каждую итерацию
-    return total + (isNaN(itemTotal) ? 0 : itemTotal); // Если itemTotal не число, добавляем 0
+    const itemTotal = item.pricePerUnit * item.quantity;
+    return total + (isNaN(itemTotal) ? 0 : itemTotal);
   }, 0);
 
   return (
@@ -83,7 +93,7 @@ const CartPopup = ({ onClose }) => {
       <div className={css.cartPopupContent}>
         <button className={css.closeButton} onClick={onClose}>
           <svg className={css.modalCloseButtonIcon}>
-            <use xlinkHref="../../../../public/icons/sprite.svg#cross-close"></use>
+            <use xlinkHref={`${icons}#cross-close`}></use>
           </svg>
         </button>
         <h2 className={css.myBasket}>Ваш кошик</h2>
@@ -112,7 +122,7 @@ const CartPopup = ({ onClose }) => {
                   onClick={() => handleRemoveFromCart(index)}
                 >
                   <svg className={css.bucketIcon}>
-                    <use xlinkHref="../../../../public/icons/sprite.svg#removal-bucket"></use>
+                    <use xlinkHref={`${icons}#removal-bucket`}></use>
                   </svg>
                 </button>
               </li>
@@ -124,7 +134,7 @@ const CartPopup = ({ onClose }) => {
           <div className={css.buttonBackWrapper}>
             <HashLink to="/#products" className={css.buttonBack}>
               <svg className={css.arrowLink}>
-                <use xlinkHref="../../../../../public/icons/sprite.svg#arrow-link"></use>
+                <use xlinkHref={`${icons}#arrow-link`}></use>
               </svg>
               Повернутися до покупок
             </HashLink>

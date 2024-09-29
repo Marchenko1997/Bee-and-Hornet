@@ -1,15 +1,16 @@
-// src/components/AddToCartButton/AddToCartButton.jsx
+
 import css from './AddToCartButton.module.css';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import {icons} from '../../../../public/icons/index';
 
 const AddToCartButton = ({ onAddToCart, totalPrice, onCloseProduct }) => {
-  const cart = useSelector((state) => state.cart); // Корзина из Redux
+  const cart = useSelector((state) => state.cart); 
   const navigate = useNavigate();
 
   const handleCartClick = () => {
-    onCloseProduct(); // Закрываем продукт, при этом переходим в корзину
+    onCloseProduct(); 
     navigate('/?popup=cart');
   };
 
@@ -24,7 +25,7 @@ const AddToCartButton = ({ onAddToCart, totalPrice, onCloseProduct }) => {
             {cart.length > 0 && (
               <div className={css.basketContainer}>
                 <svg className={css.basketIcon} onClick={handleCartClick}>
-                  <use xlinkHref="../../../public/icons/sprite.svg#basket"></use>
+                  <use xlinkHref={`${icons}#basket`}></use>
                 </svg>
                 <span
                   className={css.basketCardSircle}
