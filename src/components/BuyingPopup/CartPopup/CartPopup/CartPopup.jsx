@@ -9,12 +9,14 @@ import Emptybasket from '../Emptybasket/Emptybasket';
 import { HashLink } from 'react-router-hash-link';
 import CustomScrollWrapper from '../../../OrderForm/shared/СustomScrollWrapper/СustomScrollWrapper';
 import { icons } from '../../../../../public/icons/index';
+import { useModal } from '../../../../context/useModal';
 
 const CartPopup = ({ onClose }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isClosing, setIsClosing] = useState(false);
+  const closeModal = useModal();
 
   const setCart = (newCart) => {
     dispatch(updateCart(newCart));
@@ -26,24 +28,24 @@ const CartPopup = ({ onClose }) => {
 
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
-      closePopup();
+      closePopup(); // Закрытие при клике на бэкдроп
     }
   };
 
   const handleEsc = (event) => {
     if (event.key === 'Escape') {
-      closePopup();
+      closePopup(); // Закрытие при нажатии клавиши Escape
     }
   };
 
   const closePopup = () => {
-    setIsClosing(true);
+    setIsClosing(true); // Анимация закрытия
     setTimeout(() => {
-      onClose();
-    }, 200);
+      closeModal(); // Закрытие модального окна через ModalProvider
+      onClose(); // Убираем затемнение бэкдропа
+    }, 200); // Задержка на время анимации
   };
 
- 
   const disableScroll = () => {
     const scrollPosition = window.scrollY;
     document.body.style.position = 'fixed';
@@ -51,21 +53,20 @@ const CartPopup = ({ onClose }) => {
     document.body.style.width = '100%';
   };
 
-  
   const enableScroll = () => {
     const scrollPosition = Math.abs(parseInt(document.body.style.top, 10));
     document.body.style.position = '';
     document.body.style.top = '';
-    window.scrollTo(0, scrollPosition);
+    window.scrollTo(0, scrollPosition); // Возвращаем прокрутку на позицию
   };
 
   useEffect(() => {
-    disableScroll();
-    document.addEventListener('keydown', handleEsc);
+    disableScroll(); // Отключаем прокрутку при открытии модального окна
+    document.addEventListener('keydown', handleEsc); // Добавляем слушатель на Escape
 
     return () => {
-      enableScroll();
-      document.removeEventListener('keydown', handleEsc);
+      enableScroll(); // Включаем прокрутку при закрытии модального окна
+      document.removeEventListener('keydown', handleEsc); // Удаляем слушатель на Escape
     };
   }, []);
 
@@ -91,7 +92,7 @@ const CartPopup = ({ onClose }) => {
       onClick={handleBackdropClick}
     >
       <div className={css.cartPopupContent}>
-        <button className={css.closeButton} onClick={onClose}>
+        <button className={css.closeButton} onClick={closePopup}>
           <svg className={css.modalCloseButtonIcon}>
             <use xlinkHref={`${icons}#cross-close`}></use>
           </svg>

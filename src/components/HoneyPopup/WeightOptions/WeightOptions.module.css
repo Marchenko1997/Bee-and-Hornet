@@ -27,8 +27,8 @@
 }
 
 .weightOptions button {
-  width: 83px;
-  height: 36px;
+  width: 79px;
+  height: 38px;
   justify-content: center;
   align-items: center;
   padding: 4px 12px 4px 12px;
@@ -41,7 +41,7 @@
   border: 1px solid #cacaca;
 }
 
-.weightOptions button:hover,
+
 .quantityControls button:hover,
 .addToCart:hover {
   background-color: #facf5a;

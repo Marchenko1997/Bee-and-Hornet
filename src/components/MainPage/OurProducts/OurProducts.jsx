@@ -4,14 +4,28 @@ import clsx from 'clsx';
 import css from './OurProducts.module.css';
 import ProductSlider from './ProductSlider/ProductSlider';
 import { fetchHoney } from '../../../redux/honey/operations';
+import PropTypes from 'prop-types';
+import { icons } from "../../../../public/icons/index";
+import { toastify} from "../../OrderForm/shared/Toastify/tostify";
 
 const OurProducts = ({ onProductClick }) => {
   const [category, setCategory] = useState('Мед');
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const honeyData = useSelector((state) => state.honey.honey);
 
   useEffect(() => {
-    dispatch(fetchHoney());
+    const loadProducts = async () => {
+      try {
+        setLoading(true);
+        await dispatch(fetchHoney());
+      } catch (error) {
+        toastify.error('Щось пішло не так :( Перезавантажте сторінку.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadProducts();
   }, [dispatch]);
 
   const products = honeyData.filter((product) => product.category === category);
@@ -34,16 +48,32 @@ const OurProducts = ({ onProductClick }) => {
               </li>
             ))}
           </ul>
-          <ProductSlider
-            products={products}
-            category={category}
-            honeyData={honeyData}
-            onProductClick={onProductClick} // Передаем функцию для открытия модального окна
-          />
+
+          {loading ? (
+            <div className={css.loaderContainer}>
+              <svg width="48" height="48" className={css.loader}>
+                <use xlinkHref={`${icons}#logo`} />
+              </svg>
+            </div>
+          ) : (
+            <ProductSlider
+              products={products}
+              category={category}
+              honeyData={honeyData}
+              onProductClick={onProductClick}
+            />
+          )}
         </div>
       </section>
     </div>
   );
 };
+
+
+OurProducts.propTypes = {
+  onProductClick: PropTypes.func.isRequired,
+};
+
+
 
 export default OurProducts;

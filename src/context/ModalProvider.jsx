@@ -2,6 +2,7 @@ import { createContext, useCallback, useState } from 'react';
 import { createPortal } from 'react-dom';
 import  ModalBackdrop  from '../shared/ModalBackdrop/ModalBackdrop.jsx';
 import { ANIMATION } from '../shared/constants/index.js';
+import Proptypes from 'prop-types';
 
 export const ModalConext = createContext();
 const modalRoot = document.querySelector('#modal-root');
@@ -25,3 +26,7 @@ export const ModalProvider = ({ children }) => {
     </ModalConext.Provider>
   );
 };
+
+ModalProvider.propTypes = {
+  children: Proptypes.node.isRequired,
+}

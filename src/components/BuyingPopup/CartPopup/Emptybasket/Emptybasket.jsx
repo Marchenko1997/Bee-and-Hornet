@@ -1,17 +1,19 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
-import css from "./Emptybasket.module.css";
-import emptyBasketImage from "./images/cart-background-d.png";
-import { icons } from "../../../../../public/icons/index";
+import { useState } from 'react';
 
-const Emptybasket = ({ onClose }) => {
+import css from './Emptybasket.module.css';
+import emptyBasketImage from './images/cart-background-d.png';
+import { icons } from '../../../../../public/icons/index';
+import { useModal } from '../../../../context/useModal';
+
+const Emptybasket = () => {
   const [isClosing, setIsClosing] = useState(false);
+  const closeModal = useModal();
 
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
-      onClose();
-    }, 100); 
+      closeModal();
+    }, 100);
   };
 
   return (
@@ -46,10 +48,6 @@ const Emptybasket = ({ onClose }) => {
       </div>
     </div>
   );
-};
-
-Emptybasket.propTypes = {
-  onClose: PropTypes.func.isRequired,
 };
 
 export default Emptybasket;
