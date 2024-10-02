@@ -1,16 +1,12 @@
-// src/components/OurProducts/OurProducts.jsx
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 import css from './OurProducts.module.css';
 import ProductSlider from './ProductSlider/ProductSlider';
 import { fetchHoney } from '../../../redux/honey/operations';
-import Product from '../../HoneyPopup/Product/Product';
 
-const OurProducts = () => {
+const OurProducts = ({ onProductClick }) => {
   const [category, setCategory] = useState('Мед');
-  const [selectedProduct, setSelectedProduct] = useState(null);
-
   const dispatch = useDispatch();
   const honeyData = useSelector((state) => state.honey.honey);
 
@@ -19,16 +15,6 @@ const OurProducts = () => {
   }, [dispatch]);
 
   const products = honeyData.filter((product) => product.category === category);
-
-  const handleProductClick = (product) => {
-    setSelectedProduct(product);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const handleCloseProduct = () => {
-    setSelectedProduct(null);
-    document.body.style.overflow = 'auto';
-  };
 
   return (
     <div>
@@ -52,17 +38,10 @@ const OurProducts = () => {
             products={products}
             category={category}
             honeyData={honeyData}
-            onProductClick={handleProductClick}
+            onProductClick={onProductClick} // Передаем функцию для открытия модального окна
           />
         </div>
       </section>
-      {selectedProduct && (
-        <Product
-          product={selectedProduct}
-          onClose={handleCloseProduct}
-          honeyData={honeyData}
-        />
-      )}
     </div>
   );
 };

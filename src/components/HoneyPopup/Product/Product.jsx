@@ -1,11 +1,13 @@
-import ProductDetails from '../ProductDetails/ProductDetails';
-import css from './Product.module.css';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
-import {icons } from '../../../../public/icons/index';
+import css from './Product.module.css';
+import ProductDetails from '../ProductDetails/ProductDetails';
+import { icons } from '../../../../public/icons/index';
+import { useModal } from '../../../context/useModal';
 
-const Product = ({ product, onClose, honeyData }) => {
-  const [isClosing, setIsClosing] = useState(false);
+const Product = ({ product, honeyData, onClose }) => {
+  
+  const closeModal = useModal();
 
   useEffect(() => {
     const handleEsc = (event) => {
@@ -21,10 +23,9 @@ const Product = ({ product, onClose, honeyData }) => {
   }, []);
 
   const closePopup = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      onClose();
-    }, 200);
+    closeModal();
+    document.body.style.overflow = 'auto';
+    onClose(); 
   };
 
   const handleBackdropClick = (event) => {
@@ -36,10 +37,7 @@ const Product = ({ product, onClose, honeyData }) => {
   if (!product) return null;
 
   return (
-    <div
-      className={`${css.overlay} ${isClosing ? css.closing : ''}`}
-      onClick={handleBackdropClick}
-    >
+    <div className={css.overlay} onClick={handleBackdropClick}>
       <div className={css.productContainer}>
         <button className={css.closeButton} onClick={closePopup}>
           <svg className={css.modalCloseButtonIcon}>
@@ -51,8 +49,8 @@ const Product = ({ product, onClose, honeyData }) => {
         </div>
         <ProductDetails
           product={product}
-          onCloseProduct={closePopup}
-          honeyData={honeyData} 
+          honeyData={honeyData}
+          onCloseProduct={closePopup} 
         />
       </div>
     </div>
@@ -67,9 +65,9 @@ Product.propTypes = {
     weight: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
     description: PropTypes.object.isRequired,
-  }),
-  onClose: PropTypes.func.isRequired,
-  honeyData: PropTypes.array.isRequired, 
+  }).isRequired,
+  honeyData: PropTypes.array.isRequired,
+  onClose: PropTypes.func.isRequired, 
 };
 
 export default Product;
