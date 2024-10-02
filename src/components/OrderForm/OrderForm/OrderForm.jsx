@@ -4,7 +4,6 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import 'overlayscrollbars/overlayscrollbars.css';
 import css from './OrderForm.module.css';
-import Header from '../Header/Header';
 import ContactInfo from '../ContactInfo/ContactInfo';
 import DeliveryInfo from '../DeliveryInfo/DeliveryInfo';
 import OrderSummary from '../OrderSummary/OrderSummary';
@@ -77,7 +76,7 @@ const OrderForm = ({ cart, onBackToCart, onSubmitOrder }) => {
 
   return (
     <div className={css.pageContainer}>
-      <Header />
+      
       <div className={css.container}>
         <h2 className={css.mainTitle}>Оформлення замовлення</h2>
         <div className={css.content}>

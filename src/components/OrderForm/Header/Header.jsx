@@ -1,20 +1,13 @@
 import css from './Header.module.css';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { icons } from '../../../../public/icons/index';
 
-const Header = ({ onCloseProduct }) => {
+const Header = ({ onCartClick }) => {
+  
   const cart = useSelector((state) => state.cart);
-  const navigate = useNavigate();
-  const handleCartClick = () => {
-    if (typeof onCloseProduct === 'function') {
-      onCloseProduct();
-    }
-    navigate('/?popup=cart');
-  };
 
   return (
     <div className={css.orderHeader}>
@@ -40,12 +33,14 @@ const Header = ({ onCloseProduct }) => {
             Контакти
           </HashLink>
         </nav>
+
         <div className={css.basketContainer}>
-          <svg className={css.basketIcon} onClick={handleCartClick}>
+          <svg className={css.basketIcon} onClick={onCartClick}>
+            {' '}
             <use xlinkHref={`${icons}#basket`}></use>
           </svg>
           {cart.length > 0 && (
-            <span className={css.basketCardSircle} onClick={handleCartClick}>
+            <span className={css.basketCardSircle} onClick={onCartClick}>
               <span className={css.basketQuantity}>
                 {Math.min(cart.length, 5)}
               </span>
@@ -58,7 +53,7 @@ const Header = ({ onCloseProduct }) => {
 };
 
 Header.propTypes = {
-  onCloseProduct: PropTypes.func,
+  onCartClick: PropTypes.func.isRequired, // Ожидаем функцию открытия корзины
 };
 
 export default Header;

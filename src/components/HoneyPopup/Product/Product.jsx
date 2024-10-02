@@ -5,8 +5,7 @@ import ProductDetails from '../ProductDetails/ProductDetails';
 import { icons } from '../../../../public/icons/index';
 import { useModal } from '../../../context/useModal';
 
-const Product = ({ product, honeyData, onClose }) => {
-  
+const Product = ({ product, honeyData, onClose, onCartClick }) => {
   const closeModal = useModal();
 
   useEffect(() => {
@@ -25,7 +24,7 @@ const Product = ({ product, honeyData, onClose }) => {
   const closePopup = () => {
     closeModal();
     document.body.style.overflow = 'auto';
-    onClose(); 
+    onClose();
   };
 
   const handleBackdropClick = (event) => {
@@ -50,7 +49,8 @@ const Product = ({ product, honeyData, onClose }) => {
         <ProductDetails
           product={product}
           honeyData={honeyData}
-          onCloseProduct={closePopup} 
+          onCloseProduct={closePopup}
+          onCartClick={onCartClick}
         />
       </div>
     </div>
@@ -68,6 +68,7 @@ Product.propTypes = {
   }).isRequired,
   honeyData: PropTypes.array.isRequired,
   onClose: PropTypes.func.isRequired, 
+  onCartClick: PropTypes.func.isRequired,
 };
 
 export default Product;

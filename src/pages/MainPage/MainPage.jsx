@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Header from '../../components/OrderForm/Header/Header';
 import CartPopup from '../../components/BuyingPopup/CartPopup/CartPopup/CartPopup';
 import Product from '../../components/HoneyPopup/Product/Product';
@@ -11,36 +11,30 @@ import Feedback from '../../components/Feedbacks/Feedback/Feedback';
 import Footer from '../../components/Footer/Footer';
 import HoneyHistory from '../../components/MainPage/HoneyHistory/HoneyHistory';
 import Toastify from '../../components/OrderForm/shared/Toastify/Toastify';
-import { useSelector } from 'react-redux'; 
 
 const MainPage = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isCartPopupOpen, setCartPopupOpen] = useState(false);
 
-  
   const honeyData = useSelector((state) => state.honey.honey);
 
   const handleCloseAllPopups = () => {
-    navigate('/');
     setSelectedProduct(null);
+    setCartPopupOpen(false);
   };
 
   const handleOpenProductPopup = (product) => {
-    setSelectedProduct(product);
-    navigate(`/?popup=product&id=${product.id}`);
+    setSelectedProduct(product); // Открываем попап продукта без изменения URL
   };
 
-  const query = new URLSearchParams(location.search);
-  const popup = query.get('popup');
-
-  const isCartPopupOpen = popup === 'cart';
-  const isProductPopupOpen = popup === 'product' && selectedProduct;
+  const handleOpenCartPopup = () => {
+    setCartPopupOpen(true); // Открываем попап корзины без изменения URL
+  };
 
   return (
     <>
       <div className={css.mainPage}>
-        <Header />
+        <Header onCartClick={handleOpenCartPopup} />
         <HoneyHistory />
         <OurHoney />
         <OurProducts onProductClick={handleOpenProductPopup} />
@@ -48,17 +42,17 @@ const MainPage = () => {
         <Feedback />
 
         {isCartPopupOpen && <CartPopup onClose={handleCloseAllPopups} />}
-        {isProductPopupOpen && selectedProduct && (
+        {selectedProduct && (
           <Product
             product={selectedProduct}
-            honeyData={honeyData} 
-            onClose={handleCloseAllPopups} 
+            honeyData={honeyData}
+            onClose={handleCloseAllPopups}
+            onCartClick={handleOpenCartPopup}
           />
         )}
       </div>
 
       <Footer />
-
       <Toastify />
     </>
   );

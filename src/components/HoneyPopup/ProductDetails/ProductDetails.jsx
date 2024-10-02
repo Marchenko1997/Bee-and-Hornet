@@ -8,28 +8,30 @@ import AddToCartButton from '../AddToCartButton/AddToCartButton';
 import CustomScrollWrapper from '../../OrderForm/shared/СustomScrollWrapper/СustomScrollWrapper';
 import PropTypes from 'prop-types';
 
-const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
+const ProductDetails = ({
+  product,
+  onCloseProduct,
+  honeyData,
+  onCartClick,
+}) => {
   const dispatch = useDispatch();
   const [quantity, setQuantityState] = useState(1);
-  const [selectedWeight, setSelectedWeight] = useState(''); 
+  const [selectedWeight, setSelectedWeight] = useState('');
   const [totalPrice, setTotalPrice] = useState(0);
 
-  
   const getPriceByWeight = (weightsStr, weight) => {
     const weights = weightsStr.split(', ').reduce((acc, weight) => {
       const [amount, price] = weight.split(' - ');
       acc[amount] = parseInt(price.replace(' грн', ''), 10);
       return acc;
     }, {});
-    return weights[weight] || 0; 
+    return weights[weight] || 0;
   };
 
-  
   useEffect(() => {
     if (product && honeyData.length > 0) {
       const currentProduct = honeyData.find((item) => item.id === product.id);
       if (currentProduct) {
-      
         if (!selectedWeight) {
           const initialWeight = currentProduct.description.weights
             .split(', ')[0]
@@ -43,7 +45,7 @@ const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
         }
       }
     }
-  }, [product, honeyData, selectedWeight, quantity]); 
+  }, [product, honeyData, selectedWeight, quantity]);
 
   if (!product || honeyData.length === 0) {
     return <p>Завантаження даних...</p>;
@@ -55,22 +57,21 @@ const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
     return <p>Товар не найден</p>;
   }
 
-  
   const handleWeightChange = (weight) => {
     setSelectedWeight(weight);
-    dispatch(setWeight(weight)); 
+    dispatch(setWeight(weight));
     const price = getPriceByWeight(currentProduct.description.weights, weight);
-    setTotalPrice(price * quantity); 
+    setTotalPrice(price * quantity);
   };
 
   const handleQuantityChange = (newQuantity) => {
     setQuantityState(newQuantity);
-    dispatch(setQuantity(newQuantity)); 
+    dispatch(setQuantity(newQuantity));
     const price = getPriceByWeight(
       currentProduct.description.weights,
       selectedWeight
-    ); 
-    setTotalPrice(price * newQuantity); 
+    );
+    setTotalPrice(price * newQuantity);
   };
 
   const handleAddToCart = () => {
@@ -85,7 +86,7 @@ const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
       ),
     };
 
-    dispatch(addToCart(item)); 
+    dispatch(addToCart(item));
   };
 
   return (
@@ -106,18 +107,19 @@ const ProductDetails = ({ product, onCloseProduct, honeyData }) => {
         </div>
       </CustomScrollWrapper>
       <WeightOptions
-        selectedWeight={selectedWeight} 
-        onWeightChange={handleWeightChange} 
+        selectedWeight={selectedWeight}
+        onWeightChange={handleWeightChange}
         category={currentProduct.category}
       />
       <QuantitySelector
-        quantity={quantity} 
-        onQuantityChange={handleQuantityChange} 
+        quantity={quantity}
+        onQuantityChange={handleQuantityChange}
       />
       <AddToCartButton
-        onAddToCart={handleAddToCart} 
+        onAddToCart={handleAddToCart}
         totalPrice={totalPrice}
-        onCloseProduct={onCloseProduct} 
+        onCloseProduct={onCloseProduct}
+        onCartClick={onCartClick}
       />
     </div>
   );
@@ -139,6 +141,7 @@ ProductDetails.propTypes = {
   }).isRequired,
   onCloseProduct: PropTypes.func.isRequired,
   honeyData: PropTypes.array.isRequired,
+  onCartClick: PropTypes.func.isRequired,
 };
 
 export default ProductDetails;
