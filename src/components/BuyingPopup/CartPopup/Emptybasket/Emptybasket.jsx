@@ -1,19 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import css from './Emptybasket.module.css';
 import emptyBasketImage from './images/cart-background-d.png';
 import { icons } from '../../../../../public/icons/index';
 import { useModal } from '../../../../context/useModal';
+import PropTypes from 'prop-types';
 
-const Emptybasket = () => {
+const Emptybasket = ({ onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
   const closeModal = useModal();
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    console.log('Модальное окно открыто, overflow отключен.');
+
+    return () => {
+      document.body.style.overflow = 'auto';
+      console.log('Модальное окно закрыто, overflow восстановлен.');
+    };
+  }, []);
+
   const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      closeModal();
-    }, 100);
+    closeModal();
+    onClose();
   };
 
   return (
@@ -48,6 +57,10 @@ const Emptybasket = () => {
       </div>
     </div>
   );
+};
+
+Emptybasket.propTypes = {
+  onClose: PropTypes.func.isRequired,
 };
 
 export default Emptybasket;

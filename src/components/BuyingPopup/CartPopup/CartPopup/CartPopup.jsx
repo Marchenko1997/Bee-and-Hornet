@@ -39,11 +39,11 @@ const CartPopup = ({ onClose }) => {
   };
 
   const closePopup = () => {
-    setIsClosing(true); // Анимация закрытия
+    setIsClosing(true);
     setTimeout(() => {
       closeModal(); // Закрытие модального окна через ModalProvider
-      onClose(); // Убираем затемнение бэкдропа
-    }, 200); // Задержка на время анимации
+      onClose(); // Дополнительно убираем фон
+    }, 200);
   };
 
   const disableScroll = () => {
