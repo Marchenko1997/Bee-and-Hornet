@@ -9,6 +9,8 @@ const Product = ({ product, honeyData, onClose, onCartClick }) => {
   const closeModal = useModal();
 
   useEffect(() => {
+
+     document.body.style.overflow = 'hidden';
     const handleEsc = (event) => {
       if (event.key === 'Escape') {
         closePopup();
@@ -18,6 +20,7 @@ const Product = ({ product, honeyData, onClose, onCartClick }) => {
     document.addEventListener('keydown', handleEsc);
     return () => {
       document.removeEventListener('keydown', handleEsc);
+       document.body.style.overflow = 'auto';
     };
   }, []);
 
@@ -67,7 +70,7 @@ Product.propTypes = {
     description: PropTypes.object.isRequired,
   }).isRequired,
   honeyData: PropTypes.array.isRequired,
-  onClose: PropTypes.func.isRequired, 
+  onClose: PropTypes.func.isRequired,
   onCartClick: PropTypes.func.isRequired,
 };
 
