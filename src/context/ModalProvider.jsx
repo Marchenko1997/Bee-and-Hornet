@@ -1,25 +1,29 @@
 import { createContext, useCallback, useState } from 'react';
 import { createPortal } from 'react-dom';
-import  ModalBackdrop  from '../shared/ModalBackdrop/ModalBackdrop.jsx';
+import ModalBackdrop from '../shared/ModalBackdrop/ModalBackdrop.jsx';
 import Proptypes from 'prop-types';
 
-export const ModalConext = createContext();
+
+export const ModalConext = createContext(); 
 const modalRoot = document.querySelector('#modal-root');
 
 export const ModalProvider = ({ children }) => {
-  const [modal, setModal] = useState(null);
-   const handleSetModal = useCallback((modal = null) => {
-     setModal(modal); 
-   }, []);
+  const [modalContent, setModalContent] = useState(null);
+
+  const handleSetModal = useCallback((content = null) => {
+    setModalContent(content);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setModalContent(null);
+  }, []);
 
   return (
-    <ModalConext.Provider value={handleSetModal}>
+    <ModalConext.Provider value={{ setModal: handleSetModal, closeModal }}>
       {children}
-      {modal &&
+      {modalContent &&
         createPortal(
-          <ModalBackdrop onClose={() => handleSetModal(null)}>
-            {modal}
-          </ModalBackdrop>,
+          <ModalBackdrop onClose={closeModal}>{modalContent}</ModalBackdrop>,
           modalRoot
         )}
     </ModalConext.Provider>
@@ -28,4 +32,4 @@ export const ModalProvider = ({ children }) => {
 
 ModalProvider.propTypes = {
   children: Proptypes.node.isRequired,
-}
+};

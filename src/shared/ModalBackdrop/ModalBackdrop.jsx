@@ -12,7 +12,9 @@ const ModalBackdrop = ({ children, onClose }) => {
     (e) => {
       if (e.target === e.currentTarget || e.code === 'Escape') {
         setActive(false);
-        onClose();
+        setTimeout(() => {
+          onClose();
+        }, ANIMATION.DURATION); // Подождем окончания анимации, прежде чем закрыть
       }
     },
     [onClose]
@@ -21,17 +23,15 @@ const ModalBackdrop = ({ children, onClose }) => {
   useEffect(() => {
     const id = setTimeout(() => {
       setActive(true);
-      clearTimeout(id);
-    }, ANIMATION.DURATION);
+    }, 0); // Устанавливаем активное состояние сразу
+
+    return () => clearTimeout(id);
   }, []);
 
   useEffect(() => {
     window.addEventListener('keydown', handleCloseModal);
-    document.body.style.overflow = 'hidden';
-
     return () => {
       window.removeEventListener('keydown', handleCloseModal);
-      document.body.removeAttribute('style');
     };
   }, [handleCloseModal]);
 
