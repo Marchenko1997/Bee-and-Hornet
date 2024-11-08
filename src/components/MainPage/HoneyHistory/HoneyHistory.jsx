@@ -1,7 +1,6 @@
 import css from "./HoneyHistory.module.css";
-import honeyImage1 from "../images/honey-desktop.jpeg"
-import honeyImage2 from "../images/honeycomb-desktop.jpeg";
 import { icons } from "../../../../public/icons/index";
+import images from "../images/index.js";
 
 const HoneyHistory = () => {
   return (
@@ -23,23 +22,34 @@ const HoneyHistory = () => {
             <div className={css.images}>
               <picture>
                 <source
-                  srcSet={`${honeyImage2} 1x, ${honeyImage2} 2x`}
-                  media="(min-width: 800px)"
+                  media="(min-width: 1440px )"
+                  srcSet={`${images.honeycombDesktop} 1x,
+            ${images.honeycombDesktop2x} 2x`}
+                />
+                <source
+                  media="(min-width: 768px )"
+                  srcSet={`${images.honeycombTablet} 1x,
+                ${images.honeycombTablet2x} 2x`}
+                />
+                <source
+                  media="(max-width: 767.98px )"
+                  srcSet={`${images.honeycombMobile} 1x,
+                ${images.honeycombMobile2x} 2x`}
                 />
                 <img
-                  src={honeyImage2}
-                  alt="Honeycomb"
+                  src={images.honeycombDesktop}
+                  alt="Honeycomb with honey flowing out"
                   className={css.honeyImageTwo}
                 />
               </picture>
               <picture>
                 <source
-                  srcSet={`${honeyImage1} 1x, ${honeyImage1} 2x`}
-                  media="(min-width: 800px)"
+                  media="(min-width: 1440px )"
+                  srcSet={`${images.honeyDesktop} 1x, ${images.honeyDesktop2x} 2x`}
                 />
                 <img
-                  src={honeyImage1}
-                  alt="Honey"
+                  src={images.honeyDesktop}
+                  alt="A jar of honey is on the table"
                   className={css.honeyImageOne}
                 />
               </picture>

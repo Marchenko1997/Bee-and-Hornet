@@ -83,7 +83,7 @@
   width: 416px;
   max-width: 100%;
   object-fit: cover;
-  margin: 0 0 72px 144px;
+  margin: 0 0 72px 142px;
   height: auto;
 }
 
@@ -177,4 +177,8 @@
 .icon:hover {
   fill: rgb(235, 180, 28);
   transition: fill 0.3s linear;
+}
+
+.mainPicture {
+
 }
