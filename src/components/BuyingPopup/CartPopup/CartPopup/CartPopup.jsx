@@ -28,21 +28,21 @@ const CartPopup = ({ onClose }) => {
 
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
-      closePopup(); // Закрытие при клике на бэкдроп
+      closePopup(); 
     }
   };
 
   const handleEsc = (event) => {
     if (event.key === 'Escape') {
-      closePopup(); // Закрытие при нажатии клавиши Escape
+      closePopup(); 
     }
   };
 
   const closePopup = () => {
     setIsClosing(true);
     setTimeout(() => {
-      closeModal(); // Закрытие модального окна через ModalProvider
-      onClose(); // Дополнительно убираем фон
+      closeModal(); 
+      onClose(); 
     }, 200);
   };
 
@@ -57,16 +57,16 @@ const CartPopup = ({ onClose }) => {
     const scrollPosition = Math.abs(parseInt(document.body.style.top, 10));
     document.body.style.position = '';
     document.body.style.top = '';
-    window.scrollTo(0, scrollPosition); // Возвращаем прокрутку на позицию
+    window.scrollTo(0, scrollPosition); 
   };
 
   useEffect(() => {
-    disableScroll(); // Отключаем прокрутку при открытии модального окна
-    document.addEventListener('keydown', handleEsc); // Добавляем слушатель на Escape
+    disableScroll();
+    document.addEventListener('keydown', handleEsc); 
 
     return () => {
-      enableScroll(); // Включаем прокрутку при закрытии модального окна
-      document.removeEventListener('keydown', handleEsc); // Удаляем слушатель на Escape
+      enableScroll();
+      document.removeEventListener('keydown', handleEsc); 
     };
   }, []);
 

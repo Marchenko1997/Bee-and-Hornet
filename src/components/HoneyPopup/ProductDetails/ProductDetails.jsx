@@ -89,21 +89,39 @@ const ProductDetails = ({
     dispatch(addToCart(item));
   };
 
+
+  const hideAllDescriptions =
+    currentProduct.category === 'Мед з горіхами';
+  const hideFlavorOnly = [
+    'Квітковий пилок',
+    'Стільники з акацієвим медом',
+  ].includes(currentProduct.category);
+
   return (
     <div className={css.productDetails}>
       <CustomScrollWrapper>
         <div className={css.descriptionArea}>
           <h3 className={css.productName}>{currentProduct.title}</h3>
           <p className={css.productText}>{currentProduct.description.descr}</p>
-          <p className={css.productText}>
-            Смакові особливості: {currentProduct.description.flavor}
-          </p>
-          <p className={css.productText}>
-            Корисні властивості: {currentProduct.description.advantage}
-          </p>
-          <p className={css.productText}>
-            Особливості: {currentProduct.description.features?.join(', ')}
-          </p>
+          {!hideAllDescriptions && (
+            <>
+              {/* Условие для отображения "Смакові особливості" */}
+              {hideFlavorOnly && (
+                <p className={css.productText}>
+                  <b>Смакові особливості:</b>{' '}
+                  {currentProduct.description.flavor}
+                </p>
+              )}
+              <p className={css.productText}>
+                <b>Корисні властивості:</b>{' '}
+                {currentProduct.description.advantage}
+              </p>
+              <p className={css.productText}>
+                <b>Особливості:</b>{' '}
+                {currentProduct.description.features?.join(', ')}
+              </p>
+            </>
+          )}
         </div>
       </CustomScrollWrapper>
       <WeightOptions

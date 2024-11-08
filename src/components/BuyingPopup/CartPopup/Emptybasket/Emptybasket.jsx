@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-
 import css from './Emptybasket.module.css';
 import emptyBasketImage from './images/cart-background-d.png';
 import { icons } from '../../../../../public/icons/index';
@@ -12,11 +11,9 @@ const Emptybasket = ({ onClose }) => {
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    console.log('Модальное окно открыто, overflow отключен.');
 
     return () => {
       document.body.style.overflow = 'auto';
-      console.log('Модальное окно закрыто, overflow восстановлен.');
     };
   }, []);
 

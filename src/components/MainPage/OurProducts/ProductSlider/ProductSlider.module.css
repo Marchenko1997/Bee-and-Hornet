@@ -41,7 +41,7 @@
 }
 .productImg {
   width: 384px;
-  height: 364px;
+  /* height: 364px; */
 }
 
 .infoWeightContainer {
@@ -58,6 +58,7 @@
   flex-direction: row;
   gap: 24px;
   margin-top: 16px;
+  margin-bottom: 24px;
 }
 
 .sliderContainer {
@@ -67,13 +68,13 @@
 
 .prevButton, .nextButton {
   position: absolute;
-  top: 32%; /* Центрирование по вертикали */
+  top: 32%; 
   transform: translateY(-50%);
   border: none;
   background: none;
   cursor: pointer;
-  padding: 0; /* Убедитесь, что вокруг кнопок нет лишних отступов */
-  outline: none; /* Убирает стандартный outline, добавляемый при фокусе */
+  padding: 0; 
+  outline: none; 
   background-color: transparent;
   box-shadow: none;
 
@@ -102,7 +103,7 @@
   }
   .productImg {
     width: 384px;
-    height: 364px;
+    /* height: 364px; */
   }
 }
 
@@ -160,13 +161,14 @@
 
   .productImg {
     width: 384px;
-    height: 364px;
+    /* height: 364px; */
   }
 
   .productInfo {
     display: flex;
     flex-direction: column;
     width: 384px;
+    margin-top: 24px;
     /* height: 156px; */
   }
 

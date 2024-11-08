@@ -7,10 +7,10 @@ import { useModal } from '../../../context/useModal';
 
 const Product = ({ product, honeyData, onClose, onCartClick }) => {
   const closeModal = useModal();
+  
 
   useEffect(() => {
-
-     document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
     const handleEsc = (event) => {
       if (event.key === 'Escape') {
         closePopup();
@@ -20,7 +20,7 @@ const Product = ({ product, honeyData, onClose, onCartClick }) => {
     document.addEventListener('keydown', handleEsc);
     return () => {
       document.removeEventListener('keydown', handleEsc);
-       document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'auto';
     };
   }, []);
 

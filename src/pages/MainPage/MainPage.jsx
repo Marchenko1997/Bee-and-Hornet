@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../../components/OrderForm/Header/Header';
 import CartPopup from '../../components/BuyingPopup/CartPopup/CartPopup/CartPopup';
@@ -24,11 +24,11 @@ const MainPage = () => {
   };
 
   const handleOpenProductPopup = (product) => {
-    setSelectedProduct(product); // Открываем попап продукта без изменения URL
+    setSelectedProduct(product); 
   };
 
   const handleOpenCartPopup = () => {
-    setCartPopupOpen(true); // Открываем попап корзины без изменения URL
+    setCartPopupOpen(true); 
   };
 
   return (

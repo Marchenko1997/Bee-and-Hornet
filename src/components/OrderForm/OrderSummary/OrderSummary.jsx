@@ -34,7 +34,7 @@ const OrderSummary = ({ cart, onBackToCart, totalPrice }) => {
         </ul>
       </OverlayScrollbarsComponent>
       <p className={css.totalPrice}>
-        <span>Вартість</span> {totalPrice} грн
+        <span className={css.price}>Вартість</span> {totalPrice} грн
       </p>
     </div>
   );
