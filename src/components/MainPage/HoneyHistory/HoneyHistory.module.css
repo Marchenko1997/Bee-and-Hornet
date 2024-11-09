@@ -21,16 +21,15 @@
   }
 
   .heroContent h1 {
-    padding-top: 64px;
-    padding-bottom: 48px;
-    font-size: 80px;
-    line-height: 1.1;
+    padding-bottom: 32px;
+    font-size: 38px;
+    line-height: 1.16;
     letter-spacing: 0.02em;
     white-space: pre-line;
     font-family: Montserrat Alternates, sans-serif;
     font-weight: 600;
     color: var(--primary-text-color);
-    width: 100%;
+    width: 335px;
     margin-top: 84px;
     text-align: start;
   }
@@ -38,7 +37,7 @@
   .mainQuotes {
     font-size: 16px;
     line-height: 1.5;
-    max-width: 462px;
+    max-width: 335px;
     align-self: flex-end;
     width: 100%;
     font-family: Raleway, sans-serif;
@@ -77,7 +76,7 @@
     width: auto;
     max-width: 100%;
     object-fit: cover;
-    margin: 32px 0 0 124px;
+    margin: 80px 0 0 44px;
     height: auto;
     border-radius: 24px;
   }
@@ -110,10 +109,10 @@
   .iconPolygon {
     fill: #facf5a;
     transition: fill 0.3s linear;
-    top: -46px;
+    top: 126px;
     left: -44px;
-    width: 190px;
-    height: 172px;
+    width: 126px;
+    height: 128px;
     position: absolute;
   }
 
@@ -128,16 +127,16 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     text-align: justify;
-    top: 28px;
-    left: 0px;
-    font-size: 16px;
+    top: 180px;
+    left: -26px;
+    font-size: 14px;
     line-height: 1.5;
     font-family: Montserrat Alternates, sans-serif;
   }
 
   .socialLinks {
     position: absolute;
-    bottom: 12px;
+    bottom: 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -153,8 +152,8 @@
   }
 
   .icon {
-    width: 32px;
-    height: 32px;
+    width: 27px;
+    height: 27px;
     fill: #facf5a;
   }
 
@@ -200,9 +199,10 @@
     font-family: Montserrat Alternates, sans-serif;
     font-weight: 600;
     color: var(--primary-text-color);
-    width: 100%;
+    width: 768px;
     margin-top: 84px;
     text-align: start;
+    /* margin-left: 140px; */
   }
 
   .mainQuotes {
@@ -215,6 +215,7 @@
     font-weight: 400;
     letter-spacing: 0.04em;
     text-align: right;
+    margin-right: 50px;
   }
 
   .mainQuotesSpan {
@@ -247,7 +248,7 @@
     width: auto;
     max-width: 100%;
     object-fit: cover;
-    margin: 32px 0 0 124px;
+    margin: 14px 0 0 124px;
     height: auto;
     border-radius: 24px;
   }
@@ -374,6 +375,7 @@
     width: 100%;
     margin-top: 84px;
     text-align: start;
+    margin-left: 0px;
   }
 
   .mainQuotes {
@@ -385,6 +387,7 @@
     font-weight: 400;
     letter-spacing: 0.04em;
     text-align: right;
+    margin-right: 0px;
   }
 
   .mainQuotesSpan {
