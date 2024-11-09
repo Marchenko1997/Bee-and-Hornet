@@ -1,14 +1,36 @@
 import css from "./HoneyHistory.module.css";
 import { icons } from "../../../../public/icons/index";
 import images from "../images/index.js";
+import { useState, useEffect } from "react";
 
 const HoneyHistory = () => {
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1440);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1440);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+
+
   return (
     <>
       <section className={css.heroSection}>
         <div className={css.heroContent}>
           <h1>
-            Натуральний мед <br /> з сімейною історією
+            {isLargeScreen ? (
+              <>
+                Натуральний мед <br /> з сімейною історією
+              </>
+            ) : (
+              <>
+                Натуральний <br /> мед з сімейною <br /> історією
+              </>
+            )}
           </h1>
           <div className={css.wrapperInfo}>
             <p className={css.mainQuotes}>

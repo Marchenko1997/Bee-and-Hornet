@@ -35,6 +35,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+   position: relative;
 }
 
 .greetings {
@@ -56,6 +57,7 @@
   text-align: left;
   font-size: 16px;
   line-height: 1.5;
+  position: relative;
 }
 
 .quote {
@@ -321,7 +323,7 @@
     background-color: #858585;
     height: 56px;
     width: 1px;
-    left: -103.5px;
+    left: -62.5px;
   }
 
   .blockSecond {
