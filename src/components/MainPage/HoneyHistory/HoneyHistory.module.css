@@ -30,7 +30,7 @@
     font-weight: 600;
     color: var(--primary-text-color);
     width: 335px;
-    margin-top: 84px;
+    margin-top: 90px;
     text-align: start;
   }
 
@@ -76,7 +76,7 @@
     width: auto;
     max-width: 100%;
     object-fit: cover;
-    margin: 80px 0 0 44px;
+    margin: 60px 0 0 44px;
     height: auto;
     border-radius: 24px;
   }

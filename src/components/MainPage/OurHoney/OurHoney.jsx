@@ -31,8 +31,7 @@ const OurHoney = () => {
             <div className={css.featureTextContainer}>
               <p className={css.featureTextFirst}>Родинні традиції</p>
               <p className={css.featureTextSecond}>
-                Зберігає традиції та має свою сімейну <br />
-                історію.
+                Зберігає традиції та має свою сімейну історію.
               </p>
             </div>
           </div>

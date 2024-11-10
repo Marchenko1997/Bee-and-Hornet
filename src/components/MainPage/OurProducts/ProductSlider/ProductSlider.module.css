@@ -6,7 +6,6 @@
   width: 100%;
   height: 100%;
   position: relative;
-  /* padding: 8px 24px; */
   white-space: nowrap;
   cursor: pointer;
   justify-content: space-between;
@@ -21,12 +20,29 @@
   transition: font-weight 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
 .productInfoBlock {
   display: flex;
   justify-content: stretch;
   flex-direction: column;
-  height: 568px;
+  position: relative;
+}
 
+.productInfo::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #858585;
 }
 
 .imagesContainer {
@@ -37,11 +53,9 @@
   align-items: center;
   overflow: hidden;
   border-radius: 24px;
-
 }
 .productImg {
   width: 384px;
-  /* height: 364px; */
 }
 
 .infoWeightContainer {
@@ -49,7 +63,7 @@
   align-items: center;
   flex-direction: row;
   gap: 24px;
-  margin-top: 30px;
+  margin-top: 14px;
 }
 
 .infoPriceContainer {
@@ -63,53 +77,111 @@
 
 .sliderContainer {
   position: relative;
-
 }
 
-.prevButton, .nextButton {
+.prevButton,
+.nextButton {
   position: absolute;
-  top: 32%; 
+  top: 32%;
   transform: translateY(-50%);
   border: none;
   background: none;
   cursor: pointer;
-  padding: 0; 
-  outline: none; 
+  padding: 0;
+  outline: none;
   background-color: transparent;
   box-shadow: none;
-
 }
 
 .prevButton {
-  left: -48px; 
+  left: -48px;
   background-color: transparent;
 }
 
 .nextButton {
-  right: -48px; 
+  right: -48px;
 }
 
-.prevButton:hover, .prevButton:focus, .nextButton:hover, .nextButton:focus {
+.prevButton:hover,
+.prevButton:focus,
+.nextButton:hover,
+.nextButton:focus {
   background-color: #f7f5ed;
   border-radius: 50%;
   outline: none;
   border: none;
 }
 
+.marginTopForMed {
+  margin-top: 24px;
+}
+
+.noMarginBottom .productImg {
+  margin-bottom: 0;
+}
+
+.productList {
+  display: flex;
+  gap: 48px;
+}
 
 @media screen and (min-width: 768px) {
   .imagesContainer {
     height: 336px;
   }
   .productImg {
-    width: 384px;
-    /* height: 364px; */
+    width: 100%;
+    height: 336px;
+  }
+
+  .productItem::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background-color: #858585;
+  }
+
+  .productTitle {
+    font-size: 22px;
+  }
+
+  .sliderContainer {
+    position: relative;
+  }
+
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .productInfo::after {
+    display: block;
+  }
+
+  .infoWeightContainer {
+    margin-top: 16px;
+  }
+
+  .marginTopForMed {
+    margin-top: 24px;
+  }
+
+  .productItem.productItemCategoryHoneyNuts:last-child::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #858585;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .productItem {
-    /* padding: 0px 11px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,24 +191,23 @@
     white-space: nowrap;
     cursor: pointer;
     flex-direction: column;
-    padding-bottom: 8px; 
+    padding-bottom: 8px;
   }
 
   .productItem::after {
-    content: ''; 
+    content: '';
     display: block;
     position: absolute;
-    bottom: 0; 
-    left: 0; 
-    width: 384px; 
-    height: 1px; 
-    background-color: #858585; 
+    bottom: 0;
+    left: 0;
+    width: 384px;
+    height: 1px;
+    background-color: #858585;
   }
 
   .productTitle {
     font-size: 24px;
     line-height: 1.3333333333;
-    height: 56px;
     font-weight: 600;
     letter-spacing: 0.02em;
   }
@@ -160,16 +231,19 @@
   }
 
   .productImg {
-    width: 384px;
-    /* height: 364px; */
+    width: 100%;
+    height: 384px;
+    margin-bottom: 0;
   }
 
   .productInfo {
     display: flex;
     flex-direction: column;
     width: 384px;
-    margin-top: 24px;
-    /* height: 156px; */
+  }
+
+  .productInfo::after {
+    display: none;
   }
 
   .productWeight {
@@ -182,5 +256,12 @@
     font-weight: 600;
     letter-spacing: 0.02em;
   }
-}
 
+  .infoWeightContainer {
+    margin-top: 30px;
+  }
+
+  .marginTopForMed {
+    margin-top: 24px;
+  }
+}

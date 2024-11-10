@@ -64,7 +64,7 @@
 
   .featureTextFirst {
     margin-bottom: 8px;
-    /* font-family: Montserrat Alternates, sans-serif; */
+    font-family: Montserrat Alternates, sans-serif;
     font-size: 18px;
     font-weight: 600;
     line-height: 28px;
@@ -73,7 +73,7 @@
   }
 
   .featureTextSecond {
-    /* font-family: Raleway, sans-serif; */
+    font-family: Raleway, sans-serif;
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 4%;
