@@ -58,7 +58,7 @@ const ProductSlider = ({ products, category, honeyData, onProductClick }) => {
               {products.map((product, index) => (
                 <SwiperSlide
                   key={index}
-                  className={css.productItem}
+                  className={css.productsItem}
                   onClick={() => openProduct(product)}
                 >
                   <div className={css.productInfoBlock}>
@@ -108,8 +108,8 @@ const ProductSlider = ({ products, category, honeyData, onProductClick }) => {
             {products.map((product, index) => (
               <div
                 key={index}
-                className={clsx(css.productItem, {
-                  [css.productItemCategoryHoneyNuts]:
+                className={clsx(css.productsItem, {
+                  [css.productsItemCategoryHoneyNuts]:
                     category === 'Мед з горіхами',
                 })}
                 onClick={() => openProduct(product)}
