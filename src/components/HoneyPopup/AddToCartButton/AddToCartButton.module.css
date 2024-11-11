@@ -1,89 +1,262 @@
-.basementContainer {
-  padding-top: 20px;
-  border-top: 1px solid rgba(133, 133, 133, 0.25);
+@media screen and (max-width: 767.8px) {
+  .basementContainer {
+    border-top: 1px solid rgba(133, 133, 133, 0.25);
+  }
+
+  .productPriceContainer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    align-items: end;
+  }
+
+  .productPrice {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+  }
+
+  .productPurchase {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+  }
+
+  .buttonAndIconContainer {
+    display: flex;
+    margin-left: auto;
+    gap: 12px;
+  }
+
+  .shopCard {
+    width: 52px;
+    height: 52px;
+  }
+
+  .basketContainer {
+    position: relative;
+  }
+
+  .basketIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .basketCardSircle {
+    top: 28px;
+    left: 28px;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #facf5a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .basketQuantity {
+    cursor: pointer;
+  }
+
+  .addToCart {
+    background-color: #facf5a;
+    padding: 10px;
+    font-size: 14px;
+    width: 168px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 32px 12px 32px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    line-height: 28px;
+    font-family: var(--primary-font-family);
+    font-weight: 600;
+  }
+
+  .addToCart:hover:focus {
+    border: none;
+    outline: none;
+    background-color: rgb(235, 180, 28);
+  }
 }
 
-.productPriceContainer {
-  display: flex;
-  flex-direction: row;
+@media screen and (min-width: 768px) {
+  .basementContainer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(133, 133, 133, 0.25);
+  }
 
-  align-items: center;
-}
+  .productPriceContainer {
+    display: flex;
+    flex-direction: row;
 
-.productPrice {
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 28px;
-}
+    align-items: center;
+  }
 
-.productPurchase {
-  display: flex;
-  flex-direction: row;
+  .productPrice {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+  }
 
-  align-items: center;
-}
+  .productPurchase {
+    display: flex;
+    flex-direction: row;
 
-.buttonAndIconContainer {
-  display: flex;
-  margin-left: auto;
-  gap: 24px;
-}
+    align-items: center;
+  }
 
-.shopCard {
-  width: 52px;
-  height: 52px;
-}
+  .buttonAndIconContainer {
+    display: flex;
+    margin-left: auto;
+    gap: 24px;
+  }
 
-.basketContainer {
-  position: relative;
-}
+  .shopCard {
+    width: 52px;
+    height: 52px;
+  }
 
-.basketIcon {
-  width: 52px;
-  height: 52px;
-}
+  .basketContainer {
+    position: relative;
+  }
 
-.basketCardSircle {
-  top: 28px;
-  left: 28px;
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: #facf5a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .basketIcon {
+    width: 48px;
+    height: 48px;
+  }
 
-.basketQuantity {
-  cursor: pointer;
-}
+  .basketCardSircle {
+    top: 28px;
+    left: 28px;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #facf5a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.addToCart {
-  background-color: #facf5a;
-  padding: 10px;
-  font-size: 18px;
-  width: 214px;
-  height: 52px;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 32px 12px 32px;
-  border-radius: 12px;
-  border: none;
-  outline: none;
-  line-height: 28px;
-  font-family: var(--primary-font-family);
-  font-weight: 600;
-}
+  .basketQuantity {
+    cursor: pointer;
+  }
 
-.addToCart:hover:focus {
-  border: none;
-  outline: none;
-  background-color: rgb(235, 180, 28);
+  .addToCart {
+    background-color: #facf5a;
+    padding: 10px;
+    font-size: 16px;
+    width: 198px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 32px 12px 32px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    line-height: 28px;
+    font-family: var(--primary-font-family);
+    font-weight: 600;
+  }
+
+  .addToCart:hover:focus {
+    border: none;
+    outline: none;
+    background-color: rgb(235, 180, 28);
+  }
 }
 
 @media screen and (min-width: 1440px) {
+  .basementContainer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(133, 133, 133, 0.25);
+  }
+
+  .productPriceContainer {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+  }
+
+  .productPrice {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 28px;
+  }
+
+  .productPurchase {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+  }
+
+  .buttonAndIconContainer {
+    display: flex;
+    margin-left: auto;
+    gap: 24px;
+  }
+
+  .shopCard {
+    width: 52px;
+    height: 52px;
+  }
+
+  .basketContainer {
+    position: relative;
+  }
+
+  .basketIcon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .basketCardSircle {
+    top: 28px;
+    left: 28px;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #facf5a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .basketQuantity {
+    cursor: pointer;
+  }
+
+  .addToCart {
+    background-color: #facf5a;
+    padding: 10px;
+    font-size: 18px;
+    width: 214px;
+    height: 52px;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 32px 12px 32px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    line-height: 28px;
+    font-family: var(--primary-font-family);
+    font-weight: 600;
+  }
+
+  .addToCart:hover:focus {
+    border: none;
+    outline: none;
+    background-color: rgb(235, 180, 28);
+  }
+
   .addToCart {
     width: 214px;
     height: 52px;

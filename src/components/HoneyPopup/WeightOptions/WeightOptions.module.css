@@ -1,4 +1,121 @@
-.qualityDetails {
+
+
+@media screen and (max-width: 767.8px) {
+  .qualityDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.productWeight {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.weightLabel {
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 4%;
+  font-weight: 600;
+  font-family: var(--primary-font-family);
+}
+
+.weightOptions {
+  display: flex;
+  flex-wrap: wrap;
+  width: 223px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.weightOptions button {
+  width: 64px;
+  height: 33px;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px 4px 12px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  border: 1px solid #cacaca;
+}
+
+
+.quantityControls button:hover,
+.addToCart:hover {
+  background-color: #facf5a;
+}
+
+.weightOptions button.selected {
+  background-color: #facf5a;
+}
+
+}
+
+@media screen and (min-width: 768px) {
+  .qualityDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.productWeight {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.weightLabel {
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 4%;
+  font-weight: 600;
+  font-family: var(--primary-font-family);
+}
+
+.weightOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.weightOptions button {
+  min-width: 64px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px 4px 12px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  border: 1px solid #cacaca;
+}
+
+
+.quantityControls button:hover,
+.addToCart:hover {
+  background-color: #facf5a;
+}
+
+.weightOptions button.selected {
+  background-color: #facf5a;
+}
+
+}
+
+@media screen and (min-width: 1440px) {
+  .qualityDetails {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -49,5 +166,7 @@
 
 .weightOptions button.selected {
   background-color: #facf5a;
-  /* Any other styles for the selected state */
 }
+
+}
+

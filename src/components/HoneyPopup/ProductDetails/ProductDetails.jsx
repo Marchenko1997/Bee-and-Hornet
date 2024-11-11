@@ -54,7 +54,7 @@ const ProductDetails = ({
   const currentProduct = honeyData.find((item) => item.id === product.id);
 
   if (!currentProduct) {
-    return <p>Товар не найден</p>;
+    return <p>Товар не знайден</p>;
   }
 
   const handleWeightChange = (weight) => {
@@ -105,7 +105,6 @@ const ProductDetails = ({
           <p className={css.productText}>{currentProduct.description.descr}</p>
           {!hideAllDescriptions && (
             <>
-              {/* Условие для отображения "Смакові особливості" */}
               {hideFlavorOnly && (
                 <p className={css.productText}>
                   <b>Смакові особливості:</b>{' '}

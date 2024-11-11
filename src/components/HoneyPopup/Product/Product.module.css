@@ -1,4 +1,5 @@
-.overlay {
+@media screen and (max-width: 767.8px) {
+  .overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,6 +14,144 @@
 }
 .productContainer {
   display: flex;
+  flex-direction: column;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 64px 20px 20px;
+  position: relative;
+  max-width: 375px;
+  max-height: 100%;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.overlay.closing .productContainer {
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.productImage img {
+  width: 335px;
+  height: 320px;
+  border-radius: 24px;
+}
+
+.closeButton {
+  position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-shadow: none;
+
+
+}
+
+.closeButton:hover:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+}
+
+
+
+@media screen and (min-width: 768px) {
+  .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.2s ease;
+}
+.productContainer {
+  display: flex;
+  flex-direction: column;
+  width: 675px;
+  background: rgb(255, 255, 255);
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 48px;
+  position: relative;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.overlay.closing .productContainer {
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.productImage img {
+  width: 576px;
+  height: 480px;
+  border-radius: 24px;
+}
+
+.closeButton {
+  position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-shadow: none;
+
+
+}
+
+.closeButton:hover:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+}
+
+
+ @media screen and (min-width: 1440px) {
+  .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.2s ease;
+}
+.productContainer {
+  display: flex;
+  flex-direction: row;
   background: rgb(255, 255, 255);
   border-radius: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -21,6 +160,7 @@
   position: relative;
   max-width: 1216px;
   max-height: 656px;
+  width: 100%;
   transition: transform 0.2s ease, opacity 0.2s ease;
   transform: scale(1);
   opacity: 1;
@@ -61,3 +201,5 @@
   border: none;
   box-shadow: none;
 }
+
+ }
