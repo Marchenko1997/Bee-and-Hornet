@@ -16,6 +16,7 @@
   line-height: 24px;
   letter-spacing: 4%;
   font-weight: 600;
+  display: none;
 }
 
 .quantityControls button,
@@ -100,6 +101,7 @@
   line-height: 24px;
   letter-spacing: 4%;
   font-weight: 600;
+  display: none;
 }
 
 .quantityControls button,
@@ -184,6 +186,7 @@
   line-height: 24px;
   letter-spacing: 4%;
   font-weight: 600;
+  display: block;
 }
 
 .quantityControls button,

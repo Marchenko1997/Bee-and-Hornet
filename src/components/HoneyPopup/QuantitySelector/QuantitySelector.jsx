@@ -1,4 +1,3 @@
-// src/components/QuantitySelector/QuantitySelector.jsx
 import css from './QuantitySelector.module.css';
 import PropTypes from 'prop-types';
 
