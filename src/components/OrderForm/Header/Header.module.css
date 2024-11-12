@@ -4,7 +4,6 @@
 .orderHeader {
   position: fixed;
   top: 0;
-  /* left: 0; */
   z-index: 100;
   width: 100%;
   background-color: #fff;
@@ -249,14 +248,18 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 62px;
+    /* padding: 0 62px; */
     gap: 0;
   }
+
+  .paddingContainer {
+  padding: 0 64px;
+}
 
    .logoContainer {
     display: flex;
     align-items: center;
-    margin-right: 32px; /* Отступ между логотипом и навигацией */
+    margin-right: 32px; 
   }
 
   .orderLogo {
@@ -306,7 +309,6 @@
     align-items: center;
     justify-content: center;
     gap: 40px;
-    /* top: 100%; */
     left: 57%;
     transform: translate(-50%);
     border-radius: 0 0 24px 24px;
@@ -352,7 +354,6 @@
 
   .basketContainer {
     position: relative;
-    /* margin-left: 38px; */
   }
 
   .basketIcon {

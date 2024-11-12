@@ -1,4 +1,149 @@
-.pageContainer {
+@media screen and (max-width: 768px) {
+  .pageContainer {
+  width: 375px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 32px;
+  background-color: #fff;
+  padding-bottom: 100px;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 88px;
+  padding-bottom: 100px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.mainTitle {
+  margin-bottom: 24px;
+  max-width: 579px;
+  font-size: 36px;
+  line-height: 44px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 335px;
+  height: 848px;
+}
+
+.useAgreement {
+  font-size: 12px;
+  line-height: 1.3333333333;
+  font-family: Raleway, sans-serif;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  margin-bottom: 32px;
+}
+
+.submitButton {
+  width: 332px;
+  height: 52px;
+  background: rgb(250, 207, 90);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  padding: 17px 32px 17px 32px;
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.submitButton:hover {
+  background-color: #e69500;
+  transition: background-color 0.3s linear;
+}
+
+}
+@media screen and (min-width: 768px) {
+  .pageContainer {
+  width: 768px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 32px;
+  background-color: #fff;
+  padding-bottom: 100px;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 120px;
+  padding-bottom: 100px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.mainTitle {
+  margin-bottom: 48px;
+  max-width: 579px;
+  font-size: 48px;
+  line-height: 64px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  height: 848px;
+}
+
+.useAgreement {
+  font-size: 12px;
+  line-height: 1.3333333333;
+  font-family: Raleway, sans-serif;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  margin-bottom: 32px;
+}
+
+.submitButton {
+  width: 332px;
+  height: 52px;
+  background: rgb(250, 207, 90);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  padding: 17px 32px 17px 32px;
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.submitButton:hover {
+  background-color: #e69500;
+  transition: background-color 0.3s linear;
+}
+
+}
+@media screen and (min-width: 1440px) {
+  .pageContainer {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
@@ -67,4 +212,6 @@
 .submitButton:hover {
   background-color: #e69500;
   transition: background-color 0.3s linear;
+}
+
 }

@@ -137,10 +137,11 @@
   height: 32px;
   font-size: 16px;
   line-height: 1.3333333333;
+  margin-left: 12px;
 }
 
 .itemWeight {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5555555556;
   font-family: Raleway, sans-serif;
   font-weight: 400;
@@ -148,6 +149,7 @@
   letter-spacing: 0.04em;
   color: #1f1b1a;
   margin-left: 12px;
+  padding-top: 6px;
 }
 
 .itemQuantityWrapper {
@@ -194,7 +196,7 @@
 }
 
 .itemPrice {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5555555556;
   font-family: Raleway, sans-serif;
   font-weight: 600;
@@ -261,9 +263,8 @@
 }
 
 .arrowLink {
-  width: 28px;
-  height: 28px;
-  margin-right: 4px;
+  width: 24px;
+  height: 24px;
 }
 
 .modalSubmitWrapper {
@@ -439,9 +440,9 @@
 
 .itemTitle {
   width: 332px;
-  height: 56px;
   font-size: 20px;
   line-height: 1.3333333333;
+  margin-left: 0px;
 }
 
 .itemWeight {
@@ -453,6 +454,7 @@
   letter-spacing: 0.04em;
   color: #1f1b1a;
   margin-left: 12px;
+  padding-top: 0px;
 }
 
 .itemQuantityWrapper {

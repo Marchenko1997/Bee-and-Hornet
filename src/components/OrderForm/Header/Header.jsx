@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { icons } from '../../../../public/icons/index';
 import { useLocation } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
-// import NavMenu from './NavMenu/NavMenu';
 
 const Header = ({ onCartClick }) => {
   const location = useLocation();
@@ -18,29 +17,32 @@ const Header = ({ onCartClick }) => {
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
-  }
+  };
 
   const closeNav = () => {
     setIsNavOpen(false);
-  }
+  };
 
   const handleClickOutside = (event) => {
     if (navRef.current && !navRef.current.contains(event.target)) {
       closeNav();
     }
-  }
+  };
 
-   useEffect(() => {
-     document.addEventListener('mousedown', handleClickOutside);
-     return () => {
-       document.removeEventListener('mousedown', handleClickOutside);
-     };
-   }, []);
-
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className={css.orderHeader}>
-      <div className={css.containerHeader}>
+      <div
+        className={`${css.containerHeader} ${
+          isOrderPage ? '' : css.paddingContainer
+        }`}
+      >
         <div className={css.logoContainer}>
           <Link to="/" className={css.orderLogo}>
             <svg className={css.svgLogo}>
@@ -52,7 +54,7 @@ const Header = ({ onCartClick }) => {
 
         {!isOrderPage && (
           <>
-             <div className={css.navContainer}>
+            <div className={css.navContainer}>
               <nav
                 className={`${css.navLink} ${isNavOpen ? css.navListOpen : ''}`}
               >
@@ -96,7 +98,7 @@ const Header = ({ onCartClick }) => {
                   </button>
                 )}
               </nav>
-            </div> 
+            </div>
             <div className={css.iconContainer}>
               <button onClick={toggleNav} className={css.burgerButton}>
                 <svg className={css.burgerIcon}>
