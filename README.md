@@ -1,67 +1,81 @@
-# README for "Бджола та Шершень" Landing Page
+# README for "Бджола та Шершень" Landing Page 🐝🐝
 
-## Project Overview
+## Project Overview 🌟
 
-**"Бджола та Шершень"** is a landing page website designed for a business that produces and sells honey and related products. The website provides detailed information about the company and serves as a platform for attracting new customers. The main goal of the project is to increase the customer base and sales volumes of the products offered by the business.
+**"Бджола та Шершень"** is a landing page website designed for a business that produces and sells honey and related products 🍯. The website provides detailed information about the company and serves as a platform for attracting new customers 👥. The main goal of the project is to increase the customer base and sales volumes of the products offered by the business 💼.
 
-The target audience for this project consists of users across Ukraine who are interested in purchasing high-quality honey and related products.
+The target audience for this project consists of users across Ukraine 🇺🇦 who are interested in purchasing high-quality honey and related products.
 
 ![Home page](./public/homePage.png)
 
-## Features
+## Features ✨
 
-- **Landing page design** for promoting honey and related products.
-- **Responsive layout** to ensure the site is accessible and user-friendly across different devices and screen sizes.
-- **Telegram bot integration** for automating the receipt of new orders.
-- **API integration** with Nova Poshta for order delivery and tracking.
-- **User-friendly interface** optimized for customer interaction and information retrieval.
+- **Landing page design** for promoting honey and related products 🍯.
+- **Responsive layout** to ensure the site is accessible and user-friendly across different devices and screen sizes 📱💻.
+- **Telegram bot integration** for automating the receipt of new orders 🤖.
+- **API integration** with Nova Poshta for order delivery and tracking 🚚.
+- **User-friendly interface** optimized for customer interaction and information retrieval 🖱️.
 
-## Non-functional Requirements
+## Non-functional Requirements 📋
 
 - **Accessibility:** The website is compatible with the following browsers:
-  - Chrome
-  - Firefox
-  - Opera
+  - Chrome 🌐
+  - Firefox 🌐
+  - Opera 🌐
+    
 - **Responsive Layouts:** The website is designed to be responsive and functional across multiple screen resolutions:
-  - **Desktop:** 1440px width
-  - **Tablet:** 768px width
-  - **Mobile:** 375px width
+  - **Desktop:** 1440px width 💻
+  - **Tablet:** 768px width 📱
+  - **Mobile:** 375px width 📱
 
-## Technologies Used
+## Technologies Used 🛠️
 
 - **Frontend:**
-  - ReactJS
-  - CSS
-  - SwiperJS
+  - ReactJS ⚛️
+  - CSS 🎨
+  - SwiperJS 🔄
+  - React Router Hash Link 🔗
+  - Redux Toolkit 🔥
+  - Redux Persist 💾
+  - React Select ⬇️
+  - Formik 📝
+  - Yup ✅
+  - React Toastify 🍞
+  - Overlayscrollbars React 🖱️
+    
 - **Backend:**
-  - Firebase
+  - Firebase 🔥
+  - Firebase Admin 🛠️
 
-## Localization
+## Localization 🌍
 
-- The website is implemented in the **Ukrainian** language.
+- The website is implemented in the **Ukrainian** language 🇺🇦.
 
-## Telegram Bot Integration
+## Telegram Bot Integration 🤖
 
 The project includes a **Telegram bot** to automate the process of receiving new order information.
 
 - **Telegram Bot Token:**  
   `VITE_TG_BOT_TOKEN=`
+  
 - **Telegram Channel ID:**  
   `VITE_TG_CHANEL_ID=`
 
-## API Integration with Nova Poshta
+## API Integration with Nova Poshta 📦
 
-The project integrates with the **Nova Poshta API** to automate and streamline order delivery and tracking.
+The project integrates with the **Nova Poshta API** to automate and streamline order delivery and tracking 🚚.
 
-## Installation
+## Installation ⚙️
 
 1. Clone the repository:
    ```bash
    git clone <repository_url>
+   
 2. Install dependencies:
 ```
 npm install
 ```
+
 3. Set up environment variables in a .env file:
 ```
 VITE_API_KEY=YOUR_FIREBASE_API_KEY
@@ -73,14 +87,15 @@ VITE_APP_ID=YOUR_FIREBASE_APP_ID
 VITE_TG_BOT_TOKEN=YOUR_TELEGRAM_BOT_TOKEN
 VITE_TG_CHANEL_ID=YOUR_TELEGRAM_CHANNEL_ID
 ```
+
 4. Start the development server:
 ```
 npm run dev
 ```
-## Contact information
+
+## Contact information 📧
 
 - Halyna Marchenko
-
-- email: marchenkohalyna888@gmail.com
-- Linkedin: https://www.linkedin.com/in/halyna-marchenko/
+- Email: marchenkohalyna888@gmail.com 📩
+- Linkedin: https://www.linkedin.com/in/halyna-marchenko/🌐
 
