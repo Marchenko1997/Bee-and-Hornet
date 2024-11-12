@@ -34,9 +34,18 @@ The target audience for this project consists of users across Ukraine who are in
   - ReactJS
   - CSS
   - SwiperJS
+  - React Router Hash Link
+  - Redux Toolkit
+  - Redux Persist
+  - React Select
+  - Formik
+  - Yup
+  - React Toastify
+  - Overlayscrollbars React 
     
 - **Backend:**
   - Firebase
+  - Firebase Admin
 
 ## Localization
 
