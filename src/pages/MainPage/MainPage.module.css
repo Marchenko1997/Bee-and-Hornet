@@ -1,16 +1,11 @@
-
-
 .mainPage {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   align-items: center;
-  /* padding-left: 112px; */
-  /* padding-right: 112px; */
   margin: 0 auto;
   position: relative;
-  overflow: hidden; 
-  /* max-width: 1440px; */
+  overflow: hidden;
 }
 
 .overlay {
@@ -26,13 +21,12 @@
   z-index: 1000;
 }
 
-
 .heroSection {
   background-color: #fff;
   padding: 20px;
   text-align: center;
   position: relative;
-  flex: 0 0 auto; /* Фиксированная высота */
+  flex: 0 0 auto;
 }
 
 .heroContent {
@@ -58,8 +52,6 @@
   margin-top: 84px;
 }
 
-
-
 .mainQuotes {
   font-size: 18px;
   line-height: 1.56;
@@ -78,8 +70,6 @@
   line-height: 1.56;
 }
 
-
-
 .reviewsSection {
   padding: 20px;
 }
@@ -89,15 +79,9 @@
   justify-content: space-around;
 }
 
-
-
-
 .reviewItem {
   margin: 10px;
 }
-
-
-
 
 .images {
   display: flex;
@@ -142,7 +126,6 @@
   text-decoration: none;
 }
 
-
 .iconPolygon {
   fill: #facf5a;
   transition: fill 0.3s linear;
@@ -186,6 +169,5 @@
 }
 
 .footer {
-  width: 100% ;
-
+  width: 100%;
 }

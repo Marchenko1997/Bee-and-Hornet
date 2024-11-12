@@ -12,7 +12,7 @@ import {
   SET_PRICE_PER_UNIT,
 } from "./actions";
 
-// Initial states and reducers (продукт и корзина)
+
 const initialProductState = {
   title: "",
   image: "",
@@ -61,11 +61,11 @@ const cartReducer = (state = [], action) => {
   }
 };
 
-// Конфигурация для persist
+
 const persistConfig = {
-  key: "root", // ключ для сохранения данных
-  storage, // используется localStorage
-  whitelist: ["cart"], // здесь указывается, какие части состояния сохраняются
+  key: "root", 
+  storage,
+  whitelist: ["cart"], 
 };
 
 const rootReducer = combineReducers({
@@ -74,5 +74,5 @@ const rootReducer = combineReducers({
   honey: honeyReducer,
 });
 
-// Оборачиваем rootReducer в persistReducer
+
 export default persistReducer(persistConfig, rootReducer);

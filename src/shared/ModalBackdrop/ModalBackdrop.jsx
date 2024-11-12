@@ -14,7 +14,7 @@ const ModalBackdrop = ({ children, onClose }) => {
         setActive(false);
         setTimeout(() => {
           onClose();
-        }, ANIMATION.DURATION); // Подождем окончания анимации, прежде чем закрыть
+        }, ANIMATION.DURATION); 
       }
     },
     [onClose]
@@ -23,7 +23,7 @@ const ModalBackdrop = ({ children, onClose }) => {
   useEffect(() => {
     const id = setTimeout(() => {
       setActive(true);
-    }, 0); // Устанавливаем активное состояние сразу
+    }, 0); 
 
     return () => clearTimeout(id);
   }, []);

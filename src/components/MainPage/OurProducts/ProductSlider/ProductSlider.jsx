@@ -64,7 +64,7 @@ const ProductSlider = ({ products, category, honeyData, onProductClick }) => {
                   <div className={css.productInfoBlock}>
                     <div
                       className={clsx(css.imagesContainer, {
-                        [css.noMarginBottom]: category !== 'Мед', // Условное добавление класса для margin-bottom
+                        [css.noMarginBottom]: category !== 'Мед', 
                       })}
                     >
                       <img
@@ -75,7 +75,7 @@ const ProductSlider = ({ products, category, honeyData, onProductClick }) => {
                     </div>
                     <div
                       className={clsx(css.productInfo, {
-                        [css.marginTopForMed]: category === 'Мед', // Условное добавление margin-top для "Мед"
+                        [css.marginTopForMed]: category === 'Мед', 
                       })}
                     >
                       <ProductTitle title={product.title} />

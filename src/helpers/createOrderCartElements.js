@@ -1,17 +1,12 @@
-// Функция для создания названия продукта
 export const createProductName = (name) => {
-    // Если название содержит слово 'натуральний', удаляем его
-    return name.includes('натуральний')
-      ? name.replace('натуральний', '')
-      : name.includes('Стільники') // Если название содержит 'Стільники'
-        ? `${name} (соти)` // Добавляем '(соти)' к названию
-        : name; // Возвращаем оригинальное название, если никакое из условий не выполнено
-  };
-  
-  // Функция для вычисления общей стоимости продукта
-  export const createProductTotalPrice = (quantity, price) => {
-    // Общая стоимость продукта равна количеству, умноженному на цену за единицу
-    const productTotalPrice = quantity * price;
-    return productTotalPrice; // Возвращаем общую стоимость
-  };
-  
+  return name.includes('натуральний')
+    ? name.replace('натуральний', '')
+    : name.includes('Стільники')
+    ? `${name} (соти)`
+    : name;
+};
+
+export const createProductTotalPrice = (quantity, price) => {
+  const productTotalPrice = quantity * price;
+  return productTotalPrice;
+};

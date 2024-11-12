@@ -2,12 +2,11 @@
 import css from './AddToCartButton.module.css';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 import {icons} from '../../../../public/icons/index';
 
 const AddToCartButton = ({ onAddToCart, totalPrice, onCloseProduct, onCartClick }) => {
   const cart = useSelector((state) => state.cart); 
-  // const navigate = useNavigate();
+
 
   const handleCartClick = () => {
     onCloseProduct(); 

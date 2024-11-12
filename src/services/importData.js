@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore'; // Используем только getDocs для получения данных
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -10,11 +10,11 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID,
 };
 
-// Инициализация Firebase
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Функция для получения всех данных из коллекции
+
 export const getAllHoney = async () => {
   try {
     const honeyCollectionRef = collection(db, 'beeAndHornet');
