@@ -22,6 +22,7 @@ The target audience for this project consists of users across Ukraine who are in
   - Chrome
   - Firefox
   - Opera
+    
 - **Responsive Layouts:** The website is designed to be responsive and functional across multiple screen resolutions:
   - **Desktop:** 1440px width
   - **Tablet:** 768px width
@@ -33,6 +34,7 @@ The target audience for this project consists of users across Ukraine who are in
   - ReactJS
   - CSS
   - SwiperJS
+    
 - **Backend:**
   - Firebase
 
@@ -46,6 +48,7 @@ The project includes a **Telegram bot** to automate the process of receiving new
 
 - **Telegram Bot Token:**  
   `VITE_TG_BOT_TOKEN=`
+  
 - **Telegram Channel ID:**  
   `VITE_TG_CHANEL_ID=`
 
@@ -58,10 +61,12 @@ The project integrates with the **Nova Poshta API** to automate and streamline o
 1. Clone the repository:
    ```bash
    git clone <repository_url>
+   
 2. Install dependencies:
 ```
 npm install
 ```
+
 3. Set up environment variables in a .env file:
 ```
 VITE_API_KEY=YOUR_FIREBASE_API_KEY
@@ -73,10 +78,12 @@ VITE_APP_ID=YOUR_FIREBASE_APP_ID
 VITE_TG_BOT_TOKEN=YOUR_TELEGRAM_BOT_TOKEN
 VITE_TG_CHANEL_ID=YOUR_TELEGRAM_CHANNEL_ID
 ```
+
 4. Start the development server:
 ```
 npm run dev
 ```
+
 ## Contact information
 
 - Halyna Marchenko
