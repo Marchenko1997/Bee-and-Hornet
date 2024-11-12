@@ -15,8 +15,8 @@
   margin-left: auto;
   margin-right: auto;
   width: 375px;
-  height: fit-content;
-  padding: 32px 0 24px 20px;
+  height: 880px;
+  padding: 32px 20px 24px 20px;
   border-radius: 0;
   background-color: #fff;
   display: flex;
@@ -35,6 +35,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 160px;
 }
 
 .emptyTitle {
@@ -45,8 +46,8 @@
   letter-spacing: 0.02em;
   text-align: center;
   color: #1f1b1a;
-  padding-right: 20px;
   margin-bottom: 16px;
+  margin-top: 60px;
 }
 
 .emptyText {
@@ -58,6 +59,10 @@
   text-align: center;
   color: #1f1b1a;
   padding-right: 20px;
+}
+
+.buttonContainer {
+  margin-top: auto;
 }
 
 .buttonBasket {
@@ -85,8 +90,8 @@
 }
 
 .myBasket {
-  font-size: 80px;
-  margin-bottom: 64px;
+  font-size: 32px;
+  margin-bottom: 24px;
   font-family: Montserrat Alternates, sans-serif;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -96,7 +101,7 @@
 
 .borderWrapper {
   margin-bottom: 20px;
-  padding-right: 20px;
+  margin-top: 140px;
 }
 
  .emptyCartBorder {
@@ -116,12 +121,13 @@
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: 375px;
+    width: 672px;
     height: fit-content;
-    padding: 32px 0 24px 20px;
+    padding: 48px 32px 48px 48px;
     border-radius: 24px;
     background-color: #fff;
     display: flex;
+    align-items: center;
     flex-direction: column;
     transition: transform 0.2s ease, opacity 0.2s ease;
     transform: scale(1);
@@ -131,13 +137,22 @@
   .emptyTitle {
     font-size: 20px;
     line-height: 1.4;
+    padding-top: 32px;
   }
+
+  .myBasket {
+  font-size: 60px;
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+
 
   .emptyText {
     font-size: 18px;
     line-height: 1.5555555556;
     margin-bottom: 32px;
   }
+
 
   .buttonBasket {
     width: 163px;
@@ -146,6 +161,7 @@
   .borderWrapper {
     padding-right: 16px;
     margin-bottom: 24px;
+    margin-top: 0;
   }
 
     .emptyCartBorder {
@@ -176,7 +192,19 @@
   .emptyTitle {
     font-size: 24px;
     line-height: 1.3333333333;
+    padding-top: 0;
   }
+
+  .myBasket {
+  font-size: 80px;
+  margin-bottom: 64px;
+  font-family: Montserrat Alternates, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: #1f1b1a;
+}
+
 
   .emptyText {
     font-size: 18px;
