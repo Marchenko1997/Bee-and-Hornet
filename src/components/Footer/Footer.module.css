@@ -10,8 +10,7 @@
 .footerContainer {
   margin: 0 auto;
   padding: 0 20px;
-  /* width: 375px; */
-  width: 100%;
+  width: 375px;
 }
 
 .orderLogo {
@@ -83,7 +82,7 @@
   }
 
   .footerContainer {
-    width: 768px;
+    width: 100%;
     padding: 0 32px;
   }
 
@@ -92,7 +91,7 @@
     align-items: start;
     justify-content: center;
     
-    gap: 645px;
+    gap: 184px;
   }
 
   .orderLogo {
@@ -131,10 +130,10 @@
     padding-left: 112px;
     padding-right: 112px;
   }
-/* 
+
   .footerContent { 
-    margin-right: 135px;
-  } */
+    gap: 645px;
+  }
 
   .svgLogo {
     width: 36px;
