@@ -11,7 +11,7 @@ const Footer = () => {
           <div className={css.footerContent}>
             <Link to="/" className={css.orderLogo}>
               <svg className={css.svgLogo}>
-                <use xlinkHref="../../../public/icons/sprite.svg#logo"></use>
+                <use xlinkHref={`${icons}#logo`}></use>
               </svg>
               <p className={css.beeAndHorn}>Бджола та Шершень</p>
             </Link>

@@ -5,6 +5,7 @@ import ProductDetails from '../ProductDetails/ProductDetails';
 import { icons } from '../../../../public/icons/index';
 import { useModal } from '../../../context/useModal';
 import { useState } from 'react';
+import CustomScrollWrapper from '../../OrderForm/shared/СustomScrollWrapper/СustomScrollWrapper';
 
 const Product = ({ product, honeyData, onClose, onCartClick }) => {
   const closeModal = useModal();
@@ -72,6 +73,7 @@ if (!product) {
           onCartClick={handleAddToCartClick}
         />
       </div>
+      <CustomScrollWrapper/> 
     </div>
   );
 };

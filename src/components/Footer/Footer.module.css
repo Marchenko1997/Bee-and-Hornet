@@ -4,7 +4,7 @@
   color: #fff;
   text-align: left;
   padding-top: 48px;
-  padding-bottom: 16px;
+  padding-bottom: 48px;
   background-color: #1f1b1a;
 }
 .footerContainer {
@@ -78,7 +78,7 @@
 @media screen and (min-width: 768px) {
   .footer {
     padding-top: 60px;
-    padding-bottom: 24px;
+    padding-bottom: 48px;
   }
 
   .footerContainer {
