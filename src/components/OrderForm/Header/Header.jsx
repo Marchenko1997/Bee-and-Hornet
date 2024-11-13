@@ -29,12 +29,16 @@ const Header = ({ onCartClick }) => {
     }
   };
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+   useEffect(() => {
+     if (isNavOpen) {
+       document.addEventListener('mousedown', handleClickOutside);
+     } else {
+       document.removeEventListener('mousedown', handleClickOutside);
+     }
+     return () => {
+       document.removeEventListener('mousedown', handleClickOutside);
+     };
+   }, [isNavOpen]);
 
   return (
     <div className={css.orderHeader}>
@@ -56,6 +60,7 @@ const Header = ({ onCartClick }) => {
           <>
             <div className={css.navContainer}>
               <nav
+                ref={navRef}
                 className={`${css.navLink} ${isNavOpen ? css.navListOpen : ''}`}
               >
                 <HashLink

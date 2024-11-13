@@ -53,27 +53,29 @@ if (!product) {
 }
 
   return (
-    <div
-      className={`${css.overlay} ${isClosing ? css.closing : ''}`}
-      onClick={handleBackdropClick}
-    >
-          <div className={css.productContainer}>
-            <button className={css.closeButton} onClick={closePopup}>
-              <svg className={css.modalCloseButtonIcon}>
-                <use xlinkHref={`${icons}#cross-close`} />
-              </svg>
-            </button>
-            <div className={css.productImage}>
-              <img src={product.image} alt={product.alt} />
-            </div>
-            <ProductDetails
-              product={product}
-              honeyData={honeyData}
-              onCloseProduct={closePopup}
-              onCartClick={handleAddToCartClick}
-            />
+      <div
+        className={`${css.overlay} ${isClosing ? css.closing : ''}`}
+        onClick={handleBackdropClick}
+      >
+        {' '}
+        <div className={css.productContainer}>
+          <button className={css.closeButton} onClick={closePopup}>
+            <svg className={css.modalCloseButtonIcon}>
+              <use xlinkHref={`${icons}#cross-close`} />
+            </svg>
+          </button>
+          <div className={css.productImage}>
+            <img src={product.image} alt={product.alt} />
           </div>
-    </div>
+          <ProductDetails
+            product={product}
+            honeyData={honeyData}
+            onCloseProduct={closePopup}
+            onCartClick={handleAddToCartClick}
+          />
+        </div>
+      </div>
+   
   );
 };
 

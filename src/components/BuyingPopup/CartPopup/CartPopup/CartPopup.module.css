@@ -265,6 +265,7 @@
   padding-top: 20px;
   padding-bottom: 20px;
   margin-right: 70px;
+  gap: 6px;
 }
 
 .buttonBack:hover:focus {
@@ -569,6 +570,7 @@
   box-shadow: none;
   color: rgb(31, 27, 26);
   padding-top: 8px;
+  gap: 6px;
 }
 
 .buttonBack:hover:focus {
