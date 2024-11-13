@@ -24,6 +24,17 @@
   transition: transform 0.2s ease, opacity 0.2s ease;
   transform: scale(1);
   opacity: 1;
+  overflow-y: auto;
+}
+
+.emptyBasket::-webkit-scrollbar-thumb {
+  background-color: #facf5a;
+  border-radius: 10px;
+}
+
+.emptyBasket::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .emptyBasket.closing {
@@ -104,17 +115,17 @@
   margin-top: 140px;
 }
 
- .emptyCartBorder {
-   height: 1px;
-    width: 335px;
-    background-color: #858585;
-  }
+.emptyCartBorder {
+  height: 1px;
+  width: 335px;
+  background-color: #858585;
+}
 
-   .modalCloseIcon {
-    fill: #1f1b1a;
-    width: 32px;
-    height: 32px;
-   }
+.modalCloseIcon {
+  fill: #1f1b1a;
+  width: 32px;
+  height: 32px;
+}
 
 @media screen and (min-width: 768px) {
   .emptyBasket {
@@ -141,18 +152,16 @@
   }
 
   .myBasket {
-  font-size: 60px;
-  margin-bottom: 32px;
-  font-weight: 600;
-}
-
+    font-size: 60px;
+    margin-bottom: 32px;
+    font-weight: 600;
+  }
 
   .emptyText {
     font-size: 18px;
     line-height: 1.5555555556;
     margin-bottom: 32px;
   }
-
 
   .buttonBasket {
     width: 163px;
@@ -164,13 +173,13 @@
     margin-top: 0;
   }
 
-    .emptyCartBorder {
+  .emptyCartBorder {
     width: 576px;
   }
 
   .modalCloseIcon {
     width: 40px;
-        height: 40px;
+    height: 40px;
   }
 }
 
@@ -196,15 +205,14 @@
   }
 
   .myBasket {
-  font-size: 80px;
-  margin-bottom: 64px;
-  font-family: Montserrat Alternates, sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-align: left;
-  color: #1f1b1a;
-}
-
+    font-size: 80px;
+    margin-bottom: 64px;
+    font-family: Montserrat Alternates, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #1f1b1a;
+  }
 
   .emptyText {
     font-size: 18px;

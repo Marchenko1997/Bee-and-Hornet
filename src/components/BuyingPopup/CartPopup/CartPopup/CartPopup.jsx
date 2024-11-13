@@ -6,7 +6,6 @@ import css from './CartPopup.module.css';
 import { removeFromCart, updateCart } from '../../../../redux/actions';
 import QuantityOfItem from '../QuantityOfItem/QuantityOfItem';
 import Emptybasket from '../Emptybasket/Emptybasket';
-import { HashLink } from 'react-router-hash-link';
 import CustomScrollWrapper from '../../../OrderForm/shared/СustomScrollWrapper/СustomScrollWrapper';
 import { icons } from '../../../../../public/icons/index';
 import { useModal } from '../../../../context/useModal';
@@ -133,12 +132,21 @@ const CartPopup = ({ onClose }) => {
         <div className={css.listBorder}></div>
         <div className={css.modalButtonWrapper}>
           <div className={css.buttonBackWrapper}>
-            <HashLink to="/#products" className={css.buttonBack}>
+            <button
+              type="button"
+              className={css.buttonBack}
+              onClick={() => {
+                closePopup();
+                setTimeout(() => {
+                  navigate('/#products'); 
+                }, 200); 
+              }}
+            >
               <svg className={css.arrowLink}>
                 <use xlinkHref={`${icons}#arrow-link`}></use>
               </svg>
               Повернутися до покупок
-            </HashLink>
+            </button>
           </div>
           <div className={css.modalSubmitWrapper}>
             <p className={css.totalPrice}>{totalPrice} грн</p>

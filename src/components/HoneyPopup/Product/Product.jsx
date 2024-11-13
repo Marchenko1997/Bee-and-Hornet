@@ -5,7 +5,7 @@ import ProductDetails from '../ProductDetails/ProductDetails';
 import { icons } from '../../../../public/icons/index';
 import { useModal } from '../../../context/useModal';
 import { useState } from 'react';
-import CustomScrollWrapper from '../../OrderForm/shared/СustomScrollWrapper/СustomScrollWrapper';
+
 
 const Product = ({ product, honeyData, onClose, onCartClick }) => {
   const closeModal = useModal();
@@ -57,23 +57,22 @@ if (!product) {
       className={`${css.overlay} ${isClosing ? css.closing : ''}`}
       onClick={handleBackdropClick}
     >
-      <div className={css.productContainer}>
-        <button className={css.closeButton} onClick={closePopup}>
-          <svg className={css.modalCloseButtonIcon}>
-            <use xlinkHref={`${icons}#cross-close`} />
-          </svg>
-        </button>
-        <div className={css.productImage}>
-          <img src={product.image} alt={product.alt} />
-        </div>
-        <ProductDetails
-          product={product}
-          honeyData={honeyData}
-          onCloseProduct={closePopup}
-          onCartClick={handleAddToCartClick}
-        />
-      </div>
-      <CustomScrollWrapper/> 
+          <div className={css.productContainer}>
+            <button className={css.closeButton} onClick={closePopup}>
+              <svg className={css.modalCloseButtonIcon}>
+                <use xlinkHref={`${icons}#cross-close`} />
+              </svg>
+            </button>
+            <div className={css.productImage}>
+              <img src={product.image} alt={product.alt} />
+            </div>
+            <ProductDetails
+              product={product}
+              honeyData={honeyData}
+              onCloseProduct={closePopup}
+              onCartClick={handleAddToCartClick}
+            />
+          </div>
     </div>
   );
 };

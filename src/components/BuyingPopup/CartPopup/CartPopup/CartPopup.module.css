@@ -9,7 +9,7 @@
   display: grid;
   place-items: center;
   background: rgba(0, 0, 0, 0.5);
-  overflow: hidden;
+  overflow: auto;
   transition: opacity 0.2s ease;
   opacity: 1;
   z-index: 1000;
@@ -20,7 +20,6 @@
   max-width: 375px;
   width: 100%;
   padding: 32px 0 24px 20px;
-  max-height: 90vh;
   height: 920px;
   position: relative;
   margin-left: auto;
@@ -30,8 +29,21 @@
   transition: transform 0.2s ease, opacity 0.2s ease;
   transform: scale(1);
   opacity: 1;
-  overflow: hidden;
+    overflow-x: hidden; 
+   overflow-y: auto;
+
 }
+
+.cartPopupContent::-webkit-scrollbar-thumb {
+    background-color: #facf5a; 
+    border-radius: 10px;
+  }
+
+  .cartPopupContent::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); 
+    border-radius: 10px;
+  }
+
 
 .cartPopup.closing .cartPopupContent {
   transform: scale(0.9);
@@ -556,6 +568,7 @@
   outline: none;
   box-shadow: none;
   color: rgb(31, 27, 26);
+  padding-top: 8px;
 }
 
 .buttonBack:hover:focus {
@@ -855,6 +868,7 @@
   outline: none;
   box-shadow: none;
   color: rgb(31, 27, 26);
+  padding-top: 0px;
 }
 
 .buttonBack:hover:focus {
