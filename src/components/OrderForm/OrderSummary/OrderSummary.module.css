@@ -27,7 +27,16 @@
   .orderSummary ul {
     list-style: none;
     padding: 0;
-    margin-bottom: 20px;
+    margin: 0;
+  }
+   .totalPrice::before {
+    position: absolute;
+    bottom: 56px;
+    content: '';
+    width: 300px;
+    height: 1px;
+    background-color: #858585;
+    display: block;
   }
   
   .totalPrice {
@@ -39,6 +48,8 @@
     justify-content: space-between;
     padding-top: 24px;
   }
+
+  
 
   .price {
     font-family: Raleway, sans-serif;
@@ -110,6 +121,17 @@
     padding: 0;
     margin-bottom: 20px;
   }
+
+    .totalPrice::before {
+    position: absolute;
+    bottom: 46px;
+    content: '';
+    width: 640px;
+    height: 1px;
+    background-color: #858585;
+    display: block;
+  }
+
   
   .totalPrice {
     font-weight: 600;
@@ -119,7 +141,9 @@
     flex-direction: row;
     justify-content: space-between;
     padding-top: 24px;
+    position: relative;
   }
+
 
   .price {
     font-family: Raleway, sans-serif;
@@ -193,7 +217,17 @@
   .orderSummary ul {
     list-style: none;
     padding: 0;
-    margin-bottom: 20px;
+    margin:0;
+  }
+
+  .totalPrice::before {
+    position: absolute;
+    bottom: 46px;
+    content: '';
+    width: 540px;
+    height: 1px;
+    background-color: #858585;
+    display: block;
   }
   
   .totalPrice {
