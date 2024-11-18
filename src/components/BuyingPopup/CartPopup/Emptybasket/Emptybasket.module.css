@@ -195,7 +195,7 @@
 
   .emptyBasket {
     width: 1216px;
-    padding: 74px 48px 74px 48px;
+    padding: 48px;
   }
 
   .emptyTitle {
@@ -229,5 +229,9 @@
     line-height: 1.5555555556;
     width: 174px;
     height: 52px;
+  }
+
+  .emptyContent {
+    margin-top: 0;
   }
 }
